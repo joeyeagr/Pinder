@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0818BAA644F4A6CACA8E9CDE /* Pods_PinderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08E51941B0C66D6E03F87830 /* Pods_PinderTests.framework */; };
-		5E265B52224A776E00236C2F /* GoogleService-Info-2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E265B51224A776D00236C2F /* GoogleService-Info-2.plist */; };
+		5E265B52224A776E00236C2F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E265B51224A776D00236C2F /* GoogleService-Info.plist */; };
 		5EB5D71422453A5A000D6CE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5D71322453A5A000D6CE7 /* AppDelegate.swift */; };
 		5EB5D71622453A5A000D6CE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5D71522453A5A000D6CE7 /* ViewController.swift */; };
 		5EB5D71922453A5A000D6CE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EB5D71722453A5A000D6CE7 /* Main.storyboard */; };
@@ -46,7 +46,7 @@
 		279FA70221B07A46FBB2C1A2 /* Pods-PinderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinderUITests.release.xcconfig"; path = "Target Support Files/Pods-PinderUITests/Pods-PinderUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3FB43C3D1E6ACEAB8E602417 /* Pods-Pinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinder.release.xcconfig"; path = "Target Support Files/Pods-Pinder/Pods-Pinder.release.xcconfig"; sourceTree = "<group>"; };
 		4ED5C283D785587F0C6D643B /* Pods-PinderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinderTests.release.xcconfig"; path = "Target Support Files/Pods-PinderTests/Pods-PinderTests.release.xcconfig"; sourceTree = "<group>"; };
-		5E265B51224A776D00236C2F /* GoogleService-Info-2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-2.plist"; sourceTree = "<group>"; };
+		5E265B51224A776D00236C2F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5EB5D71022453A5A000D6CE7 /* Pinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EB5D71322453A5A000D6CE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EB5D71522453A5A000D6CE7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 				5EB5D71D22453A5B000D6CE7 /* Assets.xcassets */,
 				5EB5D71F22453A5B000D6CE7 /* LaunchScreen.storyboard */,
 				5EB5D72222453A5B000D6CE7 /* Info.plist */,
-				5E265B51224A776D00236C2F /* GoogleService-Info-2.plist */,
+				5E265B51224A776D00236C2F /* GoogleService-Info.plist */,
 				5EB5D71A22453A5A000D6CE7 /* Pinder.xcdatamodeld */,
 			);
 			path = Pinder;
@@ -284,7 +284,7 @@
 			files = (
 				5EB5D72122453A5B000D6CE7 /* LaunchScreen.storyboard in Resources */,
 				5EB5D71E22453A5B000D6CE7 /* Assets.xcassets in Resources */,
-				5E265B52224A776E00236C2F /* GoogleService-Info-2.plist in Resources */,
+				5E265B52224A776E00236C2F /* GoogleService-Info.plist in Resources */,
 				5EB5D71922453A5A000D6CE7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

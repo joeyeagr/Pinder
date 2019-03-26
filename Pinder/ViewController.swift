@@ -12,21 +12,25 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var petPicture: UIImageView!
     
-    func setCornerRounds() {
+    func setCornerAndShadow() {
         
+        petPicture.layer.cornerRadius = 50
         petPicture.layer.shadowColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0).cgColor
-        petPicture.layer.shadowOffset = CGSize(width: 0, height: 1.75)
-        petPicture.layer.shadowRadius = 1.7
-        petPicture.layer.shadowOpacity = 0.45
-        petPicture.layer.cornerRadius = 50.0
+        petPicture.layer.shadowOffset = CGSize(width: 10, height: 10)
+        petPicture.layer.shadowRadius = 10.0
+        petPicture.layer.shadowOpacity = 1.0
+//        petPicture.layer.shadowPath = UIBezierPath(roundedRect: petPicture.bounds, cornerRadius: 12).cgPath
+        petPicture.clipsToBounds = true
+//        petPicture.layer.masksToBounds = false
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setCornerRounds()
-
-
-
+        setCornerAndShadow()
+        
+        
+        
     }
     
     
