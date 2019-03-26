@@ -17,6 +17,7 @@
 		5EB5D72122453A5B000D6CE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EB5D71F22453A5B000D6CE7 /* LaunchScreen.storyboard */; };
 		5EB5D72C22453A5B000D6CE7 /* PinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5D72B22453A5B000D6CE7 /* PinderTests.swift */; };
 		5EB5D73722453A5B000D6CE7 /* PinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5D73622453A5B000D6CE7 /* PinderUITests.swift */; };
+		CBAAC496224A80C3009B2E3D /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAC495224A80C3009B2E3D /* FirebaseController.swift */; };
 		D964543F186AB95E01CA711B /* Pods_Pinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FC313AD1A1C965AADA99F2 /* Pods_Pinder.framework */; };
 		E9CDD669F7FE877EAC2123B3 /* Pods_PinderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A5538016357E216772E964 /* Pods_PinderUITests.framework */; };
 /* End PBXBuildFile section */
@@ -63,6 +64,7 @@
 		84FC313AD1A1C965AADA99F2 /* Pods_Pinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D23937AA4646A782CA0F415 /* Pods-Pinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinder.debug.xcconfig"; path = "Target Support Files/Pods-Pinder/Pods-Pinder.debug.xcconfig"; sourceTree = "<group>"; };
 		9E4422399FBBC5F0B27EF44A /* Pods-PinderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinderTests.debug.xcconfig"; path = "Target Support Files/Pods-PinderTests/Pods-PinderTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CBAAC495224A80C3009B2E3D /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				5EB5D71322453A5A000D6CE7 /* AppDelegate.swift */,
+				CBAAC495224A80C3009B2E3D /* FirebaseController.swift */,
 				5EB5D71522453A5A000D6CE7 /* ViewController.swift */,
 				5EB5D71722453A5A000D6CE7 /* Main.storyboard */,
 				5EB5D71D22453A5B000D6CE7 /* Assets.xcassets */,
@@ -168,7 +171,6 @@
 				1398751C5355139780212E65 /* Pods-PinderUITests.debug.xcconfig */,
 				279FA70221B07A46FBB2C1A2 /* Pods-PinderUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -413,6 +415,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBAAC496224A80C3009B2E3D /* FirebaseController.swift in Sources */,
 				5EB5D71622453A5A000D6CE7 /* ViewController.swift in Sources */,
 				5EB5D71422453A5A000D6CE7 /* AppDelegate.swift in Sources */,
 				5EB5D71C22453A5A000D6CE7 /* Pinder.xcdatamodeld in Sources */,
