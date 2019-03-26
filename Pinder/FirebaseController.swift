@@ -8,3 +8,5 @@
 
 import Foundation
 // made by Tyler
+
+var ben: String?
