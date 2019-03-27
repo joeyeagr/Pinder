@@ -7,3 +7,27 @@
 //
 
 import Foundation
+import FirebaseAuth
+import FirebaseStorage
+import FirebaseFirestore
+import Firebase
+
+struct Users {
+    var id: String
+    var name: String
+    var email: String
+    var password: String
+    var phoneNumber: Int
+    
+    var dictionary: [String: Any] {
+        return [
+            
+            "id": id,
+            "name": name,
+            "email": email,
+            "password": password,
+            "phoneNumber": phoneNumber
+        
+        ]
+    }
+}
