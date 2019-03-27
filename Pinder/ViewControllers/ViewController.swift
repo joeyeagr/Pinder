@@ -11,25 +11,31 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var petPicture: UIImageView!
+    @IBOutlet weak var shadowView: UIView!
     
     func setCornerAndShadow() {
-        
+
         petPicture.layer.cornerRadius = 50
-        petPicture.layer.shadowColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0).cgColor
-        petPicture.layer.shadowOffset = CGSize(width: 10, height: 10)
-        petPicture.layer.shadowRadius = 10.0
-        petPicture.layer.shadowOpacity = 1.0
-//        petPicture.layer.shadowPath = UIBezierPath(roundedRect: petPicture.bounds, cornerRadius: 12).cgPath
         petPicture.clipsToBounds = true
-//        petPicture.layer.masksToBounds = false
         
+        shadowView.backgroundColor = .clear
+        shadowView.layer.masksToBounds = false
+        
+        shadowView.layer.shadowColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0).cgColor
+        shadowView.layer.shadowOffset = CGSize(width: 10, height: 10)
+        shadowView.layer.shadowRadius = 10.0
+        shadowView.layer.shadowOpacity = 1.0
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setCornerAndShadow()
         
-        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        shadowView.layer.shadowPath = UIBezierPath(roundedRect: petPicture.bounds, cornerRadius: 50).cgPath
         
     }
     

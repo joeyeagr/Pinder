@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,23 +21,36 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gradient" translatesAutoresizingMaskIntoConstraints="NO" id="Mrx-lv-mzp">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fJ5-N7-Hhl">
+                                <rect key="frame" x="46" y="167" width="282" height="332"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pup" translatesAutoresizingMaskIntoConstraints="NO" id="AyV-ni-hHf">
                                 <rect key="frame" x="46" y="167" width="282" height="332"/>
                                 <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="332" id="0RB-aI-uSK"/>
                                     <constraint firstAttribute="width" constant="282" id="fSj-gz-7oZ"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Eh2-Ft-X3k" appends="YES" id="5Fo-eo-LBJ"/>
+                                    <outletCollection property="gestureRecognizers" destination="Eh2-Ft-X3k" appends="YES" id="f51-9e-z9M"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="AyV-ni-hHf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="46" id="2tV-Wd-v6o"/>
                             <constraint firstItem="Mrx-lv-mzp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="CXm-rJ-aSh"/>
+                            <constraint firstItem="fJ5-N7-Hhl" firstAttribute="top" secondItem="AyV-ni-hHf" secondAttribute="top" id="DbB-d0-Fkj"/>
                             <constraint firstItem="Mrx-lv-mzp" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="HfF-up-EP1"/>
+                            <constraint firstItem="fJ5-N7-Hhl" firstAttribute="bottom" secondItem="AyV-ni-hHf" secondAttribute="bottom" id="Ini-16-Rkc"/>
+                            <constraint firstItem="fJ5-N7-Hhl" firstAttribute="leading" secondItem="AyV-ni-hHf" secondAttribute="leading" id="NcD-Pz-tWB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="AyV-ni-hHf" secondAttribute="bottom" constant="168" id="lF8-jp-yMz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AyV-ni-hHf" secondAttribute="trailing" constant="47" id="m81-5l-QRU"/>
+                            <constraint firstItem="fJ5-N7-Hhl" firstAttribute="trailing" secondItem="AyV-ni-hHf" secondAttribute="trailing" id="mAl-9o-gJt"/>
                             <constraint firstItem="Mrx-lv-mzp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="tCu-5p-7K5"/>
                             <constraint firstItem="Mrx-lv-mzp" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vtv-h3-ygX"/>
                             <constraint firstItem="AyV-ni-hHf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="147" id="wJ0-Bu-Ksb"/>
@@ -46,15 +59,17 @@
                     </view>
                     <connections>
                         <outlet property="petPicture" destination="AyV-ni-hHf" id="6z7-5K-S4m"/>
+                        <outlet property="shadowView" destination="fJ5-N7-Hhl" id="CGk-LQ-zVB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="Eh2-Ft-X3k"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Gradient" width="300" height="168"/>
-        <image name="Pup" width="225" height="225"/>
+        <image name="Gradient" width="150" height="84"/>
+        <image name="Pup" width="112.5" height="112.5"/>
     </resources>
 </document>
