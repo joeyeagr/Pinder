@@ -4,20 +4,28 @@
 //
 //  Created by Joe Eagar on 3/22/19.
 //  Copyright © 2019 Joe Eagar. All rights reserved.
-//
+//  GLORY TO OUR LEADER JOE
 
 import UIKit
 import CoreData
 import Firebase
+import FirebaseStorage
+import FirebaseFirestore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let userDefault = UserDefaults()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         FirebaseApp.configure()
+        
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        
         return true
     }
 
