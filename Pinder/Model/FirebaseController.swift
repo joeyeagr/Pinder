@@ -15,7 +15,6 @@ import FirebaseFirestore
 class FirebaseController {
     
     static let shared = FirebaseController()
-    
     var db = Firestore.firestore()
     var currentAuthID = Auth.auth().currentUser?.uid
     var currentUser: User?
@@ -67,6 +66,7 @@ class FirebaseController {
         }
     }
     
+    // creates blanks in firestore
     func createData() {
         var id: String = ""
         var name: String = ""
