@@ -9,4 +9,4 @@
 import Foundation
 // made by Tyler
 
-var ben: String?
+var ben: Int?
