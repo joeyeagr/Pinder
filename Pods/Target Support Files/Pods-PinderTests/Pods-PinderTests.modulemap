@@ -1,6 +1,0 @@
-framework module Pods_PinderTests {
-  umbrella header "Pods-PinderTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
