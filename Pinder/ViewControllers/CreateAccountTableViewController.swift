@@ -7,15 +7,46 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseAuth
+import Firebase
 
 class CreateAccountTableViewController: UITableViewController {
+    
+    //Outlets
     @IBOutlet var humanNameTF: UITextField!
     @IBOutlet var emailTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     
+    //variables
+    var db: Firestore!
+    let userDefault = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        var db = Firestore.firestore()
         
+    }
+    
+    func createAccount(email: String, password: String) {
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            if error == nil {
+                print("Account Created")
+                self.signInAccount(email: email, password: password)
+            }
+        }
+    }
+    
+    func signInAccount(email: String, password: String) {
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            if error == nil {
+                print("Account Sign in")
+                self.userDefault.set(true, forKey: "accountSignedIn")
+                self.userDefault.synchronize()
+            } else {
+                print(error?.localizedDescription as Any)
+            }
+        }
     }
 
     // MARK: - Table view data source
@@ -38,6 +69,8 @@ class CreateAccountTableViewController: UITableViewController {
         return cell
     }
     */
+    
+    //Actions
     @IBAction func createAccountButtonTapped(_ sender: Any) {
     }
     
