@@ -12,6 +12,11 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var petPicture: UIImageView!
     @IBOutlet weak var shadowView: UIView!
+    @IBOutlet weak var likedPetsButton: UIButton!
+    @IBOutlet weak var myProfileButton: UIButton!
+    @IBOutlet weak var petNameLabel: UILabel!
+    @IBOutlet weak var petGenderLabel: UILabel!
+    @IBOutlet weak var petAgeLabel: UILabel!
     
     func setCornerAndShadow() {
 
@@ -22,8 +27,8 @@ class ViewController: UIViewController {
         shadowView.layer.masksToBounds = false
         
         shadowView.layer.shadowColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0).cgColor
-        shadowView.layer.shadowOffset = CGSize(width: 10, height: 10)
-        shadowView.layer.shadowRadius = 10.0
+        shadowView.layer.shadowOffset = CGSize(width: 2, height: 5)
+        shadowView.layer.shadowRadius = 2.7
         shadowView.layer.shadowOpacity = 1.0
     }
     
