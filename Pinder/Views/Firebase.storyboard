@@ -335,7 +335,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGi-4T-Wrp">
                                                     <rect key="frame" x="217" y="9" width="177" height="156"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button"/>
+                                                    <state key="normal" title="Button2"/>
                                                     <connections>
                                                         <action selector="addImageButtonTapped2:" destination="QAe-uh-BzB" eventType="touchUpInside" id="dp3-9w-IYH"/>
                                                     </connections>
