@@ -1,5 +1,5 @@
 //
-//  AddPetTableViewController.swift
+//  EditAccountTableViewController.swift
 //  Pinder
 //
 //  Created by Tyler Donohue on 3/28/19.
@@ -8,14 +8,10 @@
 
 import UIKit
 
-class AddPetTableViewController: UITableViewController {
-    @IBOutlet var petNameTF: UITextField!
-    @IBOutlet var petBreedTF: UIView!
-    @IBOutlet var petAgeTF: UITextField!
-    @IBOutlet var genderControl: UISegmentedControl!
-    @IBOutlet var bioTextView: UITextView!
-    @IBOutlet var firstUIImage: UIImageView!
-    @IBOutlet var secondUIImage: UIImageView!
+class EditAccountTableViewController: UITableViewController {
+    @IBOutlet var humanNameLabel: UILabel!
+    @IBOutlet var selfEmailLabel: UILabel!
+    @IBOutlet var selfPhoneNumberLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +19,14 @@ class AddPetTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+
     override func numberOfSections(in tableView: UITableView) -> Int {
-        
+        // #warning Incomplete implementation, return the number of sections
         return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        // #warning Incomplete implementation, return the number of rows
         return 0
     }
 
@@ -42,14 +39,7 @@ class AddPetTableViewController: UITableViewController {
         return cell
     }
     */
-    
-    @IBAction func saveButtonTapped(_ sender: Any) {
-    }
-    
-    @IBAction func addImageButtonTapped(_ sender: Any) {
-    }
-    
-    @IBAction func addImageButtonTapped2(_ sender: Any) {
+    @IBAction func addPetButtonTapped(_ sender: Any) {
     }
     
 }
