@@ -60,8 +60,11 @@
                             <constraint firstItem="uAT-fR-aeQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="2xh-Hh-I4Y"/>
                             <constraint firstItem="Mrx-lv-mzp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="CXm-rJ-aSh"/>
                             <constraint firstItem="fJ5-N7-Hhl" firstAttribute="top" secondItem="AyV-ni-hHf" secondAttribute="top" id="DbB-d0-Fkj"/>
+                            <constraint firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DhQ-y0-V4P"/>
+                            <constraint firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="EZj-Rt-h1O"/>
                             <constraint firstItem="Mrx-lv-mzp" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="HfF-up-EP1"/>
                             <constraint firstItem="fJ5-N7-Hhl" firstAttribute="bottom" secondItem="AyV-ni-hHf" secondAttribute="bottom" id="Ini-16-Rkc"/>
+                            <constraint firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="IzP-CB-jke"/>
                             <constraint firstItem="fJ5-N7-Hhl" firstAttribute="leading" secondItem="AyV-ni-hHf" secondAttribute="leading" id="NcD-Pz-tWB"/>
                             <constraint firstItem="fvK-1h-6fg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="O0d-BE-VuG"/>
                             <constraint firstItem="fvK-1h-6fg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="g0l-sH-uzI"/>
@@ -83,7 +86,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="Eh2-Ft-X3k"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="133.5832083958021"/>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
     <resources>
