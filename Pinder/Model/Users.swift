@@ -21,7 +21,6 @@ struct Users {
     
     var dictionary: [String: Any] {
         return [
-            
             "id": id,
             "name": name,
             "email": email,
