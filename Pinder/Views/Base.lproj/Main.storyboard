@@ -39,19 +39,39 @@
                                     <outletCollection property="gestureRecognizers" destination="Eh2-Ft-X3k" appends="YES" id="f51-9e-z9M"/>
                                 </connections>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAT-fR-aeQ">
+                                <rect key="frame" x="309" y="36" width="50" height="50"/>
+                                <state key="normal" image="icons8-heart-outline-100"/>
+                                <connections>
+                                    <action selector="likedPetsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9dE-fA-ETN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvK-1h-6fg">
+                                <rect key="frame" x="16" y="36" width="50" height="50"/>
+                                <state key="normal" image="icons8-user-100"/>
+                                <connections>
+                                    <action selector="profileButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k0O-wV-QCq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="AyV-ni-hHf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="46" id="2tV-Wd-v6o"/>
+                            <constraint firstItem="uAT-fR-aeQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="2xh-Hh-I4Y"/>
                             <constraint firstItem="Mrx-lv-mzp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="CXm-rJ-aSh"/>
                             <constraint firstItem="fJ5-N7-Hhl" firstAttribute="top" secondItem="AyV-ni-hHf" secondAttribute="top" id="DbB-d0-Fkj"/>
+                            <constraint firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DhQ-y0-V4P"/>
+                            <constraint firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="EZj-Rt-h1O"/>
                             <constraint firstItem="Mrx-lv-mzp" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="HfF-up-EP1"/>
                             <constraint firstItem="fJ5-N7-Hhl" firstAttribute="bottom" secondItem="AyV-ni-hHf" secondAttribute="bottom" id="Ini-16-Rkc"/>
                             <constraint firstItem="fJ5-N7-Hhl" firstAttribute="leading" secondItem="AyV-ni-hHf" secondAttribute="leading" id="NcD-Pz-tWB"/>
+                            <constraint firstItem="fvK-1h-6fg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="O0d-BE-VuG"/>
+                            <constraint firstItem="fvK-1h-6fg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="g0l-sH-uzI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="AyV-ni-hHf" secondAttribute="bottom" constant="168" id="lF8-jp-yMz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AyV-ni-hHf" secondAttribute="trailing" constant="47" id="m81-5l-QRU"/>
                             <constraint firstItem="fJ5-N7-Hhl" firstAttribute="trailing" secondItem="AyV-ni-hHf" secondAttribute="trailing" id="mAl-9o-gJt"/>
                             <constraint firstItem="Mrx-lv-mzp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="tCu-5p-7K5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uAT-fR-aeQ" secondAttribute="trailing" constant="16" id="ttI-sd-CIa"/>
                             <constraint firstItem="Mrx-lv-mzp" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vtv-h3-ygX"/>
                             <constraint firstItem="AyV-ni-hHf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="147" id="wJ0-Bu-Ksb"/>
                         </constraints>
@@ -65,11 +85,13 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="Eh2-Ft-X3k"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="133.5832083958021"/>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
     <resources>
         <image name="Gradient" width="150" height="84"/>
         <image name="Pup" width="112.5" height="112.5"/>
+        <image name="icons8-heart-outline-100" width="50" height="50"/>
+        <image name="icons8-user-100" width="50" height="50"/>
     </resources>
 </document>
