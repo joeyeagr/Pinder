@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     }
     @IBOutlet weak var petView: UIView!
     
-    
     func setCornerAndShadow() {
 
         
