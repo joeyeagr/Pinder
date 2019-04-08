@@ -12,7 +12,7 @@
         <!--Pet Card Collection View Controller-->
         <scene sceneID="E1O-pK-5A4">
             <objects>
-                <collectionViewController id="Z4d-fD-5PB" customClass="PetCardCollectionViewController" customModule="Pinder" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="Ben" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Z4d-fD-5PB" customClass="PetCardCollectionViewController" customModule="Pinder" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Vps-TV-EXR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
