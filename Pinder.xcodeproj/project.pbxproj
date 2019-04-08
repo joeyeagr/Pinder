@@ -25,6 +25,7 @@
 		CBAAC496224A80C3009B2E3D /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAC495224A80C3009B2E3D /* FirebaseController.swift */; };
 		CBAAC49F224A967D009B2E3D /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAC49E224A967D009B2E3D /* Users.swift */; };
 		CBAAC4A1224A969C009B2E3D /* GlobalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAC4A0224A969C009B2E3D /* GlobalExtensions.swift */; };
+		CBE4F610225B954F00F0F6C0 /* AppDelegate+SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4F60F225B954F00F0F6C0 /* AppDelegate+SignIn.swift */; };
 		D964543F186AB95E01CA711B /* Pods_Pinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FC313AD1A1C965AADA99F2 /* Pods_Pinder.framework */; };
 		E9CDD669F7FE877EAC2123B3 /* Pods_PinderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A5538016357E216772E964 /* Pods_PinderUITests.framework */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		CBAAC495224A80C3009B2E3D /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 		CBAAC49E224A967D009B2E3D /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		CBAAC4A0224A969C009B2E3D /* GlobalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtensions.swift; sourceTree = "<group>"; };
+		CBE4F60F225B954F00F0F6C0 /* AppDelegate+SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+SignIn.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				CBAAC4A0224A969C009B2E3D /* GlobalExtensions.swift */,
+				CBE4F60F225B954F00F0F6C0 /* AppDelegate+SignIn.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				CB82E51B224D2B14002417E5 /* EditAccountTableViewController.swift in Sources */,
 				CBAAC4A1224A969C009B2E3D /* GlobalExtensions.swift in Sources */,
 				5EB5D71622453A5A000D6CE7 /* ViewController.swift in Sources */,
+				CBE4F610225B954F00F0F6C0 /* AppDelegate+SignIn.swift in Sources */,
 				CB82E519224D2B09002417E5 /* CreateAccountTableViewController.swift in Sources */,
 				CB4ABDF0224E792B00162F94 /* Pet.swift in Sources */,
 				CBAAC49F224A967D009B2E3D /* Users.swift in Sources */,

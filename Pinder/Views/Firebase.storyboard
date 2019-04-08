@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="70h-BS-ops">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -30,6 +30,11 @@
                                 </navigationItem>
                             </items>
                         </navigationBar>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aO5-wT-mRk">
+                            <rect key="frame" x="0.0" y="176" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Button"/>
+                        </button>
                         <sections>
                             <tableViewSection id="1K3-r0-rLt">
                                 <cells>
@@ -97,7 +102,7 @@
                         <outlet property="emailTF" destination="bpv-Tc-hiq" id="713-BS-3es"/>
                         <outlet property="humanNameTF" destination="nDa-Lu-P3d" id="m5I-th-ZwO"/>
                         <outlet property="passwordTF" destination="WCH-SH-qs0" id="Y3W-2T-CQy"/>
-                        <segue destination="8CA-x1-xAF" kind="show" id="c6T-Tb-sVX"/>
+                        <segue destination="8CA-x1-xAF" kind="show" identifier="logIn" id="c6T-Tb-sVX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X00-H6-PD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -191,7 +196,7 @@
                         <outlet property="humanNameLabel" destination="5An-zr-LDO" id="KGj-e8-lid"/>
                         <outlet property="selfEmailLabel" destination="oiw-gg-fhy" id="cHS-wi-Rl6"/>
                         <outlet property="selfPhoneNumberLabel" destination="UcZ-LA-vz9" id="bIu-Mr-KO1"/>
-                        <segue destination="QAe-uh-BzB" kind="showDetail" id="QzC-6N-icS"/>
+                        <segue destination="QAe-uh-BzB" kind="showDetail" identifier="addPet" id="QzC-6N-icS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BRd-o6-rog" userLabel="First Responder" sceneMemberID="firstResponder"/>

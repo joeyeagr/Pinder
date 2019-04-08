@@ -21,10 +21,12 @@ class CreateAccountTableViewController: UITableViewController {
     //variables
     var db: Firestore!
     let userDefault = UserDefaults.standard
+    let authUI = Auth.auth()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         var db = Firestore.firestore()
+        
         
     }
     
@@ -72,6 +74,9 @@ class CreateAccountTableViewController: UITableViewController {
     
     //Actions
     @IBAction func createAccountButtonTapped(_ sender: Any) {
+        createAccount(email: emailTF.text ?? "Email", password: passwordTF.text ?? "Password")
+        performSegue(withIdentifier: "logIn", sender: nil)
+        
     }
     
 }
