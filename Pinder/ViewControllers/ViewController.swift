@@ -16,11 +16,14 @@ class ViewController: UIViewController {
     }
     @IBAction func likedPetsButton(_ sender: Any) {
     }
+    @IBOutlet weak var petView: UIView!
+    
     
     func setCornerAndShadow() {
 
-        petPicture.layer.cornerRadius = 50
+        
         petPicture.clipsToBounds = true
+        petView.clipsToBounds = true
         
         shadowView.backgroundColor = .clear
         shadowView.layer.masksToBounds = false
@@ -34,15 +37,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setCornerAndShadow()
+        petPicture.layer.cornerRadius = 25
+        petView.layer.cornerRadius = 25
         
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        shadowView.layer.shadowPath = UIBezierPath(roundedRect: petPicture.bounds, cornerRadius: 50).cgPath
-        
+        shadowView.layer.shadowPath = UIBezierPath(roundedRect: petView.bounds, cornerRadius: 25).cgPath
+
     }
-    
-    
+
+
 }
 
