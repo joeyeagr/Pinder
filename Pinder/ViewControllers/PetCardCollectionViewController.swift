@@ -12,6 +12,7 @@ private let reuseIdentifier = "Cell"
 
 class PetCardCollectionViewController: UICollectionViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +23,26 @@ class PetCardCollectionViewController: UICollectionViewController {
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        
+        let fetchRequestPetCards = PetCardController.sharedController.petCards
+        
+        let petCards = fetchRequestPetCards
+        print("you have #\(petCards.count) petCards fetched")
+        
+        
+        //*** how ever I am being passed data for a pet card I need to insert that data into my data model for petCard and then save it
+        var joesData: [String: Any] {
+            return [
+                "petName" : "Joe"
+            ]
+        }
+        let response = joesData
+        let dataForPetCard = PetCard(dictionary: response, context: Stack.context)
+        if let dataForPetCard = dataForPetCard {
+            PetCardController.sharedController.saveToPersistentStorage(petCard: dataForPetCard)
+
+        }
+        
     }
 
     /*
@@ -38,7 +59,7 @@ class PetCardCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return PetCardController.sharedController.petCards.count
     }
 
 

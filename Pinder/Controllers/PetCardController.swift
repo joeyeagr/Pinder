@@ -13,7 +13,7 @@ class PetCardController {
     
     static let sharedController = PetCardController()
     
-    var performNewPetFetchRequest: [PetCard] {
+    var petCards: [PetCard] {
         let request: NSFetchRequest<PetCard> = PetCard.fetchRequest()
         
         do {
