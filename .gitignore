@@ -134,7 +134,7 @@ build/
 #
 # NB: this is exclusive with OPTION 2 below
 xcuserdata/
-
+Pinder.xcworkspace/xcuserdata/benjaminpoulsenpro.xcuserdatad/UserInterfaceState.xcuserstate
 # OPTION 2: ---------------------------------
 #     get rid of ALL personal settings, but KEEP SOME OF THEM
 #     - NB: you must manually uncomment the bits you want to keep
@@ -217,3 +217,4 @@ xcuserdata/
 ####
 # UNKNOWN: recommended by others, but I can't discover what these files are
 #
+Pinder.xcworkspace/xcuserdata/benjaminpoulsenpro.xcuserdatad/UserInterfaceState.xcuserstate

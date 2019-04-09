@@ -12,11 +12,20 @@
 		5EB5D71422453A5A000D6CE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5D71322453A5A000D6CE7 /* AppDelegate.swift */; };
 		5EB5D71622453A5A000D6CE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5D71522453A5A000D6CE7 /* ViewController.swift */; };
 		5EB5D71922453A5A000D6CE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EB5D71722453A5A000D6CE7 /* Main.storyboard */; };
-		5EB5D71C22453A5A000D6CE7 /* Pinder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5D71A22453A5A000D6CE7 /* Pinder.xcdatamodeld */; };
+		5EB5D71C22453A5A000D6CE7 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5D71A22453A5A000D6CE7 /* Model.xcdatamodeld */; };
 		5EB5D71E22453A5B000D6CE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EB5D71D22453A5B000D6CE7 /* Assets.xcassets */; };
 		5EB5D72122453A5B000D6CE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EB5D71F22453A5B000D6CE7 /* LaunchScreen.storyboard */; };
 		5EB5D72C22453A5B000D6CE7 /* PinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5D72B22453A5B000D6CE7 /* PinderTests.swift */; };
 		5EB5D73722453A5B000D6CE7 /* PinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5D73622453A5B000D6CE7 /* PinderUITests.swift */; };
+		5EE56D682253B1B100AE3C51 /* EditAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE56D652253B1B100AE3C51 /* EditAccountTableViewController.swift */; };
+		5EE56D692253B1B100AE3C51 /* CreateAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE56D662253B1B100AE3C51 /* CreateAccountTableViewController.swift */; };
+		5EE56D6A2253B1B100AE3C51 /* AddPetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE56D672253B1B100AE3C51 /* AddPetTableViewController.swift */; };
+		5EE56D6C2253B1BF00AE3C51 /* Firebase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EE56D6B2253B1BF00AE3C51 /* Firebase.storyboard */; };
+		9ABB8C11225A97D7003D1B2A /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB8C10225A97D7003D1B2A /* Stack.swift */; };
+		9ABB8C15225A9E3A003D1B2A /* PetCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB8C14225A9E3A003D1B2A /* PetCard.swift */; };
+		9ABB8C17225AA3F9003D1B2A /* PetCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB8C16225AA3F9003D1B2A /* PetCardController.swift */; };
+		9ABB8C19225AB350003D1B2A /* PetCardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB8C18225AB350003D1B2A /* PetCardCollectionViewController.swift */; };
+		9ABB8C1B225AB51A003D1B2A /* Ben.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ABB8C1A225AB51A003D1B2A /* Ben.storyboard */; };
 		CB4ABDF0224E792B00162F94 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ABDEF224E792B00162F94 /* Pet.swift */; };
 		CB7E99E5225CE530001F8539 /* CreateAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB061357225CDD3300CE0D47 /* CreateAccountTableViewController.swift */; };
 		CBAAC496224A80C3009B2E3D /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAC495224A80C3009B2E3D /* FirebaseController.swift */; };
@@ -70,6 +79,11 @@
 		5EE56D672253B1B100AE3C51 /* AddPetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPetTableViewController.swift; sourceTree = "<group>"; };
 		5EE56D6B2253B1BF00AE3C51 /* Firebase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Firebase.storyboard; sourceTree = "<group>"; };
 		84FC313AD1A1C965AADA99F2 /* Pods_Pinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9ABB8C10225A97D7003D1B2A /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		9ABB8C14225A9E3A003D1B2A /* PetCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCard.swift; sourceTree = "<group>"; };
+		9ABB8C16225AA3F9003D1B2A /* PetCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCardController.swift; sourceTree = "<group>"; };
+		9ABB8C18225AB350003D1B2A /* PetCardCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCardCollectionViewController.swift; sourceTree = "<group>"; };
+		9ABB8C1A225AB51A003D1B2A /* Ben.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ben.storyboard; sourceTree = "<group>"; };
 		9D23937AA4646A782CA0F415 /* Pods-Pinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinder.debug.xcconfig"; path = "Target Support Files/Pods-Pinder/Pods-Pinder.debug.xcconfig"; sourceTree = "<group>"; };
 		9E4422399FBBC5F0B27EF44A /* Pods-PinderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinderTests.debug.xcconfig"; path = "Target Support Files/Pods-PinderTests/Pods-PinderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB061357225CDD3300CE0D47 /* CreateAccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountTableViewController.swift; sourceTree = "<group>"; };
@@ -153,7 +167,6 @@
 				5EB5D71D22453A5B000D6CE7 /* Assets.xcassets */,
 				5EB5D72222453A5B000D6CE7 /* Info.plist */,
 				5E265B51224A776D00236C2F /* GoogleService-Info.plist */,
-				5EB5D71A22453A5A000D6CE7 /* Pinder.xcdatamodeld */,
 			);
 			path = Pinder;
 			sourceTree = "<group>";
@@ -200,9 +213,12 @@
 		CBAAC497224A94B7009B2E3D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9ABB8C14225A9E3A003D1B2A /* PetCard.swift */,
+				9ABB8C10225A97D7003D1B2A /* Stack.swift */,
 				CBAAC495224A80C3009B2E3D /* FirebaseController.swift */,
 				CBAAC49E224A967D009B2E3D /* Users.swift */,
 				CB4ABDEF224E792B00162F94 /* Pet.swift */,
+				5EB5D71A22453A5A000D6CE7 /* Model.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -211,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				5EE56D6B2253B1BF00AE3C51 /* Firebase.storyboard */,
+				9ABB8C1A225AB51A003D1B2A /* Ben.storyboard */,
 				5EB5D71722453A5A000D6CE7 /* Main.storyboard */,
 				5EB5D71F22453A5B000D6CE7 /* LaunchScreen.storyboard */,
 			);
@@ -220,6 +237,7 @@
 		CBAAC49B224A9518009B2E3D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9ABB8C16225AA3F9003D1B2A /* PetCardController.swift */,
 				5EB5D71322453A5A000D6CE7 /* AppDelegate.swift */,
 			);
 			path = Controllers;
@@ -228,6 +246,7 @@
 		CBAAC49C224A956C009B2E3D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9ABB8C18225AB350003D1B2A /* PetCardCollectionViewController.swift */,
 				5EE56D672253B1B100AE3C51 /* AddPetTableViewController.swift */,
 				CB061357225CDD3300CE0D47 /* CreateAccountTableViewController.swift */,
 				5EE56D652253B1B100AE3C51 /* EditAccountTableViewController.swift */,
@@ -357,6 +376,7 @@
 				5EB5D71E22453A5B000D6CE7 /* Assets.xcassets in Resources */,
 				5E265B52224A776E00236C2F /* GoogleService-Info.plist in Resources */,
 				5EB5D71922453A5A000D6CE7 /* Main.storyboard in Resources */,
+				9ABB8C1B225AB51A003D1B2A /* Ben.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,8 +513,12 @@
 				CBE4F610225B954F00F0F6C0 /* AppDelegate+SignIn.swift in Sources */,
 				CB4ABDF0224E792B00162F94 /* Pet.swift in Sources */,
 				CBAAC49F224A967D009B2E3D /* Users.swift in Sources */,
+				9ABB8C19225AB350003D1B2A /* PetCardCollectionViewController.swift in Sources */,
+				9ABB8C17225AA3F9003D1B2A /* PetCardController.swift in Sources */,
+				5EE56D692253B1B100AE3C51 /* CreateAccountTableViewController.swift in Sources */,
 				5EB5D71422453A5A000D6CE7 /* AppDelegate.swift in Sources */,
-				5EB5D71C22453A5A000D6CE7 /* Pinder.xcdatamodeld in Sources */,
+				5EB5D71C22453A5A000D6CE7 /* Model.xcdatamodeld in Sources */,
+				9ABB8C15225A9E3A003D1B2A /* PetCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -825,13 +849,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		5EB5D71A22453A5A000D6CE7 /* Pinder.xcdatamodeld */ = {
+		5EB5D71A22453A5A000D6CE7 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				5EB5D71B22453A5A000D6CE7 /* Pinder.xcdatamodel */,
 			);
 			currentVersion = 5EB5D71B22453A5A000D6CE7 /* Pinder.xcdatamodel */;
-			path = Pinder.xcdatamodeld;
+			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
