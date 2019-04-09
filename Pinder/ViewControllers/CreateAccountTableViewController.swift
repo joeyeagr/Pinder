@@ -14,9 +14,9 @@ import FirebaseStorage
 class CreateAccountTableViewController: UITableViewController, UIImagePickerControllerDelegate{
     
     //Outlets
-    @IBOutlet var emailTextfield: UITextField!
-    @IBOutlet var passwordTextField: UITextField!
-    @IBOutlet var orOlderLabel: UILabel!
+    @IBOutlet var emailTF: UITextField!
+    @IBOutlet var passwordTF: UITextField!
+    @IBOutlet var humanNameTF: UITextField!
     
     var userId: String = ""
     var emailField: String = ""
@@ -40,7 +40,7 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
     
     //Actions
     @IBAction func createAccountTapped(_ sender: Any) {
-    
+    performSegue(withIdentifier: "logIn", sender: nil)
         
     }
         

@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +24,7 @@
                                 <navigationItem title="Title" id="Jbg-Rk-7Xc">
                                     <barButtonItem key="rightBarButtonItem" title="Create Account" id="Lxb-kl-3ji">
                                         <connections>
-                                            <action selector="createAccountButtonTapped:" destination="70h-BS-ops" id="7Lv-x5-fnY"/>
+                                            <action selector="createAccountTapped:" destination="70h-BS-ops" id="A40-sQ-hGD"/>
                                         </connections>
                                     </barButtonItem>
                                 </navigationItem>
@@ -94,7 +95,7 @@
                     <navigationItem key="navigationItem" id="99b-M2-XrA"/>
                     <connections>
                         <outlet property="emailTF" destination="bpv-Tc-hiq" id="713-BS-3es"/>
-                        <outlet property="humanNameTF" destination="nDa-Lu-P3d" id="m5I-th-ZwO"/>
+                        <outlet property="humanNameTF" destination="nDa-Lu-P3d" id="Oqw-gz-6IK"/>
                         <outlet property="passwordTF" destination="WCH-SH-qs0" id="Y3W-2T-CQy"/>
                         <segue destination="8CA-x1-xAF" kind="show" identifier="logIn" id="c6T-Tb-sVX"/>
                     </connections>
