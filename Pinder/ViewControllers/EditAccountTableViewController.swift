@@ -34,12 +34,13 @@ class EditAccountTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
+        // Configure the cell... performSegue(withIdentifier: "segueSearch", sender: nil)
 
         return cell
     }
     */
     @IBAction func addPetButtonTapped(_ sender: Any) {
+         performSegue(withIdentifier: "addPet", sender: nil)
     }
     
 }
