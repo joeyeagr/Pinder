@@ -1,82 +1,62 @@
 //
 //  CreateAccountTableViewController.swift
-//  Pinder
+//  TableTopMeetUp
 //
-//  Created by Tyler Donohue on 3/28/19.
-//  Copyright © 2019 Joe Eagar. All rights reserved.
+//  Created by Tyler Donohue on 2/11/19.
+//  Copyright © 2019 Tyler Donohue. All rights reserved.
 //
 
 import UIKit
-import FirebaseFirestore
 import FirebaseAuth
-import Firebase
+import FirebaseDatabase
+import FirebaseStorage
 
-class CreateAccountTableViewController: UITableViewController {
+class CreateAccountTableViewController: UITableViewController, UIImagePickerControllerDelegate{
     
     //Outlets
-    @IBOutlet var humanNameTF: UITextField!
-    @IBOutlet var emailTF: UITextField!
-    @IBOutlet var passwordTF: UITextField!
+    @IBOutlet var emailTextfield: UITextField!
+    @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet var orOlderLabel: UILabel!
     
-    //variables
-    var db: Firestore!
+    var userId: String = ""
+    var emailField: String = ""
+    var passwordField: String = ""
+    var imagePicker: UIImagePickerController!
+    var imageSelected = false
+    var username: String = ""
     let userDefault = UserDefaults.standard
-    let authUI = Auth.auth()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var db = Firestore.firestore()
         
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        imagePicker.allowsEditing = true
+        view.backgroundColor = UIColor(displayP3Red: 61/255, green: 91/255, blue: 151/255, alpha: 1)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
         
     }
     
-    func createAccount(email: String, password: String) {
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if error == nil {
-                print("Account Created")
-                self.signInAccount(email: email, password: password)
-            }
-        }
-    }
-    
-    func signInAccount(email: String, password: String) {
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if error == nil {
-                print("Account Sign in")
-                self.userDefault.set(true, forKey: "accountSignedIn")
-                self.userDefault.synchronize()
-            } else {
-                print(error?.localizedDescription as Any)
-            }
-        }
-    }
-
-    // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
+    // if requirements to search are not met
     
     //Actions
-    @IBAction func createAccountButtonTapped(_ sender: Any) {
-        createAccount(email: emailTF.text ?? "Email", password: passwordTF.text ?? "Password")
-        performSegue(withIdentifier: "logIn", sender: nil)
+    @IBAction func createAccountTapped(_ sender: Any) {
+    
         
     }
-    
-}
+        
+        //        if let email = emailTextfield.text, let password = passwordTextField.text {
+        //            Auth.auth().createUser(withEmail: email, password: password, completion: { user, error) in
+        //
+        //                if let firebaseError = error {
+        //                    print(firebaseError.localizedDescription)
+        //                    return
+        //                }
+        //                print("success!")
+        //            })
+        //        }
+        //    }
+    }
