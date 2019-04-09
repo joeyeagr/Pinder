@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Ben-->
+        <scene sceneID="EdD-6Q-Fch">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Ben" id="Yay-b4-adu" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FkQ-HY-AHg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="687" y="30"/>
+        </scene>
         <!--Firebase-->
         <scene sceneID="5V2-eD-7py">
             <objects>
@@ -26,19 +34,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fJ5-N7-Hhl">
-                                <rect key="frame" x="46" y="192" width="283" height="283"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gradient" translatesAutoresizingMaskIntoConstraints="NO" id="Mrx-lv-mzp">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JRk-ig-OKH">
-                                <rect key="frame" x="46" y="177" width="283" height="332"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JRk-ig-OKH">
+                                <rect key="frame" x="46" y="226" width="283" height="343"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Pup" translatesAutoresizingMaskIntoConstraints="NO" id="AyV-ni-hHf">
-                                        <rect key="frame" x="10" y="61" width="263" height="223"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pup" translatesAutoresizingMaskIntoConstraints="NO" id="AyV-ni-hHf">
+                                        <rect key="frame" x="10" y="10" width="263" height="263"/>
                                         <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
@@ -47,25 +50,44 @@
                                             <outletCollection property="gestureRecognizers" destination="Eh2-Ft-X3k" appends="YES" id="5Fo-eo-LBJ"/>
                                         </connections>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Puppy," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X9O-7a-Y7K">
+                                        <rect key="frame" x="10" y="291" width="85" height="35"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8c-NA-3nh">
+                                        <rect key="frame" x="97" y="291" width="19" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="AyV-ni-hHf" firstAttribute="top" secondItem="JRk-ig-OKH" secondAttribute="top" constant="50" id="Bm1-4g-Ovc"/>
-                                    <constraint firstAttribute="trailing" secondItem="AyV-ni-hHf" secondAttribute="trailing" constant="10" id="P5D-PZ-KTd"/>
-                                    <constraint firstAttribute="bottom" secondItem="AyV-ni-hHf" secondAttribute="bottom" constant="10" id="jWS-4Q-TsO"/>
+                                    <constraint firstAttribute="bottom" secondItem="AyV-ni-hHf" secondAttribute="bottom" constant="70" id="3vb-Pd-ugk"/>
+                                    <constraint firstItem="K8c-NA-3nh" firstAttribute="leading" secondItem="X9O-7a-Y7K" secondAttribute="trailing" constant="2" id="E1j-gs-dVd"/>
+                                    <constraint firstAttribute="bottom" secondItem="X9O-7a-Y7K" secondAttribute="bottom" constant="17" id="PI7-pJ-COB"/>
+                                    <constraint firstItem="AyV-ni-hHf" firstAttribute="top" secondItem="JRk-ig-OKH" secondAttribute="top" constant="10" id="SRO-Pu-e7z"/>
+                                    <constraint firstItem="X9O-7a-Y7K" firstAttribute="leading" secondItem="JRk-ig-OKH" secondAttribute="leading" constant="10" id="f3K-lm-8HT"/>
+                                    <constraint firstItem="K8c-NA-3nh" firstAttribute="top" secondItem="AyV-ni-hHf" secondAttribute="bottom" constant="18" id="g6J-TB-9WM"/>
                                     <constraint firstAttribute="trailing" secondItem="AyV-ni-hHf" secondAttribute="trailing" constant="10" id="m3n-Op-Dlh"/>
+                                    <constraint firstAttribute="bottom" secondItem="K8c-NA-3nh" secondAttribute="bottom" constant="16" id="ui1-Vq-XyJ"/>
                                     <constraint firstItem="AyV-ni-hHf" firstAttribute="leading" secondItem="JRk-ig-OKH" secondAttribute="leading" constant="10" id="wBV-EU-4JA"/>
+                                    <constraint firstItem="X9O-7a-Y7K" firstAttribute="top" secondItem="AyV-ni-hHf" secondAttribute="bottom" constant="18" id="yK3-oi-E8X"/>
+                                    <constraint firstAttribute="trailing" secondItem="K8c-NA-3nh" secondAttribute="trailing" constant="167" id="ymb-0Q-cfd"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAT-fR-aeQ">
-                                <rect key="frame" x="284" y="36" width="75" height="75"/>
+                                <rect key="frame" x="309" y="36" width="50" height="50"/>
                                 <state key="normal" image="icons8-heart-outline-100"/>
                                 <connections>
                                     <action selector="likedPetsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9dE-fA-ETN"/>
+                                    <segue destination="Yay-b4-adu" kind="show" id="Z9d-47-gLi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvK-1h-6fg">
-                                <rect key="frame" x="16" y="36" width="75" height="75"/>
+                                <rect key="frame" x="16" y="36" width="50" height="50"/>
                                 <state key="normal" image="icons8-user-100"/>
                                 <connections>
                                     <action selector="profileButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k0O-wV-QCq"/>
@@ -94,7 +116,6 @@
                     <connections>
                         <outlet property="petPicture" destination="AyV-ni-hHf" id="6z7-5K-S4m"/>
                         <outlet property="petView" destination="JRk-ig-OKH" id="HjE-R7-6gi"/>
-                        <outlet property="shadowView" destination="fJ5-N7-Hhl" id="CGk-LQ-zVB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -104,9 +125,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Gradient" width="300" height="168"/>
-        <image name="Pup" width="225" height="225"/>
-        <image name="icons8-heart-outline-100" width="75" height="75"/>
-        <image name="icons8-user-100" width="75" height="75"/>
+        <image name="Gradient" width="150" height="84"/>
+        <image name="Pup" width="112.5" height="112.5"/>
+        <image name="icons8-heart-outline-100" width="50" height="50"/>
+        <image name="icons8-user-100" width="50" height="50"/>
     </resources>
 </document>
