@@ -36,10 +36,6 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
         view.backgroundColor = UIColor(displayP3Red: 61/255, green: 91/255, blue: 151/255, alpha: 1)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        
-    }
-    
     // if requirements to search are not met
     
     //Actions
