@@ -11,7 +11,6 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var petPicture: UIImageView!
-    @IBOutlet weak var shadowView: UIView!
     @IBAction func profileButton(_ sender: Any) {
     }
     @IBAction func likedPetsButton(_ sender: Any) {
@@ -22,15 +21,15 @@ class ViewController: UIViewController {
 
         
         petPicture.clipsToBounds = true
-        petView.clipsToBounds = true
+//        petView.clipsToBounds = true
         
-        shadowView.backgroundColor = .clear
-        shadowView.layer.masksToBounds = false
+//        petView.backgroundColor = .clear
+//        petView.layer.masksToBounds = false
         
-        shadowView.layer.shadowColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0).cgColor
-        shadowView.layer.shadowOffset = CGSize(width: 2, height: 3)
-        shadowView.layer.shadowRadius = 1.7
-        shadowView.layer.shadowOpacity = 1.0
+        petView.layer.shadowColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0).cgColor
+        petView.layer.shadowOffset = CGSize(width: 2, height: 3)
+        petView.layer.shadowRadius = 1.7
+        petView.layer.shadowOpacity = 1.0
     }
     
     override func viewDidLoad() {
@@ -41,11 +40,11 @@ class ViewController: UIViewController {
         
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        shadowView.layer.shadowPath = UIBezierPath(roundedRect: petView.bounds, cornerRadius: 25).cgPath
-
-    }
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        petView.layer.shadowPath = UIBezierPath(roundedRect: petView.bounds, cornerRadius: 25).cgPath
+//
+//    }
 
 
 }
