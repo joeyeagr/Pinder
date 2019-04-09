@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "petCardCell"
 
 class PetCardCollectionViewController: UICollectionViewController {
 
@@ -25,6 +25,8 @@ class PetCardCollectionViewController: UICollectionViewController {
 
         // Do any additional setup after loading the view.
         
+    
+        
         let fetchRequestPetCards = PetCardController.sharedController.petCards
         
         let petCards = fetchRequestPetCards
@@ -32,6 +34,8 @@ class PetCardCollectionViewController: UICollectionViewController {
         
         
         //*** how ever I am being passed data for a pet card I need to insert that data into my data model for petCard and then save it
+        
+        //*** check out UIEvents for sending event notices
         var joesData: [String: Any] {
             return [
                 "petName" : "Joe"
@@ -43,6 +47,11 @@ class PetCardCollectionViewController: UICollectionViewController {
             PetCardController.sharedController.saveToPersistentStorage(petCard: dataForPetCard)
 
         }
+        
+    }
+    
+    func setInsets () {
+       let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
         
     }
 

@@ -12,7 +12,7 @@
         <!--Pet Card Collection View Controller-->
         <scene sceneID="E1O-pK-5A4">
             <objects>
-                <collectionViewController storyboardIdentifier="Ben" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Z4d-fD-5PB" customClass="PetCardCollectionViewController" customModule="Pinder" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="Z4d-fD-5PB" customClass="PetCardCollectionViewController" customModule="Pinder" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Vps-TV-EXR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,7 +24,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Ssh-Zx-8gp">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="petCardCell" id="Ssh-Zx-8gp">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
