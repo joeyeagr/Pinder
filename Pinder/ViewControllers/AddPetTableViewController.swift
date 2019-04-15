@@ -7,19 +7,29 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
+import FirebaseAuth
 
 class AddPetTableViewController: UITableViewController {
     @IBOutlet var petNameTF: UITextField!
-    @IBOutlet var petBreedTF: UIView!
+    @IBOutlet var petBreedTF: UITextField!
     @IBOutlet var petAgeTF: UITextField!
     @IBOutlet var genderControl: UISegmentedControl!
     @IBOutlet var bioTextView: UITextView!
     @IBOutlet var firstUIImage: UIImageView!
     @IBOutlet var secondUIImage: UIImageView!
+    @IBOutlet var currentDateLabel: UILabel!
+    @IBOutlet var humanNameLabel: UILabel!
+    @IBOutlet var emailLabel: UILabel!
+    @IBOutlet var phoneNumberLabel: UILabel!
+    
+    var db = Firestore.firestore()
+    var currentAuthID = Auth.auth().currentUser?.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getCurrentDate()
     }
 
     // MARK: - Table view data source
@@ -44,6 +54,52 @@ class AddPetTableViewController: UITableViewController {
     */
     
     @IBAction func saveButtonTapped(_ sender: Any) {
+        
+        func createPetCardData() {
+            
+            let humanName = humanNameLabel.text ?? "human name"
+            let email = emailLabel.text ?? "email"
+            let phoneNumber = phoneNumberLabel.text ?? "phone number"
+            let humanId = currentAuthID ?? "randomlyGeneratedCode"
+            
+            let petName: String = petNameTF.text ?? "pet"
+            let petBreed: String = petBreedTF.text ?? "breed"
+            let petAge: Int = Int(petAgeTF.text ?? "age") ?? 0
+            let petBio: String = bioTextView.text ?? "bio"
+            let petGender: [String] = ["male", "female"]
+            let dateCreated: String = currentDateLabel.text ?? "date"
+            let petImage1: UIImage? = firstUIImage.image 
+            let petImage2: UIImage? = secondUIImage.image
+            let petId: String
+            let humanContact: Array<String> = [humanName, email, phoneNumber, humanId]
+            
+            let pet = Pet(petId: String(arc4random_uniform(9000000)),
+                          petName: petName,
+                          petBreed: petBreed,
+                          petAge: petAge,
+                          petGender: petGender,
+                          petBio: petBio,
+                          date: dateCreated,
+                          petImage1: petImage1,
+                          petImage2: petImage2,
+                          humanContact: humanContact)
+            
+            let userRef = self.db.collection("PetId")
+            
+        }
+        
+    }
+    
+    func getCurrentDate() -> String {
+        
+        let date = Date()
+        let calander = Calendar.current
+        
+        let day = calander.component(.day, from: date)
+        let month = calander.component(.month, from: date)
+        let year = calander.component(.year, from: date)
+        return String("\(month).\(day).\(year)")
+        
     }
     
     @IBAction func addImageButtonTapped(_ sender: Any) {

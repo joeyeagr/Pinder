@@ -67,6 +67,7 @@ class FirebaseController {
     }
     
     // creates blanks in firestore
+    
     func createData() {
         var id: String = ""
         var name: String = ""

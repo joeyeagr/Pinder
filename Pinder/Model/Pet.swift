@@ -20,9 +20,10 @@ struct Pet {
     var petAge: Int
     var petGender: Array = ["Male", "Female"]
     var petBio: String
-    var date: Date
-    var petImage1: UIImage
-    var petImage2: UIImage
+    var date: String
+    var petImage1: UIImage?
+    var petImage2: UIImage?
+    var humanContact: Array<String>
     
     var dictionary: [String: Any] {
         return [
@@ -34,7 +35,8 @@ struct Pet {
             "petBio": petBio,
             "date": date,
             "petImage1": petImage1,
-            "petImage2": petImage2
+            "petImage2": petImage2,
+            "humanContact": humanContact
             
             
         ]

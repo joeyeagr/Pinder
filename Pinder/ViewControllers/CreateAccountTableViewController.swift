@@ -36,6 +36,8 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
         view.backgroundColor = UIColor(displayP3Red: 61/255, green: 91/255, blue: 151/255, alpha: 1)
     }
     
+    
+    
     // if requirements to search are not met
     
     //Actions
@@ -43,16 +45,5 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
     performSegue(withIdentifier: "logIn", sender: nil)
         
     }
-        
-        //        if let email = emailTextfield.text, let password = passwordTextField.text {
-        //            Auth.auth().createUser(withEmail: email, password: password, completion: { user, error) in
-        //
-        //                if let firebaseError = error {
-        //                    print(firebaseError.localizedDescription)
-        //                    return
-        //                }
-        //                print("success!")
-        //            })
-        //        }
-        //    }
+    
     }
