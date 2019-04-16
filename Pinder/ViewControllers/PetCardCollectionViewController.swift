@@ -8,52 +8,161 @@
 
 import UIKit
 import CoreData
+import Firebase
+import FirebaseStorage
+import FirebaseFirestore
 
 private let reuseIdentifier = "petCardCell"
 
 class PetCardCollectionViewController: UICollectionViewController {
 
-    
-    
+    var db: Firestore!
+    var responseDictionary: [String: Any]?
+    var responseDoucment: [String: Any]?
+    var petCard: PetCard = PetCard()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // firebase is for dictionary string: any
+        // firebase storage is for storing the URL string
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+       
+        let db = Firestore.firestore()
         
+        //requestPetNames()
+        //requestMatchingPetId()
+        //requestAllPetIdDocuments()
+        requestPetData() { petCard in
+            if let petCard = petCard {
+                self.petCard = petCard
+                PetCardController.sharedController.saveToPersistentStorage(petCard: petCard)
+                print("let \(petCard)")
+                print("var \(petCard)")
+            }
+            
+        }
+       
+        PetCardController.sharedController.petCards
+    }
     
+    
+    
+    func requestPetData(completion: ((PetCard?) -> Void)? = nil) {
+        let db = Firestore.firestore()
         
-        let fetchRequestPetCards = PetCardController.sharedController.petCards
+        db.collection("pets").whereField("humanId", isEqualTo: "12").getDocuments { (querySnapShot, err) in
+            if let err = err {
+                print(err)
+            } else {
+                for document in querySnapShot!.documents {
+                    print(document.data())
+                    
+                    let petCard = PetCard(dictionary: document.data())
+                    if let petCard = petCard {
+                        print(petCard)
+                    }
+                    if let completion = completion {
+                        completion(petCard)
+                    }
+                }
+            }
+        }
+    }
+    
+    func requestMatchingPetId() {
+        let db = Firestore.firestore()
         
-        let petCards = fetchRequestPetCards
-        print("you have #\(petCards.count) petCards fetched")
+        db.collection("petId").start(at: [1]).whereField("petId", isEqualTo: "12").order(by: "petId").getDocuments { (querySnapShot, err) in
+            if let err = err {
+                print(err)
+            } else {
+                for document in querySnapShot!.documents {
+                    print(document.data())
+                }
+            }
+        }
+    }
+    //maybe create doc func and assign pet id to document id
+    func requestAllPetIdDocuments() {
+        let db = Firestore.firestore()
+
+        db.collection("petId").getDocuments { (querySnapshot, err) in
+            if let err = err {
+                print("could not get documents \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    print("here is the document data \(document.documentID)\(document.data())")
+                    let documentData = document.data()
+                    print(documentData)
+                    self.responseDictionary = documentData
+                    
+                    if  let petId = documentData["petId"] as? String{
+                        let petName = documentData["petName"] as? String
+                        print(petId, petName)
+                    }
+                    
+                   let docVals = documentData.values
+                    let response = documentData
+                    
+                    if let petName = response["petName"] as? [String: Any] {
+                        let petCard = PetCard(dictionary: petName, context: Stack.context)
+                        print(petCard)
+                        print(petCard?.name)
+                        self.responseDictionary = petName
+                        if let petName = petCard?.name {
+                            print(petName)
+                        }
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
+                }
+            }
+        }
+    }
+    
+    
+    
+    struct PetCardTest {
+        var petId: String
+        var petName: String
         
-        
-        //*** how ever I am being passed data for a pet card I need to insert that data into my data model for petCard and then save it
-        
-        //*** check out UIEvents for sending event notices
-        var joesData: [String: Any] {
+        var dictionary: [String: Any] {
             return [
-                "petName" : "Joe"
+                "petId": petId,
+                "petName": petName
             ]
         }
-        let response = joesData
-        let dataForPetCard = PetCard(dictionary: response, context: Stack.context)
-        if let dataForPetCard = dataForPetCard {
-            PetCardController.sharedController.saveToPersistentStorage(petCard: dataForPetCard)
-
-        }
+        
         
     }
+    
     
     func setInsets () {
        let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
         
+    }
+    
+    func addPetCard() {
+        guard let entity = NSEntityDescription.entity(forEntityName: "PetCard", in: Stack.context) else {
+            fatalError("could make pet")
+        }
+//
+//        let petCard = NSManagedObject(entity: entity, insertInto: Stack.context)
+//        petCard.setValue(<#T##value: Any?##Any?#>, forKey: <#T##String#>)
+//        for x in 1...25 {
+//            let petCard = NSManagedObject(entity: entity, insertInto: Stack.context)
+//            petCard.setValue("Pet id #\(x)", forKey: "petId")
+//        }
     }
 
     /*

@@ -1,5 +1,6 @@
-Pods
 .DS_Store
+xcuserdata
+*.xcscmblueprint
 #########################
 # .gitignore file for Xcode4 and Xcode5 Source projects
 #
