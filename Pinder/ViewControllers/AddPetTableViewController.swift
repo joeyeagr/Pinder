@@ -98,14 +98,40 @@ class AddPetTableViewController: UITableViewController {
         let day = calander.component(.day, from: date)
         let month = calander.component(.month, from: date)
         let year = calander.component(.year, from: date)
-        return String("\(month).\(day).\(year)")
+        var currentLabel = currentDateLabel.text
+        currentLabel = ("\(month).\(day).\(year)")
+        return currentLabel ?? "Current Date"
         
     }
     
     @IBAction func addImageButtonTapped(_ sender: Any) {
+        
+        let alertController = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cameraAction = UIAlertAction(title: "Camera",style: .default, handler: { action in
+            print("User selected Camera action")})
+        let photoLibraryAction = UIAlertAction(title: "PhotoLibrary", style: .default, handler: { action in
+            print("User selected Photo Library action")})
+        alertController.addAction(cancelAction)
+        alertController.addAction(cameraAction)
+        alertController.addAction(photoLibraryAction)
+        alertController.popoverPresentationController?.sourceView = sender as? UIView
+        present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func addImageButtonTapped2(_ sender: Any) {
+        
+        let alertController = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cameraAction = UIAlertAction(title: "Camera",style: .default, handler: { action in
+            print("User selected Camera action")})
+        let photoLibraryAction = UIAlertAction(title: "PhotoLibrary", style: .default, handler: { action in
+            print("User selected Photo Library action")})
+        alertController.addAction(cancelAction)
+        alertController.addAction(cameraAction)
+        alertController.addAction(photoLibraryAction)
+        alertController.popoverPresentationController?.sourceView = sender as? UIView
+        present(alertController, animated: true, completion: nil)
     }
     
 }
