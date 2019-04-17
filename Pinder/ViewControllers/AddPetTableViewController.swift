@@ -26,69 +26,33 @@ class AddPetTableViewController: UITableViewController {
     
     var db = Firestore.firestore()
     var currentAuthID = Auth.auth().currentUser?.uid
+    var genderBenderControl: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getCurrentDate()
     }
-
-    // MARK: - Table view data source
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        
-//        return 0
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        
-//        return 0
-//    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
     
-    @IBAction func saveButtonTapped(_ sender: Any) {
-        
-        func createPetCardData() {
-            
-            let humanName = humanNameLabel.text ?? "human name"
-            let email = emailLabel.text ?? "email"
-            let phoneNumber = phoneNumberLabel.text ?? "phone number"
-            let humanId = currentAuthID ?? "randomlyGeneratedCode"
-            
-            let petName: String = petNameTF.text ?? "pet"
-            let petBreed: String = petBreedTF.text ?? "breed"
-            let petAge: Int = Int(petAgeTF.text ?? "age") ?? 0
-            let petBio: String = bioTextView.text ?? "bio"
-            let petGender: [String] = ["male", "female"]
-            let dateCreated: String = currentDateLabel.text ?? "date"
-            let petImage1: UIImage? = firstUIImage.image 
-            let petImage2: UIImage? = secondUIImage.image
-            let petId: String
-            let humanContact: Array<String> = [humanName, email, phoneNumber, humanId]
-            
-            let pet = Pet(petId: String(arc4random_uniform(9000000)),
-                          petName: petName,
-                          petBreed: petBreed,
-                          petAge: petAge,
-                          petGender: petGender,
-                          petBio: petBio,
-                          date: dateCreated,
-                          petImage1: petImage1,
-                          petImage2: petImage2,
-                          humanContact: humanContact)
-            
-            let userRef = self.db.collection("PetId")
-            
-        }
-        
-    }
+    // MARK: - Table view data source
+    //    override func numberOfSections(in tableView: UITableView) -> Int {
+    //
+    //        return 0
+    //    }
+    //
+    //    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    //
+    //        return 0
+    //    }
+    
+    /*
+     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+     
+     // Configure the cell...
+     
+     return cell
+     }
+     */
     
     func getCurrentDate() -> String {
         
@@ -98,10 +62,55 @@ class AddPetTableViewController: UITableViewController {
         let day = calander.component(.day, from: date)
         let month = calander.component(.month, from: date)
         let year = calander.component(.year, from: date)
+        
         var currentLabel = currentDateLabel.text
         currentLabel = ("\(month).\(day).\(year)")
         return currentLabel ?? "Current Date"
+    }
+    
+    func createPetCardData() {
         
+        let humanName = humanNameLabel.text ?? "human name"
+        let email = emailLabel.text ?? "email"
+        let phoneNumber = phoneNumberLabel.text ?? "phone number"
+        let humanId = currentAuthID ?? "randomlyGeneratedCode"
+        
+        let petName: String = petNameTF.text ?? "pet"
+        let petBreed: String = petBreedTF.text ?? "breed"
+        let petAge: Int = Int(petAgeTF.text ?? "age") ?? 0
+        let petBio: String = bioTextView.text ?? "bio"
+        let petGender: Bool = genderBenderControl
+        let dateCreated: String = currentDateLabel.text ?? "date"
+        let petImage1: UIImage? = firstUIImage.image
+        let petImage2: UIImage? = secondUIImage.image
+        let petId: String
+        let humanContact: Array<String> = [humanName, email, phoneNumber, humanId]
+        
+        let pet = Pet(petId: String(arc4random_uniform(9000000)),
+                      petName: petName,
+                      petBreed: petBreed,
+                      petAge: petAge,
+                      petGender: petGender,
+                      petBio: petBio,
+                      date: dateCreated,
+                      petImage1: petImage1,
+                      petImage2: petImage2,
+                      humanContact: humanContact)
+        
+        let userRef = self.db.collection("PetId")
+        
+        userRef.document(String(pet.petId)).setData(pet.dictionary){ err in
+            if err != nil {
+                print(Error.self)
+            } else {
+                print("Added Data")
+            }
+        }
+    }
+    
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        
+        createPetCardData()
     }
     
     @IBAction func addImageButtonTapped(_ sender: Any) {
@@ -132,6 +141,21 @@ class AddPetTableViewController: UITableViewController {
         alertController.addAction(photoLibraryAction)
         alertController.popoverPresentationController?.sourceView = sender as? UIView
         present(alertController, animated: true, completion: nil)
+    }
+    @IBAction func genderControlTapped(_ sender: UISegmentedControl) {
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            genderBenderControl = false
+            print("male")
+            break;
+        case 1:
+            genderBenderControl = true
+            print("female")
+            break;
+        default:
+            genderBenderControl = false
+        }
     }
     
 }

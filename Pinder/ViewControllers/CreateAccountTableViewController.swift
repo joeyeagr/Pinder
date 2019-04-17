@@ -26,7 +26,6 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
     var username: String = ""
     let userDefault = UserDefaults.standard
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,8 +41,8 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
     
     //Actions
     @IBAction func createAccountTapped(_ sender: Any) {
-    performSegue(withIdentifier: "logIn", sender: nil)
+        performSegue(withIdentifier: "logIn", sender: nil)
         
     }
     
-    }
+}

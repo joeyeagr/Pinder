@@ -18,7 +18,7 @@ struct Pet {
     var petName: String
     var petBreed: String
     var petAge: Int
-    var petGender: Array = ["Male", "Female"]
+    var petGender: Bool
     var petBio: String
     var date: String
     var petImage1: UIImage?
