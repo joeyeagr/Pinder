@@ -39,6 +39,16 @@ class EditAccountTableViewController: UITableViewController {
         return cell
     }
     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addPet", let addPetVC = segue.destination as? AddPetTableViewController {
+            
+            addPetVC.humanNameLabel = humanNameLabel
+            addPetVC.emailLabel = selfEmailLabel
+            addPetVC.phoneNumberLabel = selfPhoneNumberLabel
+        }
+    }
+    
     @IBAction func addPetButtonTapped(_ sender: Any) {
          performSegue(withIdentifier: "addPet", sender: nil)
     }

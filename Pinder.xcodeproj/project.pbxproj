@@ -250,8 +250,8 @@
 			children = (
 				9ABB8C18225AB350003D1B2A /* PetCardCollectionViewController.swift */,
 				5EE56D672253B1B100AE3C51 /* AddPetTableViewController.swift */,
-				CB061357225CDD3300CE0D47 /* CreateAccountTableViewController.swift */,
 				5EE56D652253B1B100AE3C51 /* EditAccountTableViewController.swift */,
+				CB061357225CDD3300CE0D47 /* CreateAccountTableViewController.swift */,
 				5EB5D71522453A5A000D6CE7 /* ViewController.swift */,
 			);
 			path = ViewControllers;
