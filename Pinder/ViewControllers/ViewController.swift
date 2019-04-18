@@ -15,7 +15,17 @@ class ViewController: UIViewController {
     }
     @IBAction func likedPetsButton(_ sender: Any) {
     }
-    @IBOutlet weak var petView: UIView!
+    @IBOutlet weak var petNameLabel: UILabel!
+    @IBOutlet weak var petAgeLabel: UILabel!
+    @IBOutlet weak var smileyImageView: UIImageView!
+    
+    @IBOutlet weak var card: UIView!
+    
+    @IBAction func resetButton(_ sender: UIButton) {
+        resetCard()
+    }
+    
+    var divisor: CGFloat!
     
     func setCornerAndShadow() {
 
@@ -26,18 +36,28 @@ class ViewController: UIViewController {
 //        petView.backgroundColor = .clear
 //        petView.layer.masksToBounds = false
         
-        petView.layer.shadowColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0).cgColor
-        petView.layer.shadowOffset = CGSize(width: 2, height: 3)
-        petView.layer.shadowRadius = 1.7
-        petView.layer.shadowOpacity = 1.0
+        card.layer.shadowColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0).cgColor
+        card.layer.shadowOffset = CGSize(width: 2, height: 3)
+        card.layer.shadowRadius = 1.7
+        card.layer.shadowOpacity = 1.0
     }
+    
+    func resetCard() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.card.center = self.view.center
+            self.smileyImageView.alpha = 0
+            self.card.alpha = 1
+            self.card.transform = CGAffineTransform.identity
+        })
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setCornerAndShadow()
         petPicture.layer.cornerRadius = 25
-        petView.layer.cornerRadius = 25
-        
+        card.layer.cornerRadius = 25
+        divisor = (view.frame.width / 2) / 0.61
     }
     
 //    override func viewDidLayoutSubviews() {
@@ -48,4 +68,5 @@ class ViewController: UIViewController {
 
 
 }
+
 
