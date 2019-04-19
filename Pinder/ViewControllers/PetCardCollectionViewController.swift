@@ -17,8 +17,8 @@ private let reuseIdentifier = "petCardCell"
 class PetCardCollectionViewController: UICollectionViewController {
 
     var db: Firestore!
-    var responseDictionary: [String: Any]?
-    var responseDoucment: [String: Any]?
+    var humanData: [String: Any]?
+    
     var petCard: PetCard = PetCard()
 
     override func viewDidLoad() {
@@ -35,45 +35,52 @@ class PetCardCollectionViewController: UICollectionViewController {
        
         let db = Firestore.firestore()
         
-        //requestPetNames()
-        //requestMatchingPetId()
-        //requestAllPetIdDocuments()
-        requestPetData() { petCard in
-            if let petCard = petCard {
-                self.petCard = petCard
-                PetCardController.sharedController.saveToPersistentStorage(petCard: petCard)
-                print("let \(petCard)")
-                print("var \(petCard)")
-            }
-            
-        }
        
-        PetCardController.sharedController.petCards
+//        requestTylersPetData() { petCard in
+//            if let petCard = petCard {
+//                self.petCard = petCard
+//                //PetCardController.sharedController.saveToPersistentStorage(petCard: petCard)
+//                print("let \(petCard)")
+//                print("var \(petCard)")
+//            }
+//
+//        }
+       
+//       let fetchPets = PetCardController.sharedController.petCards
+//        let firstPet = fetchPets.first
+//        if let firstPet = firstPet {
+//            print(firstPet)
+//        }
+        
+        requestAllPetCardsFromFirestore()
+        
+       
+       
     }
     
     
     
-    func requestPetData(completion: ((PetCard?) -> Void)? = nil) {
+    
+    func requestMatchingPetIdFromFirestore(completion: ((PetCard?) -> Void)? = nil) {
         let db = Firestore.firestore()
         
-        db.collection("pets").whereField("humanId", isEqualTo: "12").getDocuments { (querySnapShot, err) in
+        db.collection("PetId").whereField("petId", isEqualTo: "9000001").getDocuments { (querySnapShot, err) in
             if let err = err {
                 print(err)
             } else {
                 for document in querySnapShot!.documents {
-                    print(document.data())
+//                    print("this is docData \(document.data())")
+                    let docData = document.data()
                     
-                    let petCard = PetCard(dictionary: document.data())
-                    if let petCard = petCard {
-                        print(petCard)
-                    }
-                    if let completion = completion {
+                    if let petCard = PetCard(dictionary: docData), let completion = completion {
                         completion(petCard)
                     }
                 }
             }
         }
+        
     }
+    
     
     func requestMatchingPetId() {
         let db = Firestore.firestore()
@@ -88,63 +95,66 @@ class PetCardCollectionViewController: UICollectionViewController {
             }
         }
     }
-    //maybe create doc func and assign pet id to document id
-    func requestAllPetIdDocuments() {
+    
+    func requestAllPetCardsFromFirestore() {
         let db = Firestore.firestore()
-
-        db.collection("petId").getDocuments { (querySnapshot, err) in
+        
+        db.collection("PetId").getDocuments { (querySnapshot, err) in
             if let err = err {
-                print("could not get documents \(err)")
+                print(err)
             } else {
                 for document in querySnapshot!.documents {
-                    print("here is the document data \(document.documentID)\(document.data())")
-                    let documentData = document.data()
-                    print(documentData)
-                    self.responseDictionary = documentData
-                    
-                    if  let petId = documentData["petId"] as? String{
-                        let petName = documentData["petName"] as? String
-                        print(petId, petName)
+                    print(document.data())
+                   let docData = document.data()
+                    if let petCardData = PetCard(dictionary: docData) {
+                        print(petCardData)
                     }
-                    
-                   let docVals = documentData.values
-                    let response = documentData
-                    
-                    if let petName = response["petName"] as? [String: Any] {
-                        let petCard = PetCard(dictionary: petName, context: Stack.context)
-                        print(petCard)
-                        print(petCard?.name)
-                        self.responseDictionary = petName
-                        if let petName = petCard?.name {
-                            print(petName)
-                        }
-                    }
-                    
-                    
-                    
-                    
-                    
-                    
                 }
             }
         }
     }
+    //maybe create doc func and assign pet id to document id
+//    func requestAllPetIdDocuments() {
+//        let db = Firestore.firestore()
+//
+//        db.collection("petId").getDocuments { (querySnapshot, err) in
+//            if let err = err {
+//                print("could not get documents \(err)")
+//            } else {
+//                for document in querySnapshot!.documents {
+//                    print("here is the document data \(document.documentID)\(document.data())")
+//                    let documentData = document.data()
+//                    print(documentData)
+//                   
+//                    
+//                    if  let petId = documentData["petId"] as? String{
+//                        let petName = documentData["petName"] as? String
+//                        print(petId, petName)
+//                    }
+//                    
+//                   let docVals = documentData.values
+//                    let response = documentData
+//                    
+//                    if let petName = response["petName"] as? [String: Any] {
+//                        let petCard = PetCard(dictionary: petName, context: Stack.context)
+//                        print(petCard)
+//                        print(petCard?.name)
+//                       
+//                        if let petName = petCard?.name {
+//                            print(petName)
+//                        }
+//                    }
+//                    
+//                    
+//                    
+//                }
+//            }
+//        }
+//    }
     
+   
+  
     
-    
-    struct PetCardTest {
-        var petId: String
-        var petName: String
-        
-        var dictionary: [String: Any] {
-            return [
-                "petId": petId,
-                "petName": petName
-            ]
-        }
-        
-        
-    }
     
     
     func setInsets () {

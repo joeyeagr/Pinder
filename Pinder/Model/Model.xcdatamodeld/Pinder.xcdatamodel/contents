@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="PetCard" representedClassName="PetCard" syncable="YES" codeGenerationType="class">
-        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="humanEmail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="humanId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="petAge" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="humanName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="humanPhoneNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="petAge" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="petBio" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="petBreed" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="petGender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="petGender" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="petId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="petImage1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="petImage2" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="petName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="phoneNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="PetCard" positionX="-9" positionY="36" width="128" height="225"/>
+        <element name="PetCard" positionX="-9" positionY="36" width="128" height="240"/>
     </elements>
 </model>
