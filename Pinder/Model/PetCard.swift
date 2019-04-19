@@ -30,10 +30,10 @@ extension PetCard {
         self.init(context: context)
         
         self.date = date
-        self.humanId = humanContact[2]
+        self.humanId = humanContact[3]
         self.humanName = humanContact[0]
-        self.humanEmail = humanContact[3]
-        self.humanPhoneNumber = humanContact[1]
+        self.humanEmail = humanContact[1]
+        self.humanPhoneNumber = humanContact[2]
         self.petId = petId
         self.petName = petName
         self.petBreed = petBreed

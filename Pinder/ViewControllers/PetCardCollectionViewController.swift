@@ -17,9 +17,11 @@ private let reuseIdentifier = "petCardCell"
 class PetCardCollectionViewController: UICollectionViewController {
 
     var db: Firestore!
-    var humanData: [String: Any]?
-    
     var petCard: PetCard = PetCard()
+    var currentPetCard: PetCard?
+    
+    @IBOutlet weak var petNameTextField: UITextField!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +38,7 @@ class PetCardCollectionViewController: UICollectionViewController {
         let db = Firestore.firestore()
         
        
-//        requestTylersPetData() { petCard in
+//        requestMatchingPetIdFromFirestore() { petCard in
 //            if let petCard = petCard {
 //                self.petCard = petCard
 //                //PetCardController.sharedController.saveToPersistentStorage(petCard: petCard)
@@ -46,13 +48,24 @@ class PetCardCollectionViewController: UICollectionViewController {
 //
 //        }
        
-//       let fetchPets = PetCardController.sharedController.petCards
+        requestAllPetCardsFromFirestore { (petCardData) in
+            if let petCardData = petCardData {
+                self.currentPetCard = petCardData
+                
+                print(self.currentPetCard)
+            }
+        }
+        
+
 //        let firstPet = fetchPets.first
 //        if let firstPet = firstPet {
 //            print(firstPet)
 //        }
+//        for petCards in fetchPets {
+//            print(petCards)
+//        }
         
-        requestAllPetCardsFromFirestore()
+//        requestAllPetCardsFromFirestore()
         
        
        
@@ -64,7 +77,7 @@ class PetCardCollectionViewController: UICollectionViewController {
     func requestMatchingPetIdFromFirestore(completion: ((PetCard?) -> Void)? = nil) {
         let db = Firestore.firestore()
         
-        db.collection("PetId").whereField("petId", isEqualTo: "9000001").getDocuments { (querySnapShot, err) in
+        db.collection("PetId").whereField("petId", isEqualTo: "9000002").getDocuments { (querySnapShot, err) in
             if let err = err {
                 print(err)
             } else {
@@ -96,7 +109,7 @@ class PetCardCollectionViewController: UICollectionViewController {
         }
     }
     
-    func requestAllPetCardsFromFirestore() {
+    func requestAllPetCardsFromFirestore(completion: ((PetCard?) -> Void)? = nil) {
         let db = Firestore.firestore()
         
         db.collection("PetId").getDocuments { (querySnapshot, err) in
@@ -104,11 +117,14 @@ class PetCardCollectionViewController: UICollectionViewController {
                 print(err)
             } else {
                 for document in querySnapshot!.documents {
-                    print(document.data())
+                    
                    let docData = document.data()
-                    if let petCardData = PetCard(dictionary: docData) {
-                        print(petCardData)
+                    
+                    if let petCardData = PetCard(dictionary: docData), let completion = completion {
+                        completion(petCardData)
+                        
                     }
+                    
                 }
             }
         }
@@ -189,18 +205,25 @@ class PetCardCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+        
         return PetCardController.sharedController.petCards.count
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return PetCardController.sharedController.petCards.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
+        
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "Pup")
+        backgroundImage.contentMode = UIView.ContentMode.scaleToFill
+        self.view.insertSubview(backgroundImage, at: 0)
+        cell.backgroundView = backgroundImage
+        
         // Configure the cell
     
         return cell
