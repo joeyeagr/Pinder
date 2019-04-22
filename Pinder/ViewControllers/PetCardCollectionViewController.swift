@@ -19,6 +19,7 @@ class PetCardCollectionViewController: UICollectionViewController {
     var db: Firestore!
     var petCard: PetCard = PetCard()
     var currentPetCard: PetCard?
+    var petCards: (PetCard)?
     
     @IBOutlet weak var petNameTextField: UITextField!
     
@@ -37,62 +38,22 @@ class PetCardCollectionViewController: UICollectionViewController {
        
         let db = Firestore.firestore()
         
-       
-//        requestMatchingPetIdFromFirestore() { petCard in
-//            if let petCard = petCard {
-//                self.petCard = petCard
-//                //PetCardController.sharedController.saveToPersistentStorage(petCard: petCard)
-//                print("let \(petCard)")
-//                print("var \(petCard)")
-//            }
-//
-//        }
-       
-        requestAllPetCardsFromFirestore { (petCardData) in
-            if let petCardData = petCardData {
-                self.currentPetCard = petCardData
-                
-                print(self.currentPetCard)
-            }
-        }
         
+       
 
-//        let firstPet = fetchPets.first
-//        if let firstPet = firstPet {
-//            print(firstPet)
-//        }
-//        for petCards in fetchPets {
-//            print(petCards)
-//        }
-        
-//        requestAllPetCardsFromFirestore()
-        
-       
-       
-    }
-    
-    
-    
-    
-    func requestMatchingPetIdFromFirestore(completion: ((PetCard?) -> Void)? = nil) {
-        let db = Firestore.firestore()
-        
-        db.collection("PetId").whereField("petId", isEqualTo: "9000002").getDocuments { (querySnapShot, err) in
-            if let err = err {
-                print(err)
-            } else {
-                for document in querySnapShot!.documents {
-//                    print("this is docData \(document.data())")
-                    let docData = document.data()
-                    
-                    if let petCard = PetCard(dictionary: docData), let completion = completion {
-                        completion(petCard)
-                    }
-                }
+        requestAllPetCardsFromFirestore { currentPetCard in
+            if let currentPetCard = currentPetCard {
+                self.currentPetCard = currentPetCard
+                print(currentPetCard.petName)
             }
         }
-        
+       
     }
+    
+    
+    
+    
+    
     
     
     func requestMatchingPetId() {
@@ -109,26 +70,7 @@ class PetCardCollectionViewController: UICollectionViewController {
         }
     }
     
-    func requestAllPetCardsFromFirestore(completion: ((PetCard?) -> Void)? = nil) {
-        let db = Firestore.firestore()
-        
-        db.collection("PetId").getDocuments { (querySnapshot, err) in
-            if let err = err {
-                print(err)
-            } else {
-                for document in querySnapshot!.documents {
-                    
-                   let docData = document.data()
-                    
-                    if let petCardData = PetCard(dictionary: docData), let completion = completion {
-                        completion(petCardData)
-                        
-                    }
-                    
-                }
-            }
-        }
-    }
+    
     //maybe create doc func and assign pet id to document id
 //    func requestAllPetIdDocuments() {
 //        let db = Firestore.firestore()
@@ -206,13 +148,13 @@ class PetCardCollectionViewController: UICollectionViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         
-        return PetCardController.sharedController.petCards.count
+        return PetCardController.sharedController.fetchPetCards.count
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return PetCardController.sharedController.petCards.count
+        return PetCardController.sharedController.fetchPetCards.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
