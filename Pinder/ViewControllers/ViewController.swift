@@ -52,13 +52,6 @@ class ViewController: UIViewController {
         card.layer.cornerRadius = 25
         divisor = (view.frame.width / 2) / 0.61
     }
-    
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        petView.layer.shadowPath = UIBezierPath(roundedRect: petView.bounds, cornerRadius: 25).cgPath
-//
-//    }
-
 
 }
 
