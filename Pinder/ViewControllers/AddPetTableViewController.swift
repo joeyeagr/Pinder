@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 import FirebaseAuth
+import FirebaseStorage
 
 class AddPetTableViewController: UITableViewController {
     @IBOutlet var petNameTF: UITextField!
@@ -27,6 +28,7 @@ class AddPetTableViewController: UITableViewController {
     var db = Firestore.firestore()
     var currentAuthID = Auth.auth().currentUser?.uid
     var genderBenderControl: Bool = false
+    let storage = Storage.storage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,8 +65,8 @@ class AddPetTableViewController: UITableViewController {
         let month = calander.component(.month, from: date)
         let year = calander.component(.year, from: date)
         
-        var currentLabel = currentDateLabel.text
-        currentLabel = ("\(month).\(day).\(year)")
+        var currentLabel = ("\(month).\(day).\(year)")
+        currentDateLabel.text = currentLabel
         return currentLabel ?? "Current Date"
     }
     
@@ -115,33 +117,54 @@ class AddPetTableViewController: UITableViewController {
     
     @IBAction func addImageButtonTapped(_ sender: Any) {
         
-        let alertController = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let cameraAction = UIAlertAction(title: "Camera",style: .default, handler: { action in
+        let alertController = UIAlertController(title: "Choose Image",
+                                                message: nil,
+                                                preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .cancel,
+                                         handler: nil)
+        let cameraAction = UIAlertAction(title: "Camera",
+                                         style: .default,
+                                         handler: { action in
             print("User selected Camera action")})
-        let photoLibraryAction = UIAlertAction(title: "PhotoLibrary", style: .default, handler: { action in
+        let photoLibraryAction = UIAlertAction(title: "PhotoLibrary",
+                                               style: .default,
+                                               handler: { action in
             print("User selected Photo Library action")})
         alertController.addAction(cancelAction)
         alertController.addAction(cameraAction)
         alertController.addAction(photoLibraryAction)
         alertController.popoverPresentationController?.sourceView = sender as? UIView
-        present(alertController, animated: true, completion: nil)
+        present(alertController,
+                animated: true,
+                completion: nil)
     }
     
     @IBAction func addImageButtonTapped2(_ sender: Any) {
         
-        let alertController = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let cameraAction = UIAlertAction(title: "Camera",style: .default, handler: { action in
+        let alertController = UIAlertController(title: "Choose Image",
+                                                message: nil,
+                                                preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .cancel,
+                                         handler: nil)
+        let cameraAction = UIAlertAction(title: "Camera",
+                                         style: .default,
+                                         handler: { action in
             print("User selected Camera action")})
-        let photoLibraryAction = UIAlertAction(title: "PhotoLibrary", style: .default, handler: { action in
+        let photoLibraryAction = UIAlertAction(title: "PhotoLibrary",
+                                               style: .default,
+                                               handler: { action in
             print("User selected Photo Library action")})
         alertController.addAction(cancelAction)
         alertController.addAction(cameraAction)
         alertController.addAction(photoLibraryAction)
         alertController.popoverPresentationController?.sourceView = sender as? UIView
-        present(alertController, animated: true, completion: nil)
+        present(alertController,
+                animated: true,
+                completion: nil)
     }
+    
     @IBAction func genderControlTapped(_ sender: UISegmentedControl) {
         
         switch sender.selectedSegmentIndex {

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-// make sure to add a date for when the post was created.
 import FirebaseAuth
 import FirebaseStorage
 import FirebaseFirestore
@@ -18,7 +17,7 @@ struct Pet {
     var petName: String
     var petBreed: String
     var petAge: Int
-    var petGender: Bool
+    var petGender: Bool // change the name to isMale
     var petBio: String
     var date: String
     var petImage1: UIImage?

@@ -27,6 +27,8 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
     var imageSelected = false
     var username: String = ""
     let userDefault = UserDefaults.standard
+    var currentAuthID = Auth.auth().currentUser?.uid
+    var currentUser: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,11 +64,11 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
     }
     
     func createData() {
-        var id: String = ""
-        var name: String = humanNameTF.text ?? "humanName"
-        var email: String = emailTF.text ?? "HumanEmail"
-        var password: String = passwordTF.text ?? "HumanPassword"
-        var phoneNumber: Int = 0
+        guard let id: String = currentAuthID else { return }
+        guard let name: String = humanNameTF.text  else { return }
+        guard let email: String = emailTF.text  else { return }
+        guard let password: String = passwordTF.text  else { return }
+        guard let phoneNumber: Int = 0  else { return }
         
         let user = Users(id: id,
                          name: name,
@@ -88,16 +90,22 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
     //Actions
     @IBAction func createAccountTapped(_ sender: Any) {
         
-        if let email = emailTF.text, let password = passwordTF.text {
+        guard let email = emailTF.text else { return }
+        guard let password = passwordTF.text else { return }
+        guard let name = humanNameTF.text else { return }
+        
             Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
                 if error == nil {
-                    let userReff = self.db.collection("profile").document("\(self.userId)")
+                    print(self.userId)
+                  //  let userReff = self.db.collection("profile").document("\(self.userId)")
                     self.createData()
                     print("userCreated")
                     self.signInUser(email: email, password: password)
+                } else {
+                    print(error)
                 }
             }
-        }
+        performSegue(withIdentifier: "logIn", sender: nil)
     }
-    
+   
 }
