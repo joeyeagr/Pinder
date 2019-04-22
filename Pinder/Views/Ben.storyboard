@@ -17,22 +17,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="otk-6w-Nh2">
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="otk-6w-Nh2">
                             <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
+                            <size key="footerReferenceSize" width="50" height="50"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="petCardCell" id="Ssh-Zx-8gp">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="VIw-U7-pOX">
+                                <rect key="frame" x="50" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="petCard" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" background="Pup" translatesAutoresizingMaskIntoConstraints="NO" id="JXV-Wv-NYK">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="JXV-Wv-NYK" firstAttribute="width" secondItem="VIw-U7-pOX" secondAttribute="width" id="14i-HB-Qmp"/>
+                                    <constraint firstItem="JXV-Wv-NYK" firstAttribute="height" secondItem="VIw-U7-pOX" secondAttribute="height" id="CPC-Ja-E0j"/>
+                                    <constraint firstItem="JXV-Wv-NYK" firstAttribute="centerX" secondItem="VIw-U7-pOX" secondAttribute="centerX" id="ZTA-Jw-qqm"/>
+                                    <constraint firstItem="JXV-Wv-NYK" firstAttribute="centerY" secondItem="VIw-U7-pOX" secondAttribute="centerY" id="hsL-57-IPw"/>
+                                </constraints>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="UoO-W1-XSm">
+                                <rect key="frame" x="50" y="61.5" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1PI-XL-Sr5">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="1PI-XL-Sr5" firstAttribute="width" secondItem="UoO-W1-XSm" secondAttribute="width" id="96d-b2-Iw9"/>
+                                    <constraint firstItem="1PI-XL-Sr5" firstAttribute="height" secondItem="UoO-W1-XSm" secondAttribute="height" id="CgG-bE-G5Z"/>
+                                    <constraint firstItem="1PI-XL-Sr5" firstAttribute="centerY" secondItem="UoO-W1-XSm" secondAttribute="centerY" id="hH9-UW-29O"/>
+                                    <constraint firstItem="1PI-XL-Sr5" firstAttribute="centerX" secondItem="UoO-W1-XSm" secondAttribute="centerX" id="w31-2d-TmX"/>
+                                </constraints>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1NW-2j-tE0">
+                            <rect key="frame" x="0.0" y="0.0" width="50" height="603"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </collectionReusableView>
+                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="f1b-m1-fus">
+                            <rect key="frame" x="100" y="0.0" width="50" height="603"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="Z4d-fD-5PB" id="rhY-Bn-b7Z"/>
                             <outlet property="delegate" destination="Z4d-fD-5PB" id="LXT-Et-iQz"/>
@@ -63,4 +107,7 @@
             <point key="canvasLocation" x="-50.399999999999999" y="162.3688155922039"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Pup" width="225" height="225"/>
+    </resources>
 </document>
