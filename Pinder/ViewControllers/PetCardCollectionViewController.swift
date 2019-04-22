@@ -19,7 +19,7 @@ class PetCardCollectionViewController: UICollectionViewController {
     var db: Firestore!
     var petCard: PetCard = PetCard()
     var currentPetCard: PetCard?
-    var petCards: (PetCard)?
+    var petCards = PetCardController.sharedController.fetchPetCards
     
     @IBOutlet weak var petNameTextField: UITextField!
     
@@ -38,15 +38,19 @@ class PetCardCollectionViewController: UICollectionViewController {
        
         let db = Firestore.firestore()
         
-        
+        if let petCards = petCards.first {
+            self.currentPetCard = petCards
+            
+        }
        
 
-        requestAllPetCardsFromFirestore { currentPetCard in
-            if let currentPetCard = currentPetCard {
-                self.currentPetCard = currentPetCard
-                print(currentPetCard.petName)
-            }
-        }
+//        requestAllPetCardsFromFirestore { currentPetCard in
+//            if let currentPetCard = currentPetCard {
+//                self.currentPetCard = currentPetCard
+//                print(currentPetCard.petName)
+//                PetCardController.sharedController.saveToPersistentStorage(petCard: currentPetCard)
+//            }
+//        }
        
     }
     
@@ -71,45 +75,7 @@ class PetCardCollectionViewController: UICollectionViewController {
     }
     
     
-    //maybe create doc func and assign pet id to document id
-//    func requestAllPetIdDocuments() {
-//        let db = Firestore.firestore()
-//
-//        db.collection("petId").getDocuments { (querySnapshot, err) in
-//            if let err = err {
-//                print("could not get documents \(err)")
-//            } else {
-//                for document in querySnapshot!.documents {
-//                    print("here is the document data \(document.documentID)\(document.data())")
-//                    let documentData = document.data()
-//                    print(documentData)
-//                   
-//                    
-//                    if  let petId = documentData["petId"] as? String{
-//                        let petName = documentData["petName"] as? String
-//                        print(petId, petName)
-//                    }
-//                    
-//                   let docVals = documentData.values
-//                    let response = documentData
-//                    
-//                    if let petName = response["petName"] as? [String: Any] {
-//                        let petCard = PetCard(dictionary: petName, context: Stack.context)
-//                        print(petCard)
-//                        print(petCard?.name)
-//                       
-//                        if let petName = petCard?.name {
-//                            print(petName)
-//                        }
-//                    }
-//                    
-//                    
-//                    
-//                }
-//            }
-//        }
-//    }
-    
+  
    
   
     
@@ -148,26 +114,28 @@ class PetCardCollectionViewController: UICollectionViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         
-        return PetCardController.sharedController.fetchPetCards.count
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return PetCardController.sharedController.fetchPetCards.count
-    }
+        
+        return PetCardController.sharedController.fetchPetCards.count    }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "Pup")
-        backgroundImage.contentMode = UIView.ContentMode.scaleToFill
-        self.view.insertSubview(backgroundImage, at: 0)
-        cell.backgroundView = backgroundImage
+        if let currentPetCard =  currentPetCard, let image = currentPetCard.petImage1  {
+            
+            let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+            backgroundImage.image = UIImage(named: image)
+            backgroundImage.contentMode = UIView.ContentMode.scaleToFill
+            self.view.insertSubview(backgroundImage, at: 0)
+            cell.backgroundView = backgroundImage
+            
+        }
         
-        // Configure the cell
-    
         return cell
     }
 
