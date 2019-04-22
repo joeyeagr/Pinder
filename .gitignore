@@ -1,4 +1,5 @@
 Pods
+Pods/**
 .DS_Store
 #########################
 # .gitignore file for Xcode4 and Xcode5 Source projects
