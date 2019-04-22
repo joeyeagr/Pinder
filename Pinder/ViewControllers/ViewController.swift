@@ -28,13 +28,7 @@ class ViewController: UIViewController {
     var divisor: CGFloat!
     
     func setCornerAndShadow() {
-
-        
         petPicture.clipsToBounds = true
-//        petView.clipsToBounds = true
-        
-//        petView.backgroundColor = .clear
-//        petView.layer.masksToBounds = false
         
         card.layer.shadowColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0).cgColor
         card.layer.shadowOffset = CGSize(width: 2, height: 3)
@@ -47,13 +41,12 @@ class ViewController: UIViewController {
             self.card.center = self.view.center
             self.smileyImageView.alpha = 0
             self.card.alpha = 1
-            self.card.transform = CGAffineTransform.identity
+            self.card.transform = .identity
         })
     }
 
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setCornerAndShadow()
         petPicture.layer.cornerRadius = 25
         card.layer.cornerRadius = 25
