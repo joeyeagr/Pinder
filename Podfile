@@ -7,11 +7,11 @@ target 'Pinder' do
 
   # Pods for Pinder
 
-pod 'Firebase/Core'
-pod 'Firebase/Auth'
-pod 'Firebase/Firestore'
-pod 'Firebase/Storage'
-pod 'Firebase/Database'
+pod 'Firebase/Core', '5.20.1'
+pod 'Firebase/Auth', '5.20.1'
+pod 'Firebase/Firestore', '5.20.1'
+pod 'Firebase/Storage', '5.20.1'
+pod 'Firebase/Database', '5.20.1'
 
   target 'PinderTests' do
     inherit! :search_paths
