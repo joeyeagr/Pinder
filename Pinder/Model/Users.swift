@@ -17,7 +17,7 @@ protocol Identifiable {
 }
 
 protocol DocumentUserSerializable {
-    init?(dictionary: [String: Any])
+    init?(humanDictionary: [String: Any])
 }
 
 //name, email, phone, id
@@ -29,7 +29,7 @@ struct Users {
     var password: String
     var phoneNumber: Int
     
-    var dictionary: [String: Any] {
+    var humanDictionary: [String: Any] {
         return [
             "id": id,
             "name": name,
@@ -41,13 +41,13 @@ struct Users {
     }
 }
 
-extension Users: DocumentUserSerializable {
-    init?(dictionary: [String : Any]) {
-        guard let id = dictionary["id"] as? String,
-            let name = dictionary["name"] as? String,
-            let email = dictionary["email"] as? String,
-            let password = dictionary["password"] as? String,
-            let phoneNumber = dictionary["phoneNumber"] as? Int else {return nil}
+extension Users {
+    init?(humanDictionary: [String : Any]) {
+        guard let id = humanDictionary["id"] as? String,
+            let name = humanDictionary["name"] as? String,
+            let email = humanDictionary["email"] as? String,
+            let password = humanDictionary["password"] as? String,
+            let phoneNumber = humanDictionary["phoneNumber"] as? Int else {return nil}
         self.init(id: id, name: name, email: email, password: password, phoneNumber: phoneNumber)
     }
 }

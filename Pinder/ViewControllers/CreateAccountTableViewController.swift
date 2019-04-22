@@ -78,7 +78,7 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
         
         let userRef = self.db.collection("profile")
         
-        userRef.document(String(user.id)).setData(user.dictionary){ err in
+        userRef.document(String(user.id)).setData(user.humanDictionary){ err in
             if err != nil {
                 print(Error.self)
             } else {
@@ -97,7 +97,6 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
             Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
                 if error == nil {
                     print(self.userId)
-                  //  let userReff = self.db.collection("profile").document("\(self.userId)")
                     self.createData()
                     print("userCreated")
                     self.signInUser(email: email, password: password)

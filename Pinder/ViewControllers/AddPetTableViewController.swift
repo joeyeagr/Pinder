@@ -81,7 +81,7 @@ class AddPetTableViewController: UITableViewController {
         let petBreed: String = petBreedTF.text ?? "breed"
         let petAge: Int = Int(petAgeTF.text ?? "age") ?? 0
         let petBio: String = bioTextView.text ?? "bio"
-        let petGender: Bool = genderBenderControl
+        let isMale: Bool = genderBenderControl
         let dateCreated: String = currentDateLabel.text ?? "date"
         let petImage1: UIImage? = firstUIImage.image
         let petImage2: UIImage? = secondUIImage.image
@@ -92,7 +92,7 @@ class AddPetTableViewController: UITableViewController {
                       petName: petName,
                       petBreed: petBreed,
                       petAge: petAge,
-                      petGender: petGender,
+                      isMale: isMale,
                       petBio: petBio,
                       date: dateCreated,
                       petImage1: petImage1,
@@ -101,7 +101,7 @@ class AddPetTableViewController: UITableViewController {
         
         let userRef = self.db.collection("PetId")
         
-        userRef.document(String(pet.petId)).setData(pet.dictionary){ err in
+        userRef.document(String(pet.petId)).setData(pet.petDictionary){ err in
             if err != nil {
                 print(Error.self)
             } else {
