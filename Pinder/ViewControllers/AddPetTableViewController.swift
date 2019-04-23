@@ -30,8 +30,13 @@ class AddPetTableViewController: UITableViewController {
     var genderBenderControl: Bool = false
     let storage = Storage.storage()
     
+    var humanName: String = ""
+    var humanEmail: String = ""
+    var humanPhoneNumber: String = "000-000-0000"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        getHumanAccountInfo()
         getCurrentDate()
     }
     
@@ -55,6 +60,12 @@ class AddPetTableViewController: UITableViewController {
      return cell
      }
      */
+    
+    func getHumanAccountInfo() {
+        humanNameLabel.text = humanName
+        emailLabel.text = humanEmail
+        phoneNumberLabel.text = humanPhoneNumber
+    }
     
     func getCurrentDate() -> String {
         

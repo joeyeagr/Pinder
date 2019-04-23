@@ -13,9 +13,13 @@ class EditAccountTableViewController: UITableViewController {
     @IBOutlet var selfEmailLabel: UILabel!
     @IBOutlet var selfPhoneNumberLabel: UILabel!
     
+    var humanNameValue: String = ""
+    var humanEmailValue: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getHumanAccountInfo()
     }
 
     // MARK: - Table view data source
@@ -40,12 +44,17 @@ class EditAccountTableViewController: UITableViewController {
     }
     */
     
+    func getHumanAccountInfo() {
+        humanNameLabel.text = humanNameValue
+        selfEmailLabel.text = humanEmailValue
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addPet", let addPetVC = segue.destination as? AddPetTableViewController {
             
-            addPetVC.humanNameLabel = humanNameLabel
-            addPetVC.emailLabel = selfEmailLabel
-            addPetVC.phoneNumberLabel = selfPhoneNumberLabel
+            addPetVC.humanName = humanNameLabel.text ?? ""
+            addPetVC.humanEmail = selfEmailLabel.text ?? ""
+            addPetVC.humanPhoneNumber = selfPhoneNumberLabel.text ?? "0000000000"
         }
     }
     
