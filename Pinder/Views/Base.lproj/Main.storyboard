@@ -61,41 +61,49 @@
                                         <color key="tintColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Puppy," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X9O-7a-Y7K">
-                                        <rect key="frame" x="10" y="328" width="85" height="35"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Puppy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X9O-7a-Y7K">
+                                        <rect key="frame" x="10" y="328" width="79.5" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8c-NA-3nh">
-                                        <rect key="frame" x="97" y="328" width="36" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" image="icons8-happy-smiley-face-100" translatesAutoresizingMaskIntoConstraints="NO" id="0I4-EM-iOx">
                                         <rect key="frame" x="59" y="59" width="182" height="202"/>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kub-eg-Ojj">
+                                        <rect key="frame" x="89.5" y="328" width="8" height="35"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgG-fq-kmj">
+                                        <rect key="frame" x="99.5" y="328" width="50" height="35"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="0I4-EM-iOx" firstAttribute="top" secondItem="JRk-ig-OKH" secondAttribute="top" constant="59" id="2Yi-zx-8Ku"/>
                                     <constraint firstAttribute="bottom" secondItem="AyV-ni-hHf" secondAttribute="bottom" constant="70" id="3vb-Pd-ugk"/>
+                                    <constraint firstAttribute="bottom" secondItem="kgG-fq-kmj" secondAttribute="bottom" constant="17" id="6Z5-H8-hNn"/>
                                     <constraint firstAttribute="width" secondItem="JRk-ig-OKH" secondAttribute="height" multiplier="15:19" id="728-d9-QGF"/>
-                                    <constraint firstItem="K8c-NA-3nh" firstAttribute="leading" secondItem="X9O-7a-Y7K" secondAttribute="trailing" constant="2" id="E1j-gs-dVd"/>
+                                    <constraint firstItem="kgG-fq-kmj" firstAttribute="top" secondItem="AyV-ni-hHf" secondAttribute="bottom" constant="18" id="FzT-HN-P7u"/>
+                                    <constraint firstItem="Kub-eg-Ojj" firstAttribute="leading" secondItem="X9O-7a-Y7K" secondAttribute="trailing" id="LrW-zA-6Vr"/>
                                     <constraint firstAttribute="bottom" secondItem="X9O-7a-Y7K" secondAttribute="bottom" constant="17" id="PI7-pJ-COB"/>
+                                    <constraint firstAttribute="bottom" secondItem="Kub-eg-Ojj" secondAttribute="bottom" constant="17" id="Rxe-rX-pdc"/>
                                     <constraint firstItem="AyV-ni-hHf" firstAttribute="top" secondItem="JRk-ig-OKH" secondAttribute="top" constant="10" id="SRO-Pu-e7z"/>
                                     <constraint firstAttribute="trailing" secondItem="0I4-EM-iOx" secondAttribute="trailing" constant="59" id="WWZ-El-Wuo"/>
+                                    <constraint firstItem="kgG-fq-kmj" firstAttribute="leading" secondItem="X9O-7a-Y7K" secondAttribute="trailing" constant="10" id="bgg-eh-OgD"/>
+                                    <constraint firstItem="Kub-eg-Ojj" firstAttribute="top" secondItem="AyV-ni-hHf" secondAttribute="bottom" constant="18" id="dx4-pY-eFZ"/>
                                     <constraint firstItem="X9O-7a-Y7K" firstAttribute="top" secondItem="0I4-EM-iOx" secondAttribute="bottom" constant="67" id="e5O-cP-Eft"/>
                                     <constraint firstItem="X9O-7a-Y7K" firstAttribute="leading" secondItem="JRk-ig-OKH" secondAttribute="leading" constant="10" id="f3K-lm-8HT"/>
-                                    <constraint firstItem="K8c-NA-3nh" firstAttribute="top" secondItem="AyV-ni-hHf" secondAttribute="bottom" constant="18" id="g6J-TB-9WM"/>
                                     <constraint firstAttribute="trailing" secondItem="AyV-ni-hHf" secondAttribute="trailing" constant="10" id="m3n-Op-Dlh"/>
-                                    <constraint firstAttribute="bottom" secondItem="K8c-NA-3nh" secondAttribute="bottom" constant="16" id="ui1-Vq-XyJ"/>
                                     <constraint firstItem="0I4-EM-iOx" firstAttribute="leading" secondItem="JRk-ig-OKH" secondAttribute="leading" constant="59" id="w41-Vy-mfK"/>
                                     <constraint firstItem="AyV-ni-hHf" firstAttribute="leading" secondItem="JRk-ig-OKH" secondAttribute="leading" constant="10" id="wBV-EU-4JA"/>
                                     <constraint firstItem="X9O-7a-Y7K" firstAttribute="top" secondItem="AyV-ni-hHf" secondAttribute="bottom" constant="18" id="yK3-oi-E8X"/>
-                                    <constraint firstAttribute="trailing" secondItem="K8c-NA-3nh" secondAttribute="trailing" constant="167" id="ymb-0Q-cfd"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="aCb-Yr-nxc" appends="YES" id="7Lb-ZA-TLY"/>
@@ -147,7 +155,7 @@
                     </view>
                     <connections>
                         <outlet property="card" destination="JRk-ig-OKH" id="yc2-bk-FnQ"/>
-                        <outlet property="petAgeLabel" destination="K8c-NA-3nh" id="LXD-BG-zCc"/>
+                        <outlet property="petAgeLabel" destination="kgG-fq-kmj" id="3wj-g6-iQr"/>
                         <outlet property="petNameLabel" destination="X9O-7a-Y7K" id="X12-ZA-ti4"/>
                         <outlet property="petPicture" destination="AyV-ni-hHf" id="6z7-5K-S4m"/>
                         <outlet property="smileyImageView" destination="0I4-EM-iOx" id="YbM-Ie-3i1"/>
