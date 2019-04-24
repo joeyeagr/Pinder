@@ -67,6 +67,7 @@ class FirebaseController {
     }
     
     // creates blanks in firestore
+    
     func createData() {
         var id: String = ""
         var name: String = ""
@@ -82,7 +83,7 @@ class FirebaseController {
         
         let userRef = self.db.collection("profile")
         
-        userRef.document(String(user.id)).setData(user.dictionary){ err in
+        userRef.document(String(user.id)).setData(user.humanDictionary){ err in
             if err != nil {
                 print(Error.self)
             } else {
