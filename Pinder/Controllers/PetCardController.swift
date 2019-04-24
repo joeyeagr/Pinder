@@ -8,12 +8,17 @@
 
 import Foundation
 import CoreData
+import Firebase
+import FirebaseStorage
+import FirebaseFirestore
+
 
 class PetCardController {
     
     static let sharedController = PetCardController()
     
-    var petCards: [PetCard] {
+    
+    var fetchPetCards: [PetCard] {
         let request: NSFetchRequest<PetCard> = PetCard.fetchRequest()
         
         do {
@@ -22,6 +27,7 @@ class PetCardController {
             return []
         }
     }
+    
     
     func saveToPersistentStorage(petCard: PetCard) {
         
@@ -32,9 +38,47 @@ class PetCardController {
         }
     }
     
+    
     func deletePetCardFromStack(petCardToDelete: PetCard) {
         Stack.context.delete(petCardToDelete)
         saveToPersistentStorage(petCard: petCardToDelete)
     }
+}
+
+
+func requestMatchingPetIdFromFirestore(petId: String, completion: ((PetCard?) -> Void)? = nil) {
+    let db = Firestore.firestore()
     
+    db.collection("PetId").whereField("petId", isEqualTo: petId).getDocuments { (querySnapShot, err) in
+        if let err = err {
+            print(err)
+        } else {
+            for document in querySnapShot!.documents {
+                let docData = document.data()
+                
+                if let petCard = PetCard(dictionary: docData), let completion = completion {
+                    completion(petCard)
+                }
+            }
+        }
+    }
+}
+
+
+func requestAllPetCardsFromFirestore(completion: ((PetCard?) -> Void)? = nil) {
+    let db = Firestore.firestore()
+    
+    db.collection("PetId").getDocuments { (querySnapshot, err) in
+        if let err = err {
+            print(err)
+        } else {
+            for document in querySnapshot!.documents {
+                let docData = document.data()
+                
+                if let currentPetCard = PetCard(dictionary: docData), let completion = completion {
+                    completion(currentPetCard)
+                }
+            }
+        }
+    }
 }

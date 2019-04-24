@@ -1,5 +1,8 @@
 Pods
+Pods/**
 .DS_Store
+xcuserdata
+*.xcscmblueprint
 #########################
 # .gitignore file for Xcode4 and Xcode5 Source projects
 #
@@ -217,4 +220,4 @@ Pinder.xcworkspace/xcuserdata/benjaminpoulsenpro.xcuserdatad/UserInterfaceState.
 ####
 # UNKNOWN: recommended by others, but I can't discover what these files are
 #
-Pinder.xcworkspace/xcuserdata/benjaminpoulsenpro.xcuserdatad/UserInterfaceState.xcuserstate
+Pinder.xcworkspace/xcuserdata/**
