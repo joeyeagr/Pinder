@@ -34,6 +34,10 @@ class AddPetTableViewController: UITableViewController {
     var humanEmail: String = ""
     var humanPhoneNumber: String = "000-000-0000"
     
+    var imageReferance: StorageReference {
+        return Storage.storage().reference().child("images")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getHumanAccountInfo()
@@ -94,8 +98,8 @@ class AddPetTableViewController: UITableViewController {
         let petBio: String = bioTextView.text ?? "bio"
         let isMale: Bool = genderBenderControl
         let dateCreated: String = currentDateLabel.text ?? "date"
-        let petImage1: UIImage? = firstUIImage.image
-        let petImage2: UIImage? = secondUIImage.image
+        let petImage1: String = ""
+        let petImage2: String = "" // add referanc eto teh iamges here
         let petId: String
         let humanContact: Array<String> = [humanName, email, phoneNumber, humanId]
         

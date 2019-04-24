@@ -102,17 +102,31 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
         guard let password = passwordTF.text else { return }
         guard let name = humanNameTF.text else { return }
         
-            Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-                if error == nil {
-                    print(self.userId)
-                    self.createData()
-                    print("userCreated")
-                    self.signInUser(email: email, password: password)
-                } else {
-                    print(error)
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            if error != nil && self.emailTF.text == "" && self.passwordTF.text == "" && self.humanNameTF.text == "" {
+                UIView.animate(withDuration: 0.09, animations: {
+                    let move = CGAffineTransform(translationX: 10, y: 0)
+                    self.emailTF.transform = move
+                    self.passwordTF.transform = move
+                    self.humanNameTF.transform = move
+                }) { (_) in
+                    UIView.animate(withDuration: 0.09, animations: {
+                        self.emailTF.transform = .identity
+                        self.passwordTF.transform = .identity
+                        self.humanNameTF.transform = .identity
+                    })
                 }
+                print("Not Valid")
+                print(error)
+            } else {
+                print(self.userId)
+                self.createData()
+                print("userCreated")
+                self.signInUser(email: email, password: password)
+                self.performSegue(withIdentifier: "logIn", sender: nil)
+                print("Valid")
             }
-        performSegue(withIdentifier: "logIn", sender: nil)
+        }
     }
-   
+    
 }
