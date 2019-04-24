@@ -8,52 +8,129 @@
 
 import UIKit
 import CoreData
+import Firebase
+import FirebaseStorage
+import FirebaseFirestore
 
 private let reuseIdentifier = "petCardCell"
 
 class PetCardCollectionViewController: UICollectionViewController {
 
+    var db: Firestore!
+    var petCard: PetCard = PetCard()
+    var currentPetCard: PetCard?
+    var petCards: (PetCard)?
     
+    @IBOutlet weak var petNameTextField: UITextField!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        // firebase is for dictionary string: any
+        // firebase storage is for storing the URL string
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+       
+        let db = Firestore.firestore()
+        
+        
+       
 
-        // Do any additional setup after loading the view.
-        
-    
-        
-        let fetchRequestPetCards = PetCardController.sharedController.petCards
-        
-        let petCards = fetchRequestPetCards
-        print("you have #\(petCards.count) petCards fetched")
-        
-        
-        //*** how ever I am being passed data for a pet card I need to insert that data into my data model for petCard and then save it
-        
-        //*** check out UIEvents for sending event notices
-        var joesData: [String: Any] {
-            return [
-                "petName" : "Joe"
-            ]
+        requestAllPetCardsFromFirestore { currentPetCard in
+            if let currentPetCard = currentPetCard {
+                self.currentPetCard = currentPetCard
+                print(currentPetCard.petName)
+            }
         }
-        let response = joesData
-        let dataForPetCard = PetCard(dictionary: response, context: Stack.context)
-        if let dataForPetCard = dataForPetCard {
-            PetCardController.sharedController.saveToPersistentStorage(petCard: dataForPetCard)
-
-        }
-        
+       
     }
+    
+    
+    
+    
+    
+    
+    
+    func requestMatchingPetId() {
+        let db = Firestore.firestore()
+        
+        db.collection("petId").start(at: [1]).whereField("petId", isEqualTo: "12").order(by: "petId").getDocuments { (querySnapShot, err) in
+            if let err = err {
+                print(err)
+            } else {
+                for document in querySnapShot!.documents {
+                    print(document.data())
+                }
+            }
+        }
+    }
+    
+    
+    //maybe create doc func and assign pet id to document id
+//    func requestAllPetIdDocuments() {
+//        let db = Firestore.firestore()
+//
+//        db.collection("petId").getDocuments { (querySnapshot, err) in
+//            if let err = err {
+//                print("could not get documents \(err)")
+//            } else {
+//                for document in querySnapshot!.documents {
+//                    print("here is the document data \(document.documentID)\(document.data())")
+//                    let documentData = document.data()
+//                    print(documentData)
+//                   
+//                    
+//                    if  let petId = documentData["petId"] as? String{
+//                        let petName = documentData["petName"] as? String
+//                        print(petId, petName)
+//                    }
+//                    
+//                   let docVals = documentData.values
+//                    let response = documentData
+//                    
+//                    if let petName = response["petName"] as? [String: Any] {
+//                        let petCard = PetCard(dictionary: petName, context: Stack.context)
+//                        print(petCard)
+//                        print(petCard?.name)
+//                       
+//                        if let petName = petCard?.name {
+//                            print(petName)
+//                        }
+//                    }
+//                    
+//                    
+//                    
+//                }
+//            }
+//        }
+//    }
+    
+   
+  
+    
+    
     
     func setInsets () {
        let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
         
+    }
+    
+    func addPetCard() {
+        guard let entity = NSEntityDescription.entity(forEntityName: "PetCard", in: Stack.context) else {
+            fatalError("could make pet")
+        }
+//
+//        let petCard = NSManagedObject(entity: entity, insertInto: Stack.context)
+//        petCard.setValue(<#T##value: Any?##Any?#>, forKey: <#T##String#>)
+//        for x in 1...25 {
+//            let petCard = NSManagedObject(entity: entity, insertInto: Stack.context)
+//            petCard.setValue("Pet id #\(x)", forKey: "petId")
+//        }
     }
 
     /*
@@ -70,18 +147,25 @@ class PetCardCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return PetCardController.sharedController.petCards.count
+        
+        return PetCardController.sharedController.fetchPetCards.count
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return PetCardController.sharedController.fetchPetCards.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
+        
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "Pup")
+        backgroundImage.contentMode = UIView.ContentMode.scaleToFill
+        self.view.insertSubview(backgroundImage, at: 0)
+        cell.backgroundView = backgroundImage
+        
         // Configure the cell
     
         return cell

@@ -12,21 +12,28 @@ import CoreData
 extension PetCard {
     convenience init?(dictionary: Dictionary<String, Any>, context: NSManagedObjectContext = Stack.context) {
         
-        guard let petId = dictionary["petId"] as? String,
-            let petName = dictionary["petName"] as? String,
+        guard
+            let humanContact = dictionary["humanContact"] as? [String],
+            let date = dictionary["date"] as? String,
+            let petId = dictionary["petId"] as? String,
             let petBreed = dictionary["petBreed"] as? String,
-            let petAge = dictionary["petAge"] as? String,
+            let petAge = dictionary["petAge"] as? Int16,
             let petBio = dictionary["petBio"] as? String,
             let petImage1 = dictionary["petImage1"] as? String,
             let petImage2 = dictionary["petImage2"] as? String,
-            let petGender = dictionary["petGender"] as? String,
-            let name = dictionary["name"] as? String,
-            let email = dictionary["email"] as? String,
-            let phoneNumber = dictionary["phoneNumber"] as? String,
-            let id = dictionary["id"] as? String else {return nil}
+            let petGender = dictionary["petGender"] as? Bool,
+            let petName = dictionary["petName"] as? String
+            else {
+                return nil
+            }
         
         self.init(context: context)
         
+        self.date = date
+        self.humanId = humanContact[3]
+        self.humanName = humanContact[0]
+        self.humanEmail = humanContact[1]
+        self.humanPhoneNumber = humanContact[2]
         self.petId = petId
         self.petName = petName
         self.petBreed = petBreed
@@ -35,10 +42,5 @@ extension PetCard {
         self.petBio = petBio
         self.petImage1 = petImage1
         self.petImage2 = petImage2
-        self.name = name
-        self.email = email
-        self.phoneNumber = phoneNumber
-        self.id = id
-        
     }
 }
