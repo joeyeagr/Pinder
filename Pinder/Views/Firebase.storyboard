@@ -117,7 +117,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X00-H6-PD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="930" y="-222"/>
+            <point key="canvasLocation" x="1839.1304347826087" y="-222.32142857142856"/>
         </scene>
         <!--Edit Account Table View Controller-->
         <scene sceneID="2ic-Jc-7ZX">
@@ -226,7 +226,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BRd-o6-rog" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1631.8840579710147" y="-222.32142857142856"/>
+            <point key="canvasLocation" x="2542.0289855072465" y="-222.32142857142856"/>
         </scene>
         <!--Add Pet Table View Controller-->
         <scene sceneID="WEM-N4-Bd9">
@@ -520,7 +520,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HIA-ma-jxd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2315.9420289855075" y="-222.32142857142856"/>
+            <point key="canvasLocation" x="3226.0869565217395" y="-222.32142857142856"/>
         </scene>
     </scenes>
     <resources>
