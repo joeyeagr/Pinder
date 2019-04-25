@@ -157,27 +157,31 @@ class AddPetTableViewController: UITableViewController {
     
     @IBAction func addImageButtonTapped2(_ sender: Any) {
         
-        let alertController = UIAlertController(title: "Choose Image",
-                                                message: nil,
-                                                preferredStyle: .actionSheet)
-        let cancelAction = UIAlertAction(title: "Cancel",
-                                         style: .cancel,
-                                         handler: nil)
-        let cameraAction = UIAlertAction(title: "Camera",
-                                         style: .default,
-                                         handler: { action in
-            print("User selected Camera action")})
-        let photoLibraryAction = UIAlertAction(title: "PhotoLibrary",
-                                               style: .default,
-                                               handler: { action in
-            print("User selected Photo Library action")})
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        
+        let alertController = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
-        alertController.addAction(cameraAction)
-        alertController.addAction(photoLibraryAction)
-        alertController.popoverPresentationController?.sourceView = sender as? UIView
-        present(alertController,
-                animated: true,
-                completion: nil)
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: { action in
+                imagePicker.sourceType = .camera
+                self.present(imagePicker, animated: true, completion: nil)
+                //tylrt fi9nish this code it sint eh book u nib nard
+            })
+            alertController.addAction(cameraAction)
+        }
+        
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default, handler: { action in
+                imagePicker.sourceType = .photoLibrary
+                self.present(imagePicker, animated: true, completion: nil)
+            })
+            alertController.addAction(photoLibraryAction)
+        }
+        present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func genderControlTapped(_ sender: UISegmentedControl) {

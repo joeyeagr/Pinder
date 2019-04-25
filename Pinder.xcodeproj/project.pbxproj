@@ -22,6 +22,7 @@
 		5EB91C71225CFF7300D53278 /* PetCardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB91C70225CFF7300D53278 /* PetCardCollectionViewController.swift */; };
 		5EE56D682253B1B100AE3C51 /* EditAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE56D652253B1B100AE3C51 /* EditAccountTableViewController.swift */; };
 		CB0DCD232270BC3D00767363 /* AddPetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE56D672253B1B100AE3C51 /* AddPetTableViewController.swift */; };
+		CB0DCD242270BDE700767363 /* Firebase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EE56D6B2253B1BF00AE3C51 /* Firebase.storyboard */; };
 		CB4ABDF0224E792B00162F94 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ABDEF224E792B00162F94 /* Pet.swift */; };
 		CB7E99E5225CE530001F8539 /* CreateAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB061357225CDD3300CE0D47 /* CreateAccountTableViewController.swift */; };
 		CBAAC496224A80C3009B2E3D /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAC495224A80C3009B2E3D /* FirebaseController.swift */; };
@@ -378,6 +379,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB0DCD242270BDE700767363 /* Firebase.storyboard in Resources */,
 				5EB5D72122453A5B000D6CE7 /* LaunchScreen.storyboard in Resources */,
 				5EB5D71E22453A5B000D6CE7 /* Assets.xcassets in Resources */,
 				5E265B52224A776E00236C2F /* GoogleService-Info.plist in Resources */,
