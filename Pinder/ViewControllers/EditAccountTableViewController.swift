@@ -17,6 +17,7 @@ class EditAccountTableViewController: UITableViewController {
     
     var humanNameValue: String = ""
     var humanEmailValue: String = ""
+    var humanPhoneNumberValue: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,7 @@ class EditAccountTableViewController: UITableViewController {
     func getHumanAccountInfo() {
         humanNameLabel.text = humanNameValue
         selfEmailLabel.text = humanEmailValue
+        selfPhoneNumberLabel.text = humanPhoneNumberValue
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -76,8 +78,6 @@ class EditAccountTableViewController: UITableViewController {
         
     }
     
-    @IBAction func unwindToEditAccount(_ sender: UIStoryboardSegue) {
-        
-    }
+    @IBAction func unwindToEditAccount(_ sender: UIStoryboardSegue) {}
     
 }

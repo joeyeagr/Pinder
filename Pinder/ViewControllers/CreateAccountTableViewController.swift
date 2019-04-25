@@ -18,6 +18,9 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
     @IBOutlet var emailTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     @IBOutlet var humanNameTF: UITextField!
+    @IBOutlet var phoneNumberTF: UITextField!
+    @IBOutlet var logInEmail: UITextField!
+    @IBOutlet var logInPassword: UITextField!
     
     var db: Firestore!
     var userId: String = ""
@@ -68,15 +71,18 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
             
             accountVC.humanNameValue = humanNameTF.text ?? ""
             accountVC.humanEmailValue = emailTF.text ?? ""
+            accountVC.humanPhoneNumberValue = phoneNumberTF.text ?? ""
         }
     }
     
     func createData() {
+        let stringNumber = phoneNumberTF.text ?? "0000000000"
+        
         guard let id: String = currentAuthID else { return }
         guard let name: String = humanNameTF.text  else { return }
         guard let email: String = emailTF.text  else { return }
         guard let password: String = passwordTF.text  else { return }
-        guard let phoneNumber: Int = 0000000000  else { return }
+        guard let phoneNumber: Int = Int(stringNumber)  else { return }
         
         let user = Users(id: id,
                          name: name,
@@ -85,7 +91,6 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
                          phoneNumber: phoneNumber)
         
         let userRef = self.db.collection("profile")
-        
         userRef.document(String(user.id)).setData(user.humanDictionary){ err in
             if err != nil {
                 print(Error.self)
@@ -101,19 +106,22 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
         guard let email = emailTF.text else { return }
         guard let password = passwordTF.text else { return }
         guard let name = humanNameTF.text else { return }
+        guard let phoneNumber = phoneNumberTF.text else { return }
         
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if error != nil || self.emailTF.text == "" || self.passwordTF.text == "" || self.humanNameTF.text == "" {
+            if error != nil || self.emailTF.text == "" || self.passwordTF.text == "" || self.humanNameTF.text == "" || self.phoneNumberTF.text == "" {
                 UIView.animate(withDuration: 0.09, animations: {
                     let move = CGAffineTransform(translationX: 10, y: 0)
                     self.emailTF.transform = move
                     self.passwordTF.transform = move
                     self.humanNameTF.transform = move
+                    self.phoneNumberTF.transform = move
                 }) { (_) in
                     UIView.animate(withDuration: 0.09, animations: {
                         self.emailTF.transform = .identity
                         self.passwordTF.transform = .identity
                         self.humanNameTF.transform = .identity
+                        self.phoneNumberTF.transform = .identity
                     })
                 }
                 print("Not Valid")
@@ -129,8 +137,17 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
         }
     }
     
-    @IBAction func unwindToLogIn(_ sender: UIStoryboardSegue) {
+    @IBAction func logInTapped(_ sender: Any) {
         
+        guard let email = logInEmail.text else {return}
+        guard let password = logInPassword.text else {return}
+        
+        Auth.auth().signIn(withEmail: email, link: password) { [weak self] user, error in
+            guard let strongSelf = self else {return}
+            self?.performSegue(withIdentifier: "logIn", sender: nil)
+        }
     }
+    
+    @IBAction func unwindToLogIn(_ sender: UIStoryboardSegue) {}
     
 }

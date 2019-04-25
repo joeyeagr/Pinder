@@ -103,7 +103,7 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
         let petId: String
         let humanContact: Array<String> = [humanName, email, phoneNumber, humanId]
         
-        let pet = Pet(petId: String(arc4random_uniform(9000000)),
+        let pet = Pet(petId: String(arc4random_uniform(999999999)),
                       petName: petName,
                       petBreed: petBreed,
                       petAge: petAge,
