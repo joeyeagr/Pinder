@@ -30,6 +30,9 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
     var genderBenderControl: Bool = false
     let storage = Storage.storage()
     
+//    let humanId = currentAuthID ?? "randomlyGeneratedCode"
+//    let profileRef = self.db.collection("profile").document(humanId)
+   
     var humanName: String = ""
     var humanEmail: String = ""
     var humanPhoneNumber: String = "000-000-0000"
@@ -40,7 +43,9 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getHumanAccountInfo()
+        
+        getPersonalAccountData()
+       // getHumanAccountInfo()
         getCurrentDate()
     }
     
@@ -65,11 +70,34 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
      }
      */
     
-    func getHumanAccountInfo() {
-        humanNameLabel.text = humanName
-        emailLabel.text = humanEmail
-        phoneNumberLabel.text = humanPhoneNumber
+    func getPersonalAccountData() {
+        
+        let humanId = currentAuthID ?? "randomlyGeneratedCode"
+        let profileRef = self.db.collection("profile").whereField("id", isEqualTo: currentAuthID)
+        profileRef.getDocuments { (snapshot, error) in
+            if error != nil {
+                print(error)
+            } else {
+                for document in (snapshot?.documents)! {
+                    if let name = document.data()["name"] as? String {
+                        if let email = document.data()["email"] as? String {
+                            if let phoneNumber = document.data()["phoneNumber"] as? Int {
+                                self.humanNameLabel.text = name
+                                self.emailLabel.text = email
+                                self.phoneNumberLabel.text = String(phoneNumber)
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
+    
+//    func getHumanAccountInfo() {
+//        humanNameLabel.text = humanName
+//        emailLabel.text = humanEmail
+//        phoneNumberLabel.text = humanPhoneNumber
+//    }
     
     func getCurrentDate() -> String {
         
@@ -87,10 +115,14 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
     
     func createPetCardData() {
         
+      
+        
         let humanName = humanNameLabel.text ?? "human name"
         let email = emailLabel.text ?? "email"
         let phoneNumber = phoneNumberLabel.text ?? "phone number"
         let humanId = currentAuthID ?? "randomlyGeneratedCode"
+        
+        let profileRef = self.db.collection("profile").document(humanId)
         
         let petName: String = petNameTF.text ?? "pet"
         let petBreed: String = petBreedTF.text ?? "breed"

@@ -92,4 +92,32 @@ class FirebaseController {
         }
     }
     
+    func isLoggedIn() -> Bool {
+        return(currentUser != nil)
+    }
+    
+    func removeUserListener() {
+        guard listenHandler != nil else {
+            return
+        }
+        Auth.auth().removeStateDidChangeListener(listenHandler!)
+    }
+    
+    func liknCredential(credential: AuthCredential) {
+        currentUser?.linkAndRetrieveData(with: credential) {
+            (user, error) in
+            
+            if let error = error {
+                print(error)
+                return
+            }
+            print("Credential linked")
+        }
+    }
+
+    
+    func logOut() {
+        try! Auth.auth().signOut()
+    }
+    
 }

@@ -66,18 +66,17 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "logIn", let accountVC = segue.destination as? EditAccountTableViewController {
-            
-            accountVC.humanNameValue = humanNameTF.text ?? ""
-            accountVC.humanEmailValue = emailTF.text ?? ""
-            accountVC.humanPhoneNumberValue = phoneNumberTF.text ?? ""
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "logIn", let accountVC = segue.destination as? EditAccountTableViewController {
+//
+//            accountVC.humanNameValue = humanNameTF.text ?? ""
+//            accountVC.humanEmailValue = emailTF.text ?? ""
+//            accountVC.humanPhoneNumberValue = phoneNumberTF.text ?? ""
+//        }
+//    }
     
     func createData() {
         let stringNumber = phoneNumberTF.text ?? "0000000000"
-        
         guard let id: String = currentAuthID else { return }
         guard let name: String = humanNameTF.text  else { return }
         guard let email: String = emailTF.text  else { return }

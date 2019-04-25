@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 
 class EditAccountTableViewController: UITableViewController {
@@ -15,6 +16,8 @@ class EditAccountTableViewController: UITableViewController {
     @IBOutlet var selfEmailLabel: UILabel!
     @IBOutlet var selfPhoneNumberLabel: UILabel!
     
+    var db: Firestore!
+    var currentAuthID = Auth.auth().currentUser?.uid
     var humanNameValue: String = ""
     var humanEmailValue: String = ""
     var humanPhoneNumberValue: String = ""
@@ -22,7 +25,9 @@ class EditAccountTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getHumanAccountInfo()
+        db = Firestore.firestore()
+        getPersonalAccountData()
+//        getHumanAccountInfo()
     }
 
     // MARK: - Table view data source
@@ -47,20 +52,46 @@ class EditAccountTableViewController: UITableViewController {
     }
     */
     
-    func getHumanAccountInfo() {
-        humanNameLabel.text = humanNameValue
-        selfEmailLabel.text = humanEmailValue
-        selfPhoneNumberLabel.text = humanPhoneNumberValue
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "addPet", let addPetVC = segue.destination as? AddPetTableViewController {
-            
-            addPetVC.humanName = humanNameLabel.text ?? ""
-            addPetVC.humanEmail = selfEmailLabel.text ?? ""
-            addPetVC.humanPhoneNumber = selfPhoneNumberLabel.text ?? "0000000000"
+    func getPersonalAccountData() {
+        
+        let humanId = currentAuthID ?? "randomlyGeneratedCode"
+        let profileRef = self.db.collection("profile").whereField("id", isEqualTo: currentAuthID)
+        profileRef.getDocuments { (snapshot, error) in
+            if error != nil {
+                print(error)
+            } else {
+                for document in (snapshot?.documents)! {
+                    if let name = document.data()["name"] as? String {
+                        if let email = document.data()["email"] as? String {
+                            if let phoneNumber = document.data()["phoneNumber"] as? Int {
+                                self.humanNameLabel.text = name
+                                self.selfEmailLabel.text = email
+                                self.selfPhoneNumberLabel.text = String(phoneNumber)
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
+    
+//    func getHumanAccountInfo() {
+//        humanNameLabel.text = humanNameValue
+//        selfEmailLabel.text = humanEmailValue
+//        selfPhoneNumberLabel.text = humanPhoneNumberValue
+//    }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "addPet", let addPetVC = segue.destination as? AddPetTableViewController {
+//
+//            let humanId = currentAuthID ?? "randomlyGeneratedCode"
+//            let profileRef = self.db.collection("profile").document(humanId)
+//
+//            addPetVC.humanName = ""
+//            addPetVC.humanEmail = selfEmailLabel.text ?? ""
+//            addPetVC.humanPhoneNumber = selfPhoneNumberLabel.text ?? "0000000000"
+//        }
+//    }
     
     @IBAction func addPetButtonTapped(_ sender: Any) {
          performSegue(withIdentifier: "addPet", sender: nil)
