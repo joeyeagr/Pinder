@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+
 
 class EditAccountTableViewController: UITableViewController {
     @IBOutlet var humanNameLabel: UILabel!
@@ -60,6 +62,22 @@ class EditAccountTableViewController: UITableViewController {
     
     @IBAction func addPetButtonTapped(_ sender: Any) {
          performSegue(withIdentifier: "addPet", sender: nil)
+    }
+    
+    @IBAction func logOutTapped(_ sender: Any) {
+        
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            print("User Signed Out")
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
+    }
+    
+    @IBAction func unwindToEditAccount(_ sender: UIStoryboardSegue) {
+        
     }
     
 }
