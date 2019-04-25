@@ -66,7 +66,7 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "logIn", let accountVC = segue.destination as? EditAccountTableViewController {
             
-            accountVC.humanEmailValue = humanNameTF.text ?? ""
+            accountVC.humanNameValue = humanNameTF.text ?? ""
             accountVC.humanEmailValue = emailTF.text ?? ""
         }
     }
@@ -103,7 +103,7 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
         guard let name = humanNameTF.text else { return }
         
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if error != nil && self.emailTF.text == "" && self.passwordTF.text == "" && self.humanNameTF.text == "" {
+            if error != nil || self.emailTF.text == "" || self.passwordTF.text == "" || self.humanNameTF.text == "" {
                 UIView.animate(withDuration: 0.09, animations: {
                     let move = CGAffineTransform(translationX: 10, y: 0)
                     self.emailTF.transform = move
