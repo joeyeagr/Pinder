@@ -34,7 +34,7 @@ class FirebaseController {
                 self.userId = ""
                 DispatchQueue.main.asyncAfter(deadline: .now()) {
                     if loggedIn {
-                        print("logged in")
+                        print("you are already logged in")
                         //perform a segue here
                     } else {
                         print("not logged in")

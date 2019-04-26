@@ -45,9 +45,9 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
     
     func createUser(email: String, password: String) {
         Auth.auth().createUser(withEmail: email, password: password) { user, error in
-            if error == nil && user != nil{
+            if error == nil {
                 print("userCreated")
-                self.createData()
+                //self.createData()
             } else {
                 print("there is an error in creating account")
                 print(error as Any)
@@ -69,22 +69,18 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
         }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "logIn", let accountVC = segue.destination as? EditAccountTableViewController {
-//
-//            accountVC.humanNameValue = humanNameTF.text ?? ""
-//            accountVC.humanEmailValue = emailTF.text ?? ""
-//            accountVC.humanPhoneNumberValue = phoneNumberTF.text ?? ""
-//        }
-//    }
-    
     func createData() {
         let stringNumber = phoneNumberTF.text ?? "0000000000"
         guard let id: String = currentAuthID else { return }
+        print(id)
         guard let name: String = humanNameTF.text  else { return }
+        print(name)
         guard let email: String = emailTF.text  else { return }
+        print(email)
         guard let password: String = passwordTF.text  else { return }
+        print(password)
         guard let phoneNumber: Int = Int(stringNumber)  else { return }
+        print(phoneNumber)
         
         let user = Users(id: id,
                          name: name,
@@ -93,13 +89,13 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
                          phoneNumber: phoneNumber)
         
         let userRef = self.db.collection("profile")
-        userRef.document(String(user.id)).setData(user.humanDictionary){ err in
-            if err != nil {
+        userRef.document(String(user.id)).setData(user.humanDictionary){ error in
+            if error == nil {
+                print("Added Human Data")
+                print(" first call, UserID: \(self.currentAuthID)")
+            } else {
                 print("you have an error in creating data")
                 print(Error.self)
-            } else {
-                print("Added Human Data")
-                //print("UserID: \(self.currentAuthID)")
             }
         }
     }
@@ -133,13 +129,9 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
             } else {
                 
                 self.createData()
-                print("UserID: \(self.currentAuthID)")
+                print("UserID: \(self.currentAuthID ?? "your UID")")
                 self.performSegue(withIdentifier: "logIn", sender: nil)
 
-//                self.createData()
-//                self.performSegue(withIdentifier: "logIn", sender: nil)
-//                print("UserID: \(self.currentAuthID)")
-//                print("Valid")
             }
             
         }

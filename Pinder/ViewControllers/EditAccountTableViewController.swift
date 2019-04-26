@@ -53,6 +53,8 @@ class EditAccountTableViewController: UITableViewController {
     */
     
     func getPersonalAccountData() {
+        
+        print(currentAuthID)
 
         let profileRef = self.db.collection("profile").whereField("id", isEqualTo: currentAuthID)
         profileRef.getDocuments { (snapshot, error) in
@@ -79,12 +81,13 @@ class EditAccountTableViewController: UITableViewController {
          performSegue(withIdentifier: "addPet", sender: nil)
     }
     
-    @IBAction func logOutTapped(_ sender: Any) {
-        
+    @IBAction func logOutTapped(_ sender: Any) { //this isnt working correctly
+        self.currentAuthID = nil
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
             print("User Signed Out")
+            print(currentAuthID)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
