@@ -92,7 +92,7 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
         userRef.document(String(user.id)).setData(user.humanDictionary){ error in
             if error == nil {
                 print("Added Human Data")
-                print(" first call, UserID: \(self.currentAuthID)")
+                print("call, UserID: \(self.currentAuthID)")
             } else {
                 print("you have an error in creating data")
                 print(Error.self)
@@ -127,7 +127,6 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
                 print("Not Valid")
                 print(error)
             } else {
-                
                 self.createData()
                 print("UserID: \(self.currentAuthID ?? "your UID")")
                 self.performSegue(withIdentifier: "logIn", sender: nil)
