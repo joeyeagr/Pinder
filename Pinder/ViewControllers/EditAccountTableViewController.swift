@@ -54,10 +54,10 @@ class EditAccountTableViewController: UITableViewController {
     
     func getPersonalAccountData() {
         
-        guard let id: String = currentAuthID else { return }
-        print(id)
+        guard let uid: String = self.currentAuthID else { return }
+        print("edit account \(uid)")
 
-        let profileRef = self.db.collection("profile").whereField("id", isEqualTo: id)
+        let profileRef = self.db.collection("profile").whereField("id", isEqualTo: uid)
         profileRef.getDocuments { (snapshot, error) in
             if error != nil {
                 print(error)

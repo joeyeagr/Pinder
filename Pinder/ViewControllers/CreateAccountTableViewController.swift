@@ -71,7 +71,7 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
     
     func createData() {
         let stringNumber = phoneNumberTF.text ?? "0000000000"
-        guard let id: String = currentAuthID else { return }
+        guard let id: String = self.currentAuthID else { return }
         print(id)
         guard let name: String = humanNameTF.text  else { return }
         print(name)
@@ -105,8 +105,6 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
         
         guard let email = emailTF.text else { return }
         guard let password = passwordTF.text else { return }
-        guard let name = humanNameTF.text else { return }
-        guard let phoneNumber = phoneNumberTF.text else { return }
         
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if error != nil || self.emailTF.text == "" || self.passwordTF.text == "" || self.humanNameTF.text == "" || self.phoneNumberTF.text == "" {
@@ -127,6 +125,10 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
                 print("Not Valid")
                 print(error)
             } else {
+                
+                guard let id: String = self.currentAuthID else { return }
+                print(id)
+                
                 self.createData()
                 print("UserID: \(self.currentAuthID ?? "your UID")")
                 self.performSegue(withIdentifier: "logIn", sender: nil)
