@@ -44,10 +44,13 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
     }
     
     func createUser(email: String, password: String) {
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if error == nil {
+        Auth.auth().createUser(withEmail: email, password: password) { user, error in
+            if error == nil && user != nil{
                 print("userCreated")
-                self.signInUser(email: email, password: password)
+                self.createData()
+            } else {
+                print("there is an error in creating account")
+                print(error as Any)
             }
         }
     }
@@ -92,9 +95,11 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
         let userRef = self.db.collection("profile")
         userRef.document(String(user.id)).setData(user.humanDictionary){ err in
             if err != nil {
+                print("you have an error in creating data")
                 print(Error.self)
             } else {
-                print("Added Data")
+                print("Added Human Data")
+                //print("UserID: \(self.currentAuthID)")
             }
         }
     }
@@ -126,13 +131,17 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
                 print("Not Valid")
                 print(error)
             } else {
-                print(self.userId)
+                
                 self.createData()
-                print("userCreated")
-                self.signInUser(email: email, password: password)
+                print("UserID: \(self.currentAuthID)")
                 self.performSegue(withIdentifier: "logIn", sender: nil)
-                print("Valid")
+
+//                self.createData()
+//                self.performSegue(withIdentifier: "logIn", sender: nil)
+//                print("UserID: \(self.currentAuthID)")
+//                print("Valid")
             }
+            
         }
     }
     

@@ -57,7 +57,7 @@ class FirebaseController {
                     self.userId = (user?.uid)!
                     print("UserID: \(self.userId)")
                     //load data here
-                    
+
                     DispatchQueue.main.asyncAfter(deadline: .now()) {
                         // perform some kind of segue here
                     }

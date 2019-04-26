@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storage = Storage.storage()
         let storageRef = storage.reference()
         
-        FirebaseController.shared.addUserListender(loggedIn: false)
+        //FirebaseController.shared.addUserListender(loggedIn: false)
         
         return true
     }

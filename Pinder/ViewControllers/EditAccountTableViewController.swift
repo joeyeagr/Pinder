@@ -53,8 +53,7 @@ class EditAccountTableViewController: UITableViewController {
     */
     
     func getPersonalAccountData() {
-        
-        let humanId = currentAuthID ?? "randomlyGeneratedCode"
+
         let profileRef = self.db.collection("profile").whereField("id", isEqualTo: currentAuthID)
         profileRef.getDocuments { (snapshot, error) in
             if error != nil {
@@ -75,25 +74,8 @@ class EditAccountTableViewController: UITableViewController {
         }
     }
     
-//    func getHumanAccountInfo() {
-//        humanNameLabel.text = humanNameValue
-//        selfEmailLabel.text = humanEmailValue
-//        selfPhoneNumberLabel.text = humanPhoneNumberValue
-//    }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "addPet", let addPetVC = segue.destination as? AddPetTableViewController {
-//
-//            let humanId = currentAuthID ?? "randomlyGeneratedCode"
-//            let profileRef = self.db.collection("profile").document(humanId)
-//
-//            addPetVC.humanName = ""
-//            addPetVC.humanEmail = selfEmailLabel.text ?? ""
-//            addPetVC.humanPhoneNumber = selfPhoneNumberLabel.text ?? "0000000000"
-//        }
-//    }
-    
     @IBAction func addPetButtonTapped(_ sender: Any) {
+        
          performSegue(withIdentifier: "addPet", sender: nil)
     }
     

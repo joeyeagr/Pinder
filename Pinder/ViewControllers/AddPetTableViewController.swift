@@ -72,7 +72,6 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
     
     func getPersonalAccountData() {
         
-        let humanId = currentAuthID ?? "randomlyGeneratedCode"
         let profileRef = self.db.collection("profile").whereField("id", isEqualTo: currentAuthID)
         profileRef.getDocuments { (snapshot, error) in
             if error != nil {
@@ -115,8 +114,7 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
     
     func createPetCardData() {
         
-      
-        
+        //human data
         let humanName = humanNameLabel.text ?? "human name"
         let email = emailLabel.text ?? "email"
         let phoneNumber = phoneNumberLabel.text ?? "phone number"
@@ -124,6 +122,7 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
         
         let profileRef = self.db.collection("profile").document(humanId)
         
+        //pet data
         let petName: String = petNameTF.text ?? "pet"
         let petBreed: String = petBreedTF.text ?? "breed"
         let petAge: Int = Int(petAgeTF.text ?? "age") ?? 0
