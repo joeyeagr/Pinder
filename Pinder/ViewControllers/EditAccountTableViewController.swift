@@ -12,15 +12,10 @@ import FirebaseFirestore
 
 
 class EditAccountTableViewController: UITableViewController {
-    @IBOutlet var humanNameLabel: UILabel!
-    @IBOutlet var selfEmailLabel: UILabel!
-    @IBOutlet var selfPhoneNumberLabel: UILabel!
     
+    var pet: [Pet]?
     var db: Firestore!
     var currentAuthID = Auth.auth().currentUser?.uid
-    var humanNameValue: String = ""
-    var humanEmailValue: String = ""
-    var humanPhoneNumberValue: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +23,27 @@ class EditAccountTableViewController: UITableViewController {
         db = Firestore.firestore()
         getPersonalAccountData()
     }
-
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        return headerView
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return pet?.count ?? 1
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "petCell", for: indexPath) as? EditAccountTableViewCell else { return UITableViewCell() }
+        tableView.rowHeight = 118
+        
+        return cell
+    }
+
     func getPersonalAccountData() {
         
         guard let uid: String = self.currentAuthID else { return }
@@ -43,9 +57,7 @@ class EditAccountTableViewController: UITableViewController {
                     if let name = document.data()["name"] as? String {
                         if let email = document.data()["email"] as? String {
                             if let phoneNumber = document.data()["phoneNumber"] as? Int {
-                                self.humanNameLabel.text = name
-                                self.selfEmailLabel.text = email
-                                self.selfPhoneNumberLabel.text = String(phoneNumber)
+                                // enter the header in here for the text to change.
                             }
                         }
                     }

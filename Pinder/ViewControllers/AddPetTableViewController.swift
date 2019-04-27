@@ -30,13 +30,6 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
     var genderBenderControl: Bool = false
     let storage = Storage.storage()
     
-//    let humanId = currentAuthID ?? "randomlyGeneratedCode"
-//    let profileRef = self.db.collection("profile").document(humanId)
-   
-    var humanName: String = ""
-    var humanEmail: String = ""
-    var humanPhoneNumber: String = "000-000-0000"
-    
     var imageReferance: StorageReference {
         return Storage.storage().reference().child("images")
     }
@@ -45,36 +38,12 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
         super.viewDidLoad()
         
         getPersonalAccountData()
-       // getHumanAccountInfo()
         getCurrentDate()
     }
-    
-    // MARK: - Table view data source
-    //    override func numberOfSections(in tableView: UITableView) -> Int {
-    //
-    //        return 0
-    //    }
-    //
-    //    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    //
-    //        return 0
-    //    }
-    
-    /*
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-     
-     // Configure the cell...
-     
-     return cell
-     }
-     */
     
     func getPersonalAccountData() {
         
         guard let uid: String = self.currentAuthID else { return }
-        print("edit account \(uid)")
-        
         let profileRef = self.db.collection("profile").whereField("id", isEqualTo: uid)
         profileRef.getDocuments { (snapshot, error) in
             if error != nil {
@@ -95,24 +64,16 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
         }
     }
     
-//    func getHumanAccountInfo() {
-//        humanNameLabel.text = humanName
-//        emailLabel.text = humanEmail
-//        phoneNumberLabel.text = humanPhoneNumber
-//    }
-    
     func getCurrentDate() -> String {
         
         let date = Date()
         let calander = Calendar.current
-        
         let day = calander.component(.day, from: date)
         let month = calander.component(.month, from: date)
         let year = calander.component(.year, from: date)
-        
-        var currentLabel = ("\(month).\(day).\(year)")
+        let currentLabel = ("\(month).\(day).\(year)")
         currentDateLabel.text = currentLabel
-        return currentLabel ?? "Current Date"
+        return currentLabel
     }
     
     func createPetCardData() {
