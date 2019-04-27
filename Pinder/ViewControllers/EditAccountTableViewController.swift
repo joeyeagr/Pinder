@@ -27,36 +27,13 @@ class EditAccountTableViewController: UITableViewController {
         
         db = Firestore.firestore()
         getPersonalAccountData()
-//        getHumanAccountInfo()
     }
 
-    // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell... performSegue(withIdentifier: "segueSearch", sender: nil)
-
-        return cell
-    }
-    */
     
     func getPersonalAccountData() {
         
         guard let uid: String = self.currentAuthID else { return }
         print("edit account \(uid)")
-
         let profileRef = self.db.collection("profile").whereField("id", isEqualTo: uid)
         profileRef.getDocuments { (snapshot, error) in
             if error != nil {
@@ -92,7 +69,6 @@ class EditAccountTableViewController: UITableViewController {
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
-        
     }
     
     @IBAction func unwindToEditAccount(_ sender: UIStoryboardSegue) {}

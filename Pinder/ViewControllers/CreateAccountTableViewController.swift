@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
@@ -43,14 +44,32 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
         view.backgroundColor = UIColor(displayP3Red: 61/255, green: 91/255, blue: 151/255, alpha: 1)
     }
     
-    func createUser(email: String, password: String) {
-        Auth.auth().createUser(withEmail: email, password: password) { user, error in
-            if error == nil {
-                print("userCreated")
-                //self.createData()
+    func createUser() {
+        
+        guard let email = emailTF.text else { return }
+        guard let password = passwordTF.text else { return }
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+            if error != nil || self.emailTF.text == "" || self.passwordTF.text == "" || self.humanNameTF.text == "" || self.phoneNumberTF.text == "" {
+                UIView.animate(withDuration: 0.09, animations: {
+                    let move = CGAffineTransform(translationX: 10, y: 0)
+                    self.emailTF.transform = move
+                    self.passwordTF.transform = move
+                    self.humanNameTF.transform = move
+                    self.phoneNumberTF.transform = move
+                }) { (_) in
+                    UIView.animate(withDuration: 0.09, animations: {
+                        self.emailTF.transform = .identity
+                        self.passwordTF.transform = .identity
+                        self.humanNameTF.transform = .identity
+                        self.phoneNumberTF.transform = .identity
+                    })
+                }
+                print("Not Valid")
+                print(error)
             } else {
-                print("there is an error in creating account")
-                print(error as Any)
+
+                print("UserID: \(self.currentAuthID ?? "your UID")")
             }
         }
     }
@@ -71,7 +90,7 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
     
     func createData() {
         let stringNumber = phoneNumberTF.text ?? "0000000000"
-        guard let id: String = self.currentAuthID else { return }
+        guard let id: String = self.currentAuthID else { return } //this not working.
         print(id)
         guard let name: String = humanNameTF.text  else { return }
         print(name)
@@ -103,39 +122,10 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
     //Actions
     @IBAction func createAccountTapped(_ sender: Any) {
         
-        guard let email = emailTF.text else { return }
-        guard let password = passwordTF.text else { return }
-        
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if error != nil || self.emailTF.text == "" || self.passwordTF.text == "" || self.humanNameTF.text == "" || self.phoneNumberTF.text == "" {
-                UIView.animate(withDuration: 0.09, animations: {
-                    let move = CGAffineTransform(translationX: 10, y: 0)
-                    self.emailTF.transform = move
-                    self.passwordTF.transform = move
-                    self.humanNameTF.transform = move
-                    self.phoneNumberTF.transform = move
-                }) { (_) in
-                    UIView.animate(withDuration: 0.09, animations: {
-                        self.emailTF.transform = .identity
-                        self.passwordTF.transform = .identity
-                        self.humanNameTF.transform = .identity
-                        self.phoneNumberTF.transform = .identity
-                    })
-                }
-                print("Not Valid")
-                print(error)
-            } else {
-                
-                guard let id: String = self.currentAuthID else { return }
-                print(id)
-                
-                self.createData()
-                print("UserID: \(self.currentAuthID ?? "your UID")")
-                self.performSegue(withIdentifier: "logIn", sender: nil)
-
-            }
-            
-        }
+        createUser()
+        createData()
+        print(currentAuthID)
+        performSegue(withIdentifier: "logIn", sender: nil)
     }
     
     @IBAction func logInTapped(_ sender: Any) {

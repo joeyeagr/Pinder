@@ -72,7 +72,10 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
     
     func getPersonalAccountData() {
         
-        let profileRef = self.db.collection("profile").whereField("id", isEqualTo: currentAuthID)
+        guard let uid: String = self.currentAuthID else { return }
+        print("edit account \(uid)")
+        
+        let profileRef = self.db.collection("profile").whereField("id", isEqualTo: uid)
         profileRef.getDocuments { (snapshot, error) in
             if error != nil {
                 print(error)
