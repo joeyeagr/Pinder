@@ -13,13 +13,16 @@ import FirebaseFirestore
 
 class EditAccountTableViewController: UITableViewController {
     
-    var pet: [Pet]?
+    var pets: [Pet]?
     var db: Firestore!
     var currentAuthID = Auth.auth().currentUser?.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+         var pets = [Pet]()
+        
+        getPetData()
         db = Firestore.firestore()
         getPersonalAccountData()
     }
@@ -30,7 +33,7 @@ class EditAccountTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pet?.count ?? 1
+        return pets?.count ?? 1
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,6 +43,14 @@ class EditAccountTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "petCell", for: indexPath) as? EditAccountTableViewCell else { return UITableViewCell() }
         tableView.rowHeight = 118
+        
+        if let pets = pets {
+            
+            let pet = pets[indexPath.row]
+            cell.petNameLabel?.text = "\(pet.petName)"
+            
+         //   cell.updateCell(pets: pet)
+        }
         
         return cell
     }
@@ -61,6 +72,37 @@ class EditAccountTableViewController: UITableViewController {
                             }
                         }
                     }
+                }
+            }
+        }
+     //   self.pets = pets
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func getPetData() {
+        
+        var pets = [Pet]()
+        guard let petsId: String = self.currentAuthID else { return }
+        print("edit account \(petsId)")
+        let profileRef = self.db.collection("PetId").whereField("humanId", isEqualTo: petsId)
+        profileRef.getDocuments { (snapshot, error) in
+            if error != nil {
+                print(error)
+            } else {
+                guard let snapshot = snapshot else {
+                    print("could not unrwap snapshot")
+                    return
+                }
+                for document in (snapshot.documents) {
+                    if let name = document.data()["name"] as? [String: Any], let otherPets = Pet.init(petDictionary: name) {
+                        pets.append(otherPets)
+                    }
+                }
+                self.pets = pets
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
                 }
             }
         }
