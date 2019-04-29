@@ -41,12 +41,12 @@ class PetCardCollectionViewController: UICollectionViewController {
         
        
 
-        requestAllPetCardsFromFirestore { currentPetCard in
-            if let currentPetCard = currentPetCard {
-                self.currentPetCard = currentPetCard
-                print(currentPetCard.petName)
-            }
-        }
+//        requestAllPetCardsFromFirestore { currentPetCard in
+//            if let currentPetCard = currentPetCard {
+//                self.currentPetCard = currentPetCard
+//                print(currentPetCard.petName)
+//            }
+//        }
        
     }
     

@@ -43,7 +43,7 @@ class PetCardController {
         Stack.context.delete(petCardToDelete)
         saveToPersistentStorage(petCard: petCardToDelete)
     }
-}
+
 
 
 func requestMatchingPetIdFromFirestore(petId: String, completion: ((PetCard?) -> Void)? = nil) {
@@ -81,4 +81,5 @@ func requestAllPetCardsFromFirestore(completion: ((PetCard?) -> Void)? = nil) {
             }
         }
     }
+}
 }
