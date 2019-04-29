@@ -34,7 +34,7 @@ class FirebaseController {
                 self.userId = ""
                 DispatchQueue.main.asyncAfter(deadline: .now()) {
                     if loggedIn {
-                        print("logged in")
+                        print("you are already logged in")
                         //perform a segue here
                     } else {
                         print("not logged in")
@@ -57,7 +57,7 @@ class FirebaseController {
                     self.userId = (user?.uid)!
                     print("UserID: \(self.userId)")
                     //load data here
-                    
+
                     DispatchQueue.main.asyncAfter(deadline: .now()) {
                         // perform some kind of segue here
                     }
@@ -90,6 +90,34 @@ class FirebaseController {
                 print("Added Data")
             }
         }
+    }
+    
+    func isLoggedIn() -> Bool {
+        return(currentUser != nil)
+    }
+    
+    func removeUserListener() {
+        guard listenHandler != nil else {
+            return
+        }
+        Auth.auth().removeStateDidChangeListener(listenHandler!)
+    }
+    
+    func liknCredential(credential: AuthCredential) {
+        currentUser?.linkAndRetrieveData(with: credential) {
+            (user, error) in
+            
+            if let error = error {
+                print(error)
+                return
+            }
+            print("Credential linked")
+        }
+    }
+
+    
+    func logOut() {
+        try! Auth.auth().signOut()
     }
     
 }

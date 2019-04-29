@@ -24,8 +24,8 @@ struct Pet {
     var petId: String
     var petName: String
     var petBreed: String
-    var petAge: Int
-    var isMale: Bool // change the name to isMale
+    var petAge: Int //change this to a string
+    var isMale: Bool
     var petBio: String
     var date: String
     var petImage1: String
