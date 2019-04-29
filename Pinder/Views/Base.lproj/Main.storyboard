@@ -27,21 +27,6 @@
             <point key="canvasLocation" x="750" y="133"/>
         </scene>
         <!--View Controller-->
-        <scene sceneID="o0z-h4-NX3">
-            <objects>
-                <viewController id="sS2-44-WjO" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gIL-pd-LY0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="1IY-y6-bcO"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h5d-Zy-J5o" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1284" y="132"/>
-        </scene>
-        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Pinder" customModuleProvider="target" sceneMemberID="viewController">
@@ -55,7 +40,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JRk-ig-OKH">
                                 <rect key="frame" x="37.5" y="143.5" width="300" height="380"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pup" translatesAutoresizingMaskIntoConstraints="NO" id="AyV-ni-hHf">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AyV-ni-hHf">
                                         <rect key="frame" x="10" y="10" width="280" height="300"/>
                                         <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -173,7 +158,6 @@
     </scenes>
     <resources>
         <image name="Gradient" width="150" height="84"/>
-        <image name="Pup" width="112.5" height="112.5"/>
         <image name="icons8-happy-smiley-face-100" width="50" height="50"/>
         <image name="icons8-heart-outline-100" width="50" height="50"/>
         <image name="icons8-synchronize-filled-100" width="50" height="50"/>
