@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension AddPetTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension AddPetTableViewController {
     
     func selectPetImage() {
         let picker = UINavigationController()

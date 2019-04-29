@@ -8,9 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0818BAA644F4A6CACA8E9CDE /* Pods_PinderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08E51941B0C66D6E03F87830 /* Pods_PinderTests.framework */; };
+		5E00C42822774E8700FBF0D7 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E32A28E225CE2AF00D91405 /* Animations.swift */; };
+		5E00C42922774E8700FBF0D7 /* AddPetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2169CB2260CEDA00F2C22E /* AddPetExtension.swift */; };
+		5E00C42A22774E8700FBF0D7 /* PetCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB91C6E225CFF6800D53278 /* PetCardController.swift */; };
+		5E00C42C22774EC800FBF0D7 /* EditAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E00C42B22774EC800FBF0D7 /* EditAccountTableViewCell.swift */; };
 		5E01A02F2270BE1500F9E75C /* Firebase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EE56D6B2253B1BF00AE3C51 /* Firebase.storyboard */; };
 		5E265B52224A776E00236C2F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E265B51224A776D00236C2F /* GoogleService-Info.plist */; };
-		5E32A28F225CE2AF00D91405 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E32A28E225CE2AF00D91405 /* Animations.swift */; };
 		5E92326C2270B5B8005B0134 /* AddPetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE56D672253B1B100AE3C51 /* AddPetTableViewController.swift */; };
 		5EB5D71422453A5A000D6CE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5D71322453A5A000D6CE7 /* AppDelegate.swift */; };
 		5EB5D71622453A5A000D6CE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5D71522453A5A000D6CE7 /* ViewController.swift */; };
@@ -31,12 +34,6 @@
 		CBAAC496224A80C3009B2E3D /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAC495224A80C3009B2E3D /* FirebaseController.swift */; };
 		CBAAC49F224A967D009B2E3D /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAC49E224A967D009B2E3D /* Users.swift */; };
 		CBAAC4A1224A969C009B2E3D /* GlobalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAC4A0224A969C009B2E3D /* GlobalExtensions.swift */; };
-		CBB702A62270B86A002BC8FE /* petCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06E6E4226A509F00AAC413 /* petCardCell.swift */; };
-		CBB702A72270B86E002BC8FE /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E32A28E225CE2AF00D91405 /* Animations.swift */; };
-		CBB702A92270B876002BC8FE /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB91C65225CFE7300D53278 /* Stack.swift */; };
-		CBB702AA2270B87D002BC8FE /* PetCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB91C6E225CFF6800D53278 /* PetCardController.swift */; };
-		CBB702C32270BB32002BC8FE /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EB91C67225CFE7300D53278 /* Model.xcdatamodeld */; };
-		CBD1AAB92274FEF100C68600 /* EditAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD1AAB82274FEF100C68600 /* EditAccountTableViewCell.swift */; };
 		D964543F186AB95E01CA711B /* Pods_Pinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FC313AD1A1C965AADA99F2 /* Pods_Pinder.framework */; };
 		E9CDD669F7FE877EAC2123B3 /* Pods_PinderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A5538016357E216772E964 /* Pods_PinderUITests.framework */; };
 /* End PBXBuildFile section */
@@ -65,6 +62,7 @@
 		279FA70221B07A46FBB2C1A2 /* Pods-PinderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinderUITests.release.xcconfig"; path = "Target Support Files/Pods-PinderUITests/Pods-PinderUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3FB43C3D1E6ACEAB8E602417 /* Pods-Pinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinder.release.xcconfig"; path = "Target Support Files/Pods-Pinder/Pods-Pinder.release.xcconfig"; sourceTree = "<group>"; };
 		4ED5C283D785587F0C6D643B /* Pods-PinderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinderTests.release.xcconfig"; path = "Target Support Files/Pods-PinderTests/Pods-PinderTests.release.xcconfig"; sourceTree = "<group>"; };
+		5E00C42B22774EC800FBF0D7 /* EditAccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountTableViewCell.swift; sourceTree = "<group>"; };
 		5E265B51224A776D00236C2F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5E32A28E225CE2AF00D91405 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		5EB5D71022453A5A000D6CE7 /* Pinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,8 +98,6 @@
 		CBAAC495224A80C3009B2E3D /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 		CBAAC49E224A967D009B2E3D /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		CBAAC4A0224A969C009B2E3D /* GlobalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtensions.swift; sourceTree = "<group>"; };
-		CBD1AAB82274FEF100C68600 /* EditAccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountTableViewCell.swift; sourceTree = "<group>"; };
-		CBE4F60F225B954F00F0F6C0 /* AppDelegate+SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+SignIn.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,9 +256,9 @@
 				9A06E6E4226A509F00AAC413 /* petCardCell.swift */,
 				5EE56D672253B1B100AE3C51 /* AddPetTableViewController.swift */,
 				5EE56D652253B1B100AE3C51 /* EditAccountTableViewController.swift */,
-				CBD1AAB82274FEF100C68600 /* EditAccountTableViewCell.swift */,
 				CB061357225CDD3300CE0D47 /* CreateAccountTableViewController.swift */,
 				5EB5D71522453A5A000D6CE7 /* ViewController.swift */,
+				5E00C42B22774EC800FBF0D7 /* EditAccountTableViewCell.swift */,
 				5E32A28E225CE2AF00D91405 /* Animations.swift */,
 			);
 			path = ViewControllers;
@@ -520,15 +516,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E00C42822774E8700FBF0D7 /* Animations.swift in Sources */,
+				5E00C42922774E8700FBF0D7 /* AddPetExtension.swift in Sources */,
+				5E00C42A22774E8700FBF0D7 /* PetCardController.swift in Sources */,
 				5E92326C2270B5B8005B0134 /* AddPetTableViewController.swift in Sources */,
 				CB7E99E5225CE530001F8539 /* CreateAccountTableViewController.swift in Sources */,
 				CBAAC496224A80C3009B2E3D /* FirebaseController.swift in Sources */,
-				5EB91C6F225CFF6800D53278 /* PetCardController.swift in Sources */,
 				5EE56D682253B1B100AE3C51 /* EditAccountTableViewController.swift in Sources */,
 				CBAAC4A1224A969C009B2E3D /* GlobalExtensions.swift in Sources */,
 				5EB5D71622453A5A000D6CE7 /* ViewController.swift in Sources */,
 				5EB91C69225CFE7300D53278 /* Stack.swift in Sources */,
 				CB4ABDF0224E792B00162F94 /* Pet.swift in Sources */,
+				5E00C42C22774EC800FBF0D7 /* EditAccountTableViewCell.swift in Sources */,
 				5EB91C71225CFF7300D53278 /* PetCardCollectionViewController.swift in Sources */,
 				CBAAC49F224A967D009B2E3D /* Users.swift in Sources */,
 				5EB5D71422453A5A000D6CE7 /* AppDelegate.swift in Sources */,
