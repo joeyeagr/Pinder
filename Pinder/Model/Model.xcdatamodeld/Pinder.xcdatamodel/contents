@@ -6,10 +6,10 @@
         <attribute name="humanId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="humanName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="humanPhoneNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isMale" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="petAge" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="petBio" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="petBreed" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="petGender" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="petId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="petImage1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="petImage2" optional="YES" attributeType="String" syncable="YES"/>

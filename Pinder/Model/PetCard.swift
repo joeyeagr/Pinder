@@ -21,11 +21,10 @@ extension PetCard {
             let petBio = dictionary["petBio"] as? String,
             let petImage1 = dictionary["petImage1"] as? String,
             let petImage2 = dictionary["petImage2"] as? String,
-            let petGender = dictionary["petGender"] as? Bool,
+            let isMale = dictionary["isMale"] as? Bool,
             let petName = dictionary["petName"] as? String
-            else {
-                return nil
-            }
+            
+            else {return nil}
         
         self.init(context: context)
         
@@ -38,9 +37,12 @@ extension PetCard {
         self.petName = petName
         self.petBreed = petBreed
         self.petAge = petAge
-        self.petGender = petGender
+        self.isMale = isMale
         self.petBio = petBio
         self.petImage1 = petImage1
         self.petImage2 = petImage2
     }
 }
+
+
+

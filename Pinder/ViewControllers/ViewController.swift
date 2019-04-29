@@ -7,6 +7,11 @@
 
 
 import UIKit
+import Foundation
+import CoreData
+import Firebase
+import FirebaseStorage
+import FirebaseFirestore
 
 class ViewController: UIViewController {
     
@@ -26,6 +31,7 @@ class ViewController: UIViewController {
     }
     
     var divisor: CGFloat!
+    
     
     func setCornerAndShadow() {
         petPicture.clipsToBounds = true
