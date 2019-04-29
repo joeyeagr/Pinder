@@ -169,7 +169,6 @@
 				CBAAC49C224A956C009B2E3D /* ViewControllers */,
 				CBAAC49D224A95D1009B2E3D /* Extensions */,
 				CBAAC497224A94B7009B2E3D /* Model */,
-				CBAAC49B224A9518009B2E3D /* Controllers */,
 				CBAAC49A224A9508009B2E3D /* Views */,
 				5EB5D71D22453A5B000D6CE7 /* Assets.xcassets */,
 				5EB5D72222453A5B000D6CE7 /* Info.plist */,
@@ -226,6 +225,7 @@
 				CBAAC49E224A967D009B2E3D /* Users.swift */,
 				CB4ABDEF224E792B00162F94 /* Pet.swift */,
 				5EB91C67225CFE7300D53278 /* Model.xcdatamodeld */,
+				CBAAC49B224A9518009B2E3D /* Controllers */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -247,7 +247,8 @@
 				5EB91C6E225CFF6800D53278 /* PetCardController.swift */,
 				5EB5D71322453A5A000D6CE7 /* AppDelegate.swift */,
 			);
-			path = Controllers;
+			name = Controllers;
+			path = ../Controllers;
 			sourceTree = "<group>";
 		};
 		CBAAC49C224A956C009B2E3D /* ViewControllers */ = {
