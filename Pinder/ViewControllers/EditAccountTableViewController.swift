@@ -8,11 +8,12 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseStorage
 import FirebaseFirestore
 
 
 class EditAccountTableViewController: UITableViewController {
-    
+  
     var pets: [Pet]?
     var db: Firestore!
     var currentAuthID = Auth.auth().currentUser?.uid

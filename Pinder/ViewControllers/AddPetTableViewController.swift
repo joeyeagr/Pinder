@@ -29,6 +29,7 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
     var currentAuthID = Auth.auth().currentUser?.uid
     var genderBenderControl: Bool = false
     let storage = Storage.storage()
+    let fileName = "HeraldVolazj.png"
     
     var imageReferance: StorageReference {
         return Storage.storage().reference().child("images")
@@ -39,6 +40,33 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
         
         getPersonalAccountData()
         getCurrentDate()
+    }
+    
+    func uploadPetImage() {
+        
+ 
+        // Get a reference to the storage service using the default Firebase App
+        let storage = Storage.storage()
+        // Create a storage reference from our storage service
+        let storageRef = storage.reference()
+        var imageRef: StorageReference {
+            return Storage.storage().reference().child("petImages")
+        }
+        
+        guard let image = firstUIImage.image else {return}
+        guard let imageData = image.jpegData(compressionQuality: 0) else {return}
+        
+        let uploadImageRef = imageRef.child(fileName)
+        let uploadTask = uploadImageRef.putData(imageData, metadata: nil) { (metadata, error) in
+            print(metadata ?? "NO METADATA")
+            print(error ?? "no error :)")
+        }
+        
+        uploadTask.observe(.progress) { (snapshot) in
+            print(snapshot.progress ?? "no more progress")
+        }
+        
+        uploadTask.resume()
     }
     
     func getPersonalAccountData() {
@@ -126,30 +154,35 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
     }
     
     @IBAction func addImageButtonTapped(_ sender: Any) {
+
         
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
+//        let imagePicker = UIImagePickerController()
+//        imagePicker.delegate = self
+//
+//        let alertController = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
+//
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//        alertController.addAction(cancelAction)
+//
+//        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+//            let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: { action in
+//                imagePicker.sourceType = .camera
+//                self.present(imagePicker, animated: true, completion: nil)
+//            })
+//            alertController.addAction(cameraAction)
+//        }
+//        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+//            let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default, handler: { action in
+//                imagePicker.sourceType = .photoLibrary
+//                self.present(imagePicker, animated: true, completion: nil)
+//
+//            })
+//            alertController.addAction(photoLibraryAction)
+//        }
+//        present(alertController, animated: true, completion: nil)
         
-        let alertController = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
         
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: { action in
-                imagePicker.sourceType = .camera
-                self.present(imagePicker, animated: true, completion: nil)
-            })
-            alertController.addAction(cameraAction)
-        }
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default, handler: { action in
-                imagePicker.sourceType = .photoLibrary
-                self.present(imagePicker, animated: true, completion: nil)
-            })
-            alertController.addAction(photoLibraryAction)
-        }
-        present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func addImageButtonTapped2(_ sender: Any) {
