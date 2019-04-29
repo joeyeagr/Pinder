@@ -533,6 +533,7 @@
 				5EB91C71225CFF7300D53278 /* PetCardCollectionViewController.swift in Sources */,
 				CBAAC49F224A967D009B2E3D /* Users.swift in Sources */,
 				5EB5D71422453A5A000D6CE7 /* AppDelegate.swift in Sources */,
+				5EB91C6B225CFE7300D53278 /* Model.xcdatamodeld in Sources */,
 				5EB91C6A225CFE7300D53278 /* PetCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
