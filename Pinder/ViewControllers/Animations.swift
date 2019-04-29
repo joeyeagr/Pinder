@@ -53,9 +53,11 @@ extension ViewController {
                     self.index += 1
                     self.updatePetCardImage()
                 })
+
                 return
+
             }
-            resetCard()
+            
         }
         
 

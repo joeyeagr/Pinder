@@ -13,7 +13,6 @@ import Firebase
 import FirebaseStorage
 import FirebaseFirestore
 
-
 class ViewController: UIViewController {
     
     @IBOutlet weak var petPicture: UIImageView!
@@ -39,6 +38,7 @@ class ViewController: UIViewController {
     var divisor: CGFloat!
     var index: Int = 0
 //    let sharedController = ViewController()
+    
     
     func setCornerAndShadow() {
         petPicture.clipsToBounds = true

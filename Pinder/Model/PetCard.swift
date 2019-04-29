@@ -23,9 +23,8 @@ extension PetCard {
             let petImage2 = dictionary["petImage2"] as? String,
             let isMale = dictionary["isMale"] as? Bool,
             let petName = dictionary["petName"] as? String
-            else {
-                return nil
-            }
+            
+            else {return nil}
         
         self.init(context: context)
         
@@ -44,3 +43,6 @@ extension PetCard {
         self.petImage2 = petImage2
     }
 }
+
+
+
