@@ -30,9 +30,8 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
     var genderBenderControl: Bool = false
     let storage = Storage.storage()
     let fileName = "HeraldVolazj.png"
-    
-    var imageReferance: StorageReference {
-        return Storage.storage().reference().child("images")
+    var imageRef: StorageReference {
+        return Storage.storage().reference().child("petImages")
     }
     
     override func viewDidLoad() {
@@ -44,14 +43,10 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
     
     func uploadPetImage() {
         
- 
         // Get a reference to the storage service using the default Firebase App
         let storage = Storage.storage()
         // Create a storage reference from our storage service
         let storageRef = storage.reference()
-        var imageRef: StorageReference {
-            return Storage.storage().reference().child("petImages")
-        }
         
         guard let image = firstUIImage.image else {return}
         guard let imageData = image.jpegData(compressionQuality: 0) else {return}
@@ -72,10 +67,11 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
     func getPersonalAccountData() {
         
         guard let uid: String = self.currentAuthID else { return }
+        print("this is my uid i really like my uid \(uid)")
         let profileRef = self.db.collection("profile").whereField("id", isEqualTo: uid)
         profileRef.getDocuments { (snapshot, error) in
             if error != nil {
-                print(error)
+                print(error as Any)
             } else {
                 for document in (snapshot?.documents)! {
                     if let name = document.data()["name"] as? String {
@@ -149,7 +145,8 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        
+        print("data saved")
+        uploadPetImage()
         createPetCardData()
     }
     

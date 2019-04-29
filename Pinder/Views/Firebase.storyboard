@@ -294,7 +294,6 @@
                                     <barButtonItem key="rightBarButtonItem" systemItem="save" id="XqO-4J-hF5">
                                         <connections>
                                             <action selector="saveButtonTapped:" destination="QAe-uh-BzB" id="UxH-Ir-wBW"/>
-                                            <segue destination="HtC-L1-ccO" kind="unwind" identifier="unwindToAccount" unwindAction="unwindToEditAccount:" id="qVh-sE-CUH"/>
                                         </connections>
                                     </barButtonItem>
                                 </navigationItem>

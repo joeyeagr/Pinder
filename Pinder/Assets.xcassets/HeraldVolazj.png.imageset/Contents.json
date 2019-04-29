@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Herald_Volazj.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Herald_Volazj.png",
       "scale" : "2x"
     },
     {

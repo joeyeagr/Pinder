@@ -23,7 +23,7 @@ class EditAccountTableViewController: UITableViewController {
         
          var pets = [Pet]()
         
-        getPetData()
+       // getPetData()
         db = Firestore.firestore()
         getPersonalAccountData()
     }
@@ -63,7 +63,7 @@ class EditAccountTableViewController: UITableViewController {
         let profileRef = self.db.collection("profile").whereField("id", isEqualTo: uid)
         profileRef.getDocuments { (snapshot, error) in
             if error != nil {
-                print(error)
+                print(error as Any)
             } else {
                 for document in (snapshot?.documents)! {
                     if let name = document.data()["name"] as? String {
@@ -126,6 +126,6 @@ class EditAccountTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func unwindToEditAccount(_ sender: UIStoryboardSegue) {}
+//    @IBAction func unwindToEditAccount(_ sender: UIStoryboardSegue) {}
     
 }
