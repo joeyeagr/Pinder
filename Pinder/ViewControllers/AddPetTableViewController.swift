@@ -102,9 +102,7 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
         let email = emailLabel.text ?? "email"
         let phoneNumber = phoneNumberLabel.text ?? "phone number"
         let humanId = currentAuthID ?? "randomlyGeneratedCode"
-        
-        let profileRef = self.db.collection("profile").document(humanId)
-        
+
         //pet data
         let petName: String = petNameTF.text ?? "pet"
         let petBreed: String = petBreedTF.text ?? "breed"
@@ -113,8 +111,7 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
         let isMale: Bool = genderBenderControl
         let dateCreated: String = currentDateLabel.text ?? "date"
         let petImage1: String = ""
-        let petImage2: String = fileName2 // add referanc eto teh iamges here
-        let petId: String
+        let petImage2: String = fileName2
         let humanContact: Array<String> = [humanName, email, phoneNumber, humanId]
         
         let pet = Pet(petId: String(arc4random_uniform(999999999)),
@@ -129,7 +126,6 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
                       humanContact: humanContact)
         
         let userRef = self.db.collection("PetId")
-        
         userRef.document(String(pet.petId)).setData(pet.petDictionary){ err in
             if err != nil {
                 print(Error.self)
