@@ -29,7 +29,7 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
     var currentAuthID = Auth.auth().currentUser?.uid
     var genderBenderControl: Bool = false
     let storage = Storage.storage()
-    let fileName = "HeraldVolazj.png"
+    let fileName2 = "Pets.png"
     var imageRef: StorageReference {
         return Storage.storage().reference().child("petImages")
     }
@@ -51,7 +51,7 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
         guard let image = firstUIImage.image else {return}
         guard let imageData = image.jpegData(compressionQuality: 0) else {return}
         
-        let uploadImageRef = imageRef.child(fileName)
+        let uploadImageRef = imageRef.child(fileName2)
         let uploadTask = uploadImageRef.putData(imageData, metadata: nil) { (metadata, error) in
             print(metadata ?? "NO METADATA")
             print(error ?? "no error :)")
@@ -118,7 +118,7 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
         let isMale: Bool = genderBenderControl
         let dateCreated: String = currentDateLabel.text ?? "date"
         let petImage1: String = ""
-        let petImage2: String = "" // add referanc eto teh iamges here
+        let petImage2: String = fileName2 // add referanc eto teh iamges here
         let petId: String
         let humanContact: Array<String> = [humanName, email, phoneNumber, humanId]
         

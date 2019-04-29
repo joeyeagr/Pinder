@@ -49,7 +49,6 @@ class EditAccountTableViewController: UITableViewController {
             
             let pet = pets[indexPath.row]
             cell.petNameLabel?.text = "\(pet.petName)"
-            
          //   cell.updateCell(pets: pet)
         }
         
