@@ -29,7 +29,7 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
     var currentAuthID = Auth.auth().currentUser?.uid
     var genderBenderControl: Bool = false
     let storage = Storage.storage()
-    let fileName2 = String(arc4random_uniform(999999999)) + "Pets.png"
+    let fileName2 = String(arc4random_uniform(999999999)) + "Pets.jpg"
     var imageRef: StorageReference {
         return Storage.storage().reference().child("petImages")
     }
