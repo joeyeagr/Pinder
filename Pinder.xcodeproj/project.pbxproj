@@ -31,6 +31,7 @@
 		CBB702A92270B876002BC8FE /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB91C65225CFE7300D53278 /* Stack.swift */; };
 		CBB702AA2270B87D002BC8FE /* PetCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB91C6E225CFF6800D53278 /* PetCardController.swift */; };
 		CBB702C32270BB32002BC8FE /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EB91C67225CFE7300D53278 /* Model.xcdatamodeld */; };
+		CBC61A092278898400F0F2A4 /* AppDelegate+SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4F60F225B954F00F0F6C0 /* AppDelegate+SignIn.swift */; };
 		CBC99F0B22773E55001F2000 /* AddPetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2169CB2260CEDA00F2C22E /* AddPetExtension.swift */; };
 		CBC99F0C22773EC3001F2000 /* PetCardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB91C70225CFF7300D53278 /* PetCardCollectionViewController.swift */; };
 		CBD1AAB92274FEF100C68600 /* EditAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD1AAB82274FEF100C68600 /* EditAccountTableViewCell.swift */; };
@@ -517,6 +518,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBC61A092278898400F0F2A4 /* AppDelegate+SignIn.swift in Sources */,
 				CBC99F0C22773EC3001F2000 /* PetCardCollectionViewController.swift in Sources */,
 				CBC99F0B22773E55001F2000 /* AddPetExtension.swift in Sources */,
 				CB0DCD232270BC3D00767363 /* AddPetTableViewController.swift in Sources */,
