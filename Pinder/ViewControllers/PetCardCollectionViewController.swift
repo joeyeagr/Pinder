@@ -89,12 +89,6 @@ class PetCardCollectionViewController: UICollectionViewController {
     
     // MARK: UICollectionViewDataSource
     
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        
-        return PetCardController.sharedController.fetchPetCards.count
-    }
-    
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return petCards.count
         
