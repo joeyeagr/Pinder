@@ -119,7 +119,7 @@ class EditAccountTableViewController: UITableViewController {
         do {
             try firebaseAuth.signOut()
             print("User Signed Out")
-            print(currentAuthID)
+            print(currentAuthID ?? "No Current UID Detected")
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }

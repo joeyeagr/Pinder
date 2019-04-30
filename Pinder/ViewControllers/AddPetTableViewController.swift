@@ -176,7 +176,7 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
     @IBAction func addImageButtonTapped2(_ sender: Any) {
         
         let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        imagePicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
         
         let alertController = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
         
