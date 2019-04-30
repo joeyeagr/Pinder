@@ -18,7 +18,7 @@ class PetCardController {
     static let sharedController = PetCardController()
     
     
-    var fetchPetCards: [PetCard] {
+    func fetchPetCards() -> [PetCard] {
         let request: NSFetchRequest<PetCard> = PetCard.fetchRequest()
         
         do {
@@ -43,43 +43,74 @@ class PetCardController {
         Stack.context.delete(petCardToDelete)
         saveToPersistentStorage(petCard: petCardToDelete)
     }
-
-
-
-func requestMatchingPetIdFromFirestore(petId: String, completion: ((PetCard?) -> Void)? = nil) {
-    let db = Firestore.firestore()
-    
-    db.collection("PetId").whereField("petId", isEqualTo: petId).getDocuments { (querySnapShot, err) in
-        if let err = err {
-            print(err)
-        } else {
-            for document in querySnapShot!.documents {
-                let docData = document.data()
                 
-                if let petCard = PetCard(dictionary: docData), let completion = completion {
-                    completion(petCard)
+    
+    func requestAllPetCardsFromFirestore(completion: (([PetCard?]) -> Void)? = nil) {
+        let db = Firestore.firestore()
+        
+        db.collection("PetId").getDocuments { (querySnapshot, err) in
+            var petCards: [PetCard] = []
+            if let err = err {
+                print(err)
+            } else {
+                for document in querySnapshot!.documents {
+                    let docData = document.data()
+                    if let petCard = PetCard(dictionary: docData) {
+                        petCards.append(petCard)
+                    }
+                }
+                if let completion = completion {
+                    completion(petCards)
                 }
             }
         }
     }
-}
-
-
-func requestAllPetCardsFromFirestore(completion: ((PetCard?) -> Void)? = nil) {
-    let db = Firestore.firestore()
     
-    db.collection("PetId").getDocuments { (querySnapshot, err) in
-        if let err = err {
-            print(err)
-        } else {
-            for document in querySnapshot!.documents {
-                let docData = document.data()
-                
-                if let currentPetCard = PetCard(dictionary: docData), let completion = completion {
-                    completion(currentPetCard)
+    
+    func requestMatchingPetIdFromFirestore(petId: String, completion: ((PetCard?) -> Void)? = nil) {
+        let db = Firestore.firestore()
+        
+        db.collection("PetId").whereField("petId", isEqualTo: petId).getDocuments { (querySnapShot, err) in
+            if let err = err {
+                print(err)
+            } else {
+                for document in querySnapShot!.documents {
+                    let docData = document.data()
+                    
+                    
+                    if let petCard = PetCard(dictionary: docData), let completion = completion {
+                        completion(petCard)
+                    }
                 }
             }
         }
     }
-}
+    
+    
+    func requestOnePetCardFromFirestore(completion: ((PetCard?) -> Void)? = nil) {
+        let db = Firestore.firestore()
+        
+        db.collection("PetId").getDocuments { (querySnapshot, err) in
+            if let err = err {
+                print(err)
+            } else {
+                for document in querySnapshot!.documents {
+                    let docData = document.data()
+                    
+                    if let currentPetCard = PetCard(dictionary: docData), let completion = completion {
+                        completion(currentPetCard)
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

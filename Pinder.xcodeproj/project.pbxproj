@@ -90,7 +90,9 @@
 		5EE56D672253B1B100AE3C51 /* AddPetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPetTableViewController.swift; sourceTree = "<group>"; };
 		5EE56D6B2253B1BF00AE3C51 /* Firebase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Firebase.storyboard; sourceTree = "<group>"; };
 		84FC313AD1A1C965AADA99F2 /* Pods_Pinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A06E6E4226A509F00AAC413 /* petCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = petCardCell.swift; sourceTree = "<group>"; };
+		9A06E6E4226A509F00AAC413 /* PetCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCardCell.swift; sourceTree = "<group>"; };
+		9A84EF852272264600A004CD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		9AF68B972276A00A00B4437C /* PetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailViewController.swift; sourceTree = "<group>"; };
 		9D23937AA4646A782CA0F415 /* Pods-Pinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinder.debug.xcconfig"; path = "Target Support Files/Pods-Pinder/Pods-Pinder.debug.xcconfig"; sourceTree = "<group>"; };
 		9E4422399FBBC5F0B27EF44A /* Pods-PinderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinderTests.debug.xcconfig"; path = "Target Support Files/Pods-PinderTests/Pods-PinderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB061357225CDD3300CE0D47 /* CreateAccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountTableViewController.swift; sourceTree = "<group>"; };
@@ -255,8 +257,10 @@
 		CBAAC49C224A956C009B2E3D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9AF68B972276A00A00B4437C /* PetDetailViewController.swift */,
+				9A84EF852272264600A004CD /* DetailViewController.swift */,
 				5EB91C70225CFF7300D53278 /* PetCardCollectionViewController.swift */,
-				9A06E6E4226A509F00AAC413 /* petCardCell.swift */,
+				9A06E6E4226A509F00AAC413 /* PetCardCell.swift */,
 				5EE56D672253B1B100AE3C51 /* AddPetTableViewController.swift */,
 				5EE56D652253B1B100AE3C51 /* EditAccountTableViewController.swift */,
 				CB061357225CDD3300CE0D47 /* CreateAccountTableViewController.swift */,
@@ -535,10 +539,15 @@
 				5EB91C69225CFE7300D53278 /* Stack.swift in Sources */,
 				CB4ABDF0224E792B00162F94 /* Pet.swift in Sources */,
 				5E00C42C22774EC800FBF0D7 /* EditAccountTableViewCell.swift in Sources */,
+				5EB91C71225CFF7300D53278 /* PetCardCollectionViewController.swift in Sources */,
+				9A84EF862272264600A004CD /* DetailViewController.swift in Sources */,
 				CBAAC49F224A967D009B2E3D /* Users.swift in Sources */,
+				5EE56D692253B1B100AE3C51 /* CreateAccountTableViewController.swift in Sources */,
 				5EB5D71422453A5A000D6CE7 /* AppDelegate.swift in Sources */,
+				5EB91C6B225CFE7300D53278 /* Model.xcdatamodeld in Sources */,
+				9AF68B982276A00A00B4437C /* PetDetailViewController.swift in Sources */,
 				5EB91C6A225CFE7300D53278 /* PetCard.swift in Sources */,
-				9A06E6E5226A509F00AAC413 /* petCardCell.swift in Sources */,
+				9A06E6E5226A509F00AAC413 /* PetCardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
