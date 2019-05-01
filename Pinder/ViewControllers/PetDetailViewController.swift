@@ -37,6 +37,8 @@ class PetDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.isHidden = false
+        
         setUpImageView()
         getPetCards()
         updateLabels()
@@ -81,6 +83,18 @@ class PetDetailViewController: UIViewController {
         }
     }
     
+    var pets: [Pet] = []
+    var petsImageString: [String] = []
+    
+    func cycleThroughPets() {
+        for pet in pets {
+            let imageString = pet.petImage1
+            
+            petsImageString.append(imageString)
+            pets.append(pet)
+        }
+    }
+    
     
     func getImages(imageString: String) {
         Storage.storage().reference(withPath: imageString).getData(maxSize: (1024 * 1024), completion:  { (data, err) in
@@ -89,6 +103,8 @@ class PetDetailViewController: UIViewController {
             self.petImageView.image = image
         })
     }
+    
+    
     
     func updateLabels() {
         petNameLabel.text = petCardData[index].petName
@@ -116,7 +132,10 @@ class PetDetailViewController: UIViewController {
     }
     
     
-
+    @IBAction func backButtonTapped(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     
     
     

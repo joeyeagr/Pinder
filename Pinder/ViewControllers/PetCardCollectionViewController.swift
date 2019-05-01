@@ -25,6 +25,8 @@ class PetCardCollectionViewController: UICollectionViewController {
     var index: Int = 0
     var petCardArray: [PetCard?] = []
     static let sharedController = PetCardCollectionViewController()
+    var pets: [Pet] = []
+    var petsImage: UIImage?
     
     @IBOutlet var petCardCollectionView: UICollectionView!
     
@@ -32,8 +34,16 @@ class PetCardCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         petCards = PetCardController.sharedController.fetchPetCards()
+        print(PetCardController.sharedController.fetchPetCards())
         
-        self.collectionView!.register(PetCardCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//        self.collectionView!.register(PetCardCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        self.navigationController?.navigationBar.isHidden = true
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "Gradient")
+        backgroundImage.contentMode = UIView.ContentMode.scaleToFill
+        self.collectionView.backgroundView = backgroundImage
+        
     }
     
     
@@ -56,6 +66,37 @@ class PetCardCollectionViewController: UICollectionViewController {
             }
         }
     }
+    
+    
+    func getAllPets(completion: (([Pet]) -> Void)? = nil) {
+        let db = Firestore.firestore()
+        db.collection("PetId").getDocuments { (querySnapshot, err) in
+            var pets: [Pet] = []
+            if let err = err {
+                print(err)
+            } else {
+                for document in querySnapshot!.documents {
+                    let docData = document.data()
+                    if let pet = Pet(petDictionary: docData) {
+                        pets.append(pet)
+                    }
+                }
+                if let completion = completion {
+                    completion(pets)
+                }
+            }
+        }
+    }
+    
+    func requestAllPets() {
+        getAllPets { (pets) in
+            DispatchQueue.main.async {
+                self.pets = pets
+            }
+        }
+        
+    }
+
 
     func requestAllPetCardsImages() {
         getAllPetCards { (petCards) in
@@ -81,6 +122,20 @@ class PetCardCollectionViewController: UICollectionViewController {
     }
     
     
+    func updatePetsImage() {
+        let pet = pets[index]
+        let imageString = pet.petImage1
+        Storage.storage().reference(withPath: imageString).getData(maxSize: (1024 * 1024), completion: { (data, error) in
+            guard let data = data else {
+                NSLog("No data. \(error)")
+                return
+            }
+            let image = UIImage(data: data)
+            self.petsImage = image
+        })
+    }
+    
+    
     func setInsets () {
         let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
         
@@ -99,7 +154,10 @@ class PetCardCollectionViewController: UICollectionViewController {
             
             let petCard = petCards[indexPath.row]
             cell.updateUI(petCard: petCard)
-            
+//            cell.petNameLabel.text = String("ben")
+//            cell.petNameLabel.text = "ben"
+//           cell.petAgeLabel.text = "cats"
+//
             return cell
         }
         return UICollectionViewCell()
