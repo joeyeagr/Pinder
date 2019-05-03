@@ -27,14 +27,20 @@ class PetCardCollectionViewController: UICollectionViewController {
     static let sharedController = PetCardCollectionViewController()
     var pets: [Pet] = []
     var petsImage: UIImage?
+    var passedIndex = [String]()
     
     @IBOutlet var petCardCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if PetCardController.sharedController.fetchPetCards().count == 0 {
+           getAllPetCards()
+            noSavedPetsAlert()
+        }
+
         petCards = PetCardController.sharedController.fetchPetCards()
-        print(PetCardController.sharedController.fetchPetCards())
+        print(PetCardController.sharedController.fetchPetCards().count)
         
 //        self.collectionView!.register(PetCardCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
@@ -44,9 +50,20 @@ class PetCardCollectionViewController: UICollectionViewController {
         backgroundImage.contentMode = UIView.ContentMode.scaleToFill
         self.collectionView.backgroundView = backgroundImage
         
+//        getAllPetCards()
     }
     
-    
+    func noSavedPetsAlert() {
+        let alert = UIAlertController(title: "You Have No Pets Saved Yet!", message: "Swipe Right to Add Pets to Your Collection", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Back", style: .default, handler: { action in
+            self.dismiss(animated: true, completion: {
+                self.navigationController?.navigationBar.isHidden = true
+
+            })
+        }))
+        present(alert, animated: true)
+
+    }
     func getAllPetCards(completion: (([PetCard?]) -> Void)? = nil) {
         let db = Firestore.firestore()
         db.collection("PetId").getDocuments { (querySnapshot, err) in
@@ -58,6 +75,7 @@ class PetCardCollectionViewController: UICollectionViewController {
                     let docData = document.data()
                     if let petCard = PetCard(dictionary: docData) {
                         petCards.append(petCard)
+                        PetCardController.sharedController.saveToPersistentStorage(petCard: petCard)
                     }
                 }
                 if let completion = completion {
@@ -79,6 +97,9 @@ class PetCardCollectionViewController: UICollectionViewController {
                     let docData = document.data()
                     if let pet = Pet(petDictionary: docData) {
                         pets.append(pet)
+                    }
+                    if let petCard = PetCard(dictionary: docData) {
+                        PetCardController.sharedController.saveToPersistentStorage(petCard: petCard)
                     }
                 }
                 if let completion = completion {
@@ -163,18 +184,29 @@ class PetCardCollectionViewController: UICollectionViewController {
         return UICollectionViewCell()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "cellTappedSegue" {
+            let petDetailViewController = segue.destination as! PetDetailViewController
+            guard let index = collectionView.indexPathsForSelectedItems?.first else { return }
+            petDetailViewController.index = index.row
+
+        }
+    }
     
     
+//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        <#code#>
+//    }
     
     
     // MARK: UICollectionViewDelegate
     
-    /*
+    
      // Uncomment this method to specify if the specified item should be highlighted during tracking
      override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
      return true
      }
-     */
+     
     
     /*
      // Uncomment this method to specify if the specified item should be selected

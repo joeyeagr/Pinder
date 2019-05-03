@@ -50,8 +50,6 @@ extension ViewController {
                 UIView.animate(withDuration: 0.3, animations: {
                     card.center = CGPoint(x: card.center.x + 200, y: card.center.y + 75)
                     card.alpha = 0
-                    self.index += 1
-                    self.updatePetCardImage()
                 })
 
                 return

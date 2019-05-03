@@ -29,7 +29,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        requestAllPetCardsImages()
+//        requestAllPetCardsImages()
     }
     
     
@@ -80,6 +80,9 @@ class DetailViewController: UIViewController {
             }
         }
     }
+    
+   
+    
     
     
     @IBAction func backButtonTapped(_ sender: Any) {

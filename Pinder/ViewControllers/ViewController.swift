@@ -152,7 +152,7 @@ class ViewController: UIViewController {
         petPicture.layer.cornerRadius = 25
         card.layer.cornerRadius = 25
         divisor = (view.frame.width / 2) / 0.61
-        requestAllPetCardsImages()
+   
     }
     
     override func viewDidLoad() {
