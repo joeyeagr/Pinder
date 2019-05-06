@@ -13,7 +13,7 @@ import Firebase
 import FirebaseStorage
 import FirebaseFirestore
 
-extension ViewController {
+extension HomeViewController {
     
     @IBAction func panCard(_ sender: UIPanGestureRecognizer) {
         let card = sender.view!
@@ -43,6 +43,8 @@ extension ViewController {
                 UIView.animate(withDuration: 0.3, animations: {
                     card.center = CGPoint(x: card.center.x - 200, y: card.center.y + 75)
                     card.alpha = 0
+                }, completion: { _ in
+                    self.resetCard(cardDismissed: true)
                 })
                 return
             } else if card.center.x > (view.frame.width - 75) {
@@ -50,14 +52,16 @@ extension ViewController {
                 UIView.animate(withDuration: 0.3, animations: {
                     card.center = CGPoint(x: card.center.x + 200, y: card.center.y + 75)
                     card.alpha = 0
-                    self.index += 1
-                    self.updatePetCardImage()
+                }, completion: { _ in
+                    self.resetCard(cardDismissed: true)
                 })
                 return
             }
-            resetCard()
+            moveCardToMiddle()
         }
-        
+
 
     }
+    
+
 }

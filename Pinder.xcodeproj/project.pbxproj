@@ -16,7 +16,7 @@
 		5E265B52224A776E00236C2F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E265B51224A776D00236C2F /* GoogleService-Info.plist */; };
 		5E92326C2270B5B8005B0134 /* AddPetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE56D672253B1B100AE3C51 /* AddPetTableViewController.swift */; };
 		5EB5D71422453A5A000D6CE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5D71322453A5A000D6CE7 /* AppDelegate.swift */; };
-		5EB5D71622453A5A000D6CE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5D71522453A5A000D6CE7 /* ViewController.swift */; };
+		5EB5D71622453A5A000D6CE7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5D71522453A5A000D6CE7 /* HomeViewController.swift */; };
 		5EB5D71922453A5A000D6CE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EB5D71722453A5A000D6CE7 /* Main.storyboard */; };
 		5EB5D71E22453A5B000D6CE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EB5D71D22453A5B000D6CE7 /* Assets.xcassets */; };
 		5EB5D72122453A5B000D6CE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EB5D71F22453A5B000D6CE7 /* LaunchScreen.storyboard */; };
@@ -67,7 +67,7 @@
 		5E32A28E225CE2AF00D91405 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		5EB5D71022453A5A000D6CE7 /* Pinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EB5D71322453A5A000D6CE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5EB5D71522453A5A000D6CE7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5EB5D71522453A5A000D6CE7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5EB5D71822453A5A000D6CE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5EB5D71D22453A5B000D6CE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5EB5D72022453A5B000D6CE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -255,10 +255,10 @@
 				5EB91C70225CFF7300D53278 /* PetCardCollectionViewController.swift */,
 				9A06E6E4226A509F00AAC413 /* petCardCell.swift */,
 				5EE56D672253B1B100AE3C51 /* AddPetTableViewController.swift */,
+				5E00C42B22774EC800FBF0D7 /* EditAccountTableViewCell.swift */,
 				5EE56D652253B1B100AE3C51 /* EditAccountTableViewController.swift */,
 				CB061357225CDD3300CE0D47 /* CreateAccountTableViewController.swift */,
-				5EB5D71522453A5A000D6CE7 /* ViewController.swift */,
-				5E00C42B22774EC800FBF0D7 /* EditAccountTableViewCell.swift */,
+				5EB5D71522453A5A000D6CE7 /* HomeViewController.swift */,
 				5E32A28E225CE2AF00D91405 /* Animations.swift */,
 			);
 			path = ViewControllers;
@@ -524,7 +524,7 @@
 				CBAAC496224A80C3009B2E3D /* FirebaseController.swift in Sources */,
 				5EE56D682253B1B100AE3C51 /* EditAccountTableViewController.swift in Sources */,
 				CBAAC4A1224A969C009B2E3D /* GlobalExtensions.swift in Sources */,
-				5EB5D71622453A5A000D6CE7 /* ViewController.swift in Sources */,
+				5EB5D71622453A5A000D6CE7 /* HomeViewController.swift in Sources */,
 				5EB91C69225CFE7300D53278 /* Stack.swift in Sources */,
 				CB4ABDF0224E792B00162F94 /* Pet.swift in Sources */,
 				5E00C42C22774EC800FBF0D7 /* EditAccountTableViewCell.swift in Sources */,
