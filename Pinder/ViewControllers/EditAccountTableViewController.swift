@@ -11,7 +11,6 @@ import FirebaseAuth
 import FirebaseStorage
 import FirebaseFirestore
 
-
 class EditAccountTableViewController: UITableViewController {
   
     var pets: [Pet]?
@@ -124,7 +123,5 @@ class EditAccountTableViewController: UITableViewController {
             print ("Error signing out: %@", signOutError)
         }
     }
-    
-//    @IBAction func unwindToEditAccount(_ sender: UIStoryboardSegue) {}
     
 }

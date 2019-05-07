@@ -19,7 +19,6 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
     @IBOutlet var genderControl: UISegmentedControl!
     @IBOutlet var bioTextView: UITextView!
     @IBOutlet var firstUIImage: UIImageView!
-    @IBOutlet var secondUIImage: UIImageView!
     @IBOutlet var currentDateLabel: UILabel!
     @IBOutlet var humanNameLabel: UILabel!
     @IBOutlet var emailLabel: UILabel!
@@ -29,7 +28,7 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
     var currentAuthID = Auth.auth().currentUser?.uid
     var genderBenderControl: Bool = false
     let storage = Storage.storage()
-    let fileName2 = String(arc4random_uniform(999999999)) + "Pets.jpg"
+    let fileName2 = "petImages/" + String(arc4random_uniform(999999999)) + "Pets.jpg"
     var imageRef: StorageReference {
         return Storage.storage().reference().child("petImages")
     }
@@ -90,7 +89,7 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
         let day = calander.component(.day, from: date)
         let month = calander.component(.month, from: date)
         let year = calander.component(.year, from: date)
-        let currentLabel = ("Today's Date: \(month).\(day).\(year)")
+        let currentLabel = ("\(month).\(day).\(year)")
         currentDateLabel.text = currentLabel
         return currentLabel
     }
@@ -101,18 +100,18 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
         let humanName = humanNameLabel.text ?? "human name"
         let email = emailLabel.text ?? "email"
         let phoneNumber = phoneNumberLabel.text ?? "phone number"
-        let humanId = currentAuthID ?? "randomlyGeneratedCode"
+        let humanUID = currentAuthID ?? "randomlyGeneratedCode"
 
         //pet data
         let petName: String = petNameTF.text ?? "pet"
         let petBreed: String = petBreedTF.text ?? "breed"
-        let petAge: Int = Int(petAgeTF.text ?? "age") ?? 0
+        let petAge: String = petAgeTF.text ?? "age"
         let petBio: String = bioTextView.text ?? "bio"
         let isMale: Bool = genderBenderControl
         let dateCreated: String = currentDateLabel.text ?? "date"
-        let petImage1: String = ""
-        let petImage2: String = fileName2
-        let humanContact: Array<String> = [humanName, email, phoneNumber, humanId]
+        let petImage1: String = fileName2
+        let humanContact: Array<String> = [humanName, email, phoneNumber]
+        let humanId: String = humanUID
         
         let pet = Pet(petId: String(arc4random_uniform(999999999)),
                       petName: petName,
@@ -122,8 +121,8 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
                       petBio: petBio,
                       date: dateCreated,
                       petImage1: petImage1,
-                      petImage2: petImage2,
-                      humanContact: humanContact)
+                      humanContact: humanContact,
+                      humanId: humanId)
         
         let userRef = self.db.collection("PetId")
         userRef.document(String(pet.petId)).setData(pet.petDictionary){ err in
@@ -143,46 +142,14 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
     
     @IBAction func addImageButtonTapped(_ sender: Any) {
 
-        
-//        let imagePicker = UIImagePickerController()
-//        imagePicker.delegate = self
-//
-//        let alertController = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
-//
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//        alertController.addAction(cancelAction)
-//
-//        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-//            let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: { action in
-//                imagePicker.sourceType = .camera
-//                self.present(imagePicker, animated: true, completion: nil)
-//            })
-//            alertController.addAction(cameraAction)
-//        }
-//        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-//            let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default, handler: { action in
-//                imagePicker.sourceType = .photoLibrary
-//                self.present(imagePicker, animated: true, completion: nil)
-//
-//            })
-//            alertController.addAction(photoLibraryAction)
-//        }
-//        present(alertController, animated: true, completion: nil)
-        
-        
-        
-    }
-    
-    @IBAction func addImageButtonTapped2(_ sender: Any) {
-        
         let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        
+        imagePicker.delegate = self
+
         let alertController = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
-        
+
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
-        
+
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: { action in
                 imagePicker.sourceType = .camera
@@ -194,10 +161,12 @@ class AddPetTableViewController: UITableViewController, UIImagePickerControllerD
             let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default, handler: { action in
                 imagePicker.sourceType = .photoLibrary
                 self.present(imagePicker, animated: true, completion: nil)
+
             })
             alertController.addAction(photoLibraryAction)
         }
         present(alertController, animated: true, completion: nil)
+        
     }
     
     @IBAction func genderControlTapped(_ sender: UISegmentedControl) {
