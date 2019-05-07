@@ -74,20 +74,6 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
         }
     }
     
-    func signInUser(email: String, password: String) {
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if error == nil {
-                print("User Signed In")
-                self.userDefault.set(true, forKey: "userSignedIn")
-                self.userDefault.synchronize()
-                self.performSegue(withIdentifier: "logIn", sender: nil)
-            } else {
-                print(error as Any)
-                print(error?.localizedDescription as Any)
-            }
-        }
-    }
-    
     func createData() {
         let stringNumber = phoneNumberTF.text ?? "0000000000"
         guard let id: String = self.currentAuthID else { return } //this not working.
@@ -133,10 +119,17 @@ class CreateAccountTableViewController: UITableViewController, UIImagePickerCont
         guard let email = logInEmail.text else {return}
         guard let password = logInPassword.text else {return}
         
-        Auth.auth().signIn(withEmail: email, link: password) { [weak self] user, error in
-            guard let strongSelf = self else {return}
-            self?.performSegue(withIdentifier: "logIn", sender: nil)
+        Auth.auth().signIn(withEmail: email, link: password) { (user, error) in
+            if user != nil {
+                self.performSegue(withIdentifier: "logIn", sender: self)
+            } else {
+                let alert = UIAlertController(title: "Error Logging In", message: nil, preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            }
         }
+        
     }
     
     @IBAction func unwindToLogIn(_ sender: UIStoryboardSegue) {}

@@ -276,7 +276,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="rIM-Qh-Y0n" kind="show" identifier="addPet" id="zg4-mI-ajr"/>
+                        <segue destination="rIM-Qh-Y0n" kind="show" identifier="addPet" id="4NR-I3-QIQ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BRd-o6-rog" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -563,16 +563,20 @@
             </objects>
             <point key="canvasLocation" x="3629" y="509"/>
         </scene>
-        <!--Add Pet Table View Controller-->
+        <!--Add Pet View Controller-->
         <scene sceneID="585-mH-4vG">
             <objects>
-                <viewController id="rIM-Qh-Y0n" customClass="AddPetTableViewController" customModule="Pinder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rIM-Qh-Y0n" customClass="AddPetViewController" customModule="Pinder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pNi-GI-xrX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u5n-M4-iqw">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="dogIcon" translatesAutoresizingMaskIntoConstraints="NO" id="u5n-M4-iqw">
                                 <rect key="frame" x="16" y="88" width="382" height="314"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="r03-oo-IZn" appends="YES" id="Sqj-PS-2yf"/>
+                                </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5em-bQ-v3b">
                                 <rect key="frame" x="151" y="595" width="247" height="21"/>
@@ -668,8 +672,7 @@
                                     <segment title="Female"/>
                                 </segments>
                                 <connections>
-                                    <action selector="genderControlTapped:" destination="rIM-Qh-Y0n" eventType="valueChanged" id="KCJ-9N-0zz"/>
-                                    <action selector="genderControlTapped:" destination="QAe-uh-BzB" eventType="valueChanged" id="LC6-oI-PKA"/>
+                                    <action selector="genderControlTapped:" destination="rIM-Qh-Y0n" eventType="valueChanged" id="T1j-48-bUe"/>
                                 </connections>
                             </segmentedControl>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LTK-Qd-9O2">
@@ -678,12 +681,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8NK-lT-v0X">
-                                <rect key="frame" x="16" y="88" width="382" height="314"/>
-                                <connections>
-                                    <action selector="addImageButtonTapped:" destination="rIM-Qh-Y0n" eventType="touchUpInside" id="xZH-Xz-ILN"/>
-                                </connections>
-                            </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wbv-iV-bWM">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -696,7 +693,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="pOR-qD-fvD">
                                             <connections>
-                                                <action selector="saveButtonTapped:" destination="rIM-Qh-Y0n" id="eKJ-yU-oW8"/>
+                                                <action selector="saveButtonTapped:" destination="rIM-Qh-Y0n" id="5kw-vt-rxS"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -716,25 +713,21 @@
                             <constraint firstItem="Ncd-GK-cIy" firstAttribute="leading" secondItem="LTK-Qd-9O2" secondAttribute="leading" id="7Li-6Y-p5x"/>
                             <constraint firstItem="f15-e3-I9s" firstAttribute="trailing" secondItem="u5n-M4-iqw" secondAttribute="trailing" constant="16" id="7RA-wa-FBn"/>
                             <constraint firstItem="Ssw-Vr-Iiw" firstAttribute="top" secondItem="fMZ-sY-3wd" secondAttribute="bottom" constant="8" id="7cj-Hf-oRh"/>
-                            <constraint firstItem="rq6-b1-7Gw" firstAttribute="top" secondItem="8NK-lT-v0X" secondAttribute="bottom" constant="17" id="8fP-qD-kuG"/>
                             <constraint firstItem="TZP-ut-Ppx" firstAttribute="top" secondItem="GMX-CV-7wG" secondAttribute="bottom" constant="8" id="COA-eq-HJo"/>
                             <constraint firstItem="J0h-jJ-7k9" firstAttribute="leading" secondItem="f15-e3-I9s" secondAttribute="leading" constant="16" id="F0V-J1-6Jy"/>
                             <constraint firstItem="LTK-Qd-9O2" firstAttribute="top" secondItem="Ncd-GK-cIy" secondAttribute="bottom" constant="7" id="GBe-JF-jtQ"/>
                             <constraint firstItem="dbj-qq-asG" firstAttribute="baseline" secondItem="fMZ-sY-3wd" secondAttribute="baseline" id="GgX-KJ-cn5"/>
                             <constraint firstItem="8dH-ve-9RO" firstAttribute="leading" secondItem="Ncd-GK-cIy" secondAttribute="trailing" constant="24" id="Grc-UA-rFd"/>
-                            <constraint firstItem="8NK-lT-v0X" firstAttribute="leading" secondItem="f15-e3-I9s" secondAttribute="leading" constant="16" id="Hep-0j-2YM"/>
                             <constraint firstItem="fMZ-sY-3wd" firstAttribute="leading" secondItem="f15-e3-I9s" secondAttribute="leading" constant="16" id="I5q-zg-EHV"/>
                             <constraint firstItem="LTK-Qd-9O2" firstAttribute="leading" secondItem="f15-e3-I9s" secondAttribute="leading" constant="16" id="ILC-u7-wib"/>
                             <constraint firstItem="MAN-wH-7aG" firstAttribute="leading" secondItem="rq6-b1-7Gw" secondAttribute="leading" id="Itc-H3-bku"/>
                             <constraint firstItem="MAN-wH-7aG" firstAttribute="leading" secondItem="ym7-MB-nXO" secondAttribute="trailing" constant="37" id="Kq1-cK-tKE"/>
                             <constraint firstItem="GMX-CV-7wG" firstAttribute="baseline" secondItem="g8Q-Iw-Xoa" secondAttribute="baseline" id="LQ9-Ue-P6Y"/>
-                            <constraint firstItem="8NK-lT-v0X" firstAttribute="top" secondItem="f15-e3-I9s" secondAttribute="top" constant="44" id="MXl-hB-esy"/>
                             <constraint firstItem="g8Q-Iw-Xoa" firstAttribute="leading" secondItem="GMX-CV-7wG" secondAttribute="trailing" constant="20" id="NNI-s2-Kxu"/>
                             <constraint firstItem="LTK-Qd-9O2" firstAttribute="bottom" secondItem="f15-e3-I9s" secondAttribute="bottom" id="PLM-Cv-WqB"/>
                             <constraint firstItem="MAN-wH-7aG" firstAttribute="trailing" secondItem="nER-CU-gYx" secondAttribute="trailing" id="QOE-LO-VF2"/>
                             <constraint firstItem="ym7-MB-nXO" firstAttribute="leading" secondItem="ee7-9O-GVU" secondAttribute="leading" id="R16-UJ-ioj"/>
                             <constraint firstItem="GMX-CV-7wG" firstAttribute="leading" secondItem="f15-e3-I9s" secondAttribute="leading" constant="16" id="S6V-cP-WuF"/>
-                            <constraint firstItem="f15-e3-I9s" firstAttribute="trailing" secondItem="8NK-lT-v0X" secondAttribute="trailing" constant="16" id="Ti3-DB-6wu"/>
                             <constraint firstItem="MAN-wH-7aG" firstAttribute="trailing" secondItem="LTK-Qd-9O2" secondAttribute="trailing" id="YOa-VM-3ab"/>
                             <constraint firstItem="MAN-wH-7aG" firstAttribute="leading" secondItem="nER-CU-gYx" secondAttribute="leading" id="aSg-EL-iLO"/>
                             <constraint firstItem="LTK-Qd-9O2" firstAttribute="top" secondItem="Ncd-GK-cIy" secondAttribute="bottom" constant="7" id="aUw-K6-lRH"/>
@@ -766,27 +759,28 @@
                     </view>
                     <navigationItem key="navigationItem" id="cDB-uL-1ZR">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="fmq-Qu-DBT"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Mac-2D-Z8e">
-                            <connections>
-                                <action selector="saveButtonTapped:" destination="rIM-Qh-Y0n" id="WqP-sg-6wy"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Mac-2D-Z8e"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="bioTextView" destination="LTK-Qd-9O2" id="BMc-ir-jOB"/>
-                        <outlet property="currentDateLabel" destination="MAN-wH-7aG" id="rbs-vk-z10"/>
-                        <outlet property="emailLabel" destination="8dH-ve-9RO" id="cSt-Zg-yqX"/>
-                        <outlet property="firstUIImage" destination="u5n-M4-iqw" id="He1-wJ-au0"/>
-                        <outlet property="genderControl" destination="ee7-9O-GVU" id="3fB-rp-Jmt"/>
-                        <outlet property="humanNameLabel" destination="g8Q-Iw-Xoa" id="8re-lu-Ii3"/>
-                        <outlet property="petAgeTF" destination="dbj-qq-asG" id="bwh-0K-J0l"/>
-                        <outlet property="petBreedTF" destination="nER-CU-gYx" id="vhH-Fc-vCI"/>
-                        <outlet property="petNameTF" destination="rq6-b1-7Gw" id="PUe-c2-3YN"/>
-                        <outlet property="phoneNumberLabel" destination="5em-bQ-v3b" id="szL-39-CkA"/>
+                        <outlet property="bioTextView" destination="LTK-Qd-9O2" id="Fpk-3q-2Jo"/>
+                        <outlet property="currentDateLabel" destination="MAN-wH-7aG" id="Cw3-cE-53w"/>
+                        <outlet property="emailLabel" destination="8dH-ve-9RO" id="BhZ-Mw-CZ6"/>
+                        <outlet property="firstUIImage" destination="u5n-M4-iqw" id="dC0-AU-C6J"/>
+                        <outlet property="genderControl" destination="ee7-9O-GVU" id="nA8-dc-Xe1"/>
+                        <outlet property="humanNameLabel" destination="g8Q-Iw-Xoa" id="ibi-Rk-aYg"/>
+                        <outlet property="petAgeTF" destination="dbj-qq-asG" id="W4T-Jl-GkH"/>
+                        <outlet property="petBreedTF" destination="nER-CU-gYx" id="glF-bp-6EM"/>
+                        <outlet property="petNameTF" destination="rq6-b1-7Gw" id="suK-cF-6Wt"/>
+                        <outlet property="phoneNumberLabel" destination="5em-bQ-v3b" id="czb-c4-IOD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PcR-L4-JCv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="TiC-Fw-QY5" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="r03-oo-IZn">
+                    <connections>
+                        <action selector="petImageTapped:" destination="rIM-Qh-Y0n" id="ysp-OW-bI7"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3335" y="-222"/>
         </scene>
