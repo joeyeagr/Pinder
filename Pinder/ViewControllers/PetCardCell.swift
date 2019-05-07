@@ -19,6 +19,7 @@ class PetCardCell: UICollectionViewCell {
     @IBOutlet weak var petCardImageView: UIImageView!
     
     @IBOutlet weak var petNameLabel: UILabel!
+    @IBOutlet weak var petAgeLabel: UILabel!
     
     
     static let sharedController = PetCardCell()
@@ -28,6 +29,7 @@ class PetCardCell: UICollectionViewCell {
     var petCard: PetCard? {
         didSet {
             guard let petCard = petCard else {return}
+            
         }
     }
     
@@ -41,17 +43,27 @@ class PetCardCell: UICollectionViewCell {
                 return
             }
             let image = UIImage(data: data)
-            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
             imageView.image = image
-            self.addSubview(imageView)
-        })
+            imageView.layer.cornerRadius = 25
+            imageView.layer.masksToBounds = true
+//            imageView.sendSubviewToBack(self.petCardImageView)
+//            self.addSubview(imageView)
+            self.petCardImageView.image = image
+            self.petNameLabel.text = petCard.petName
+            self.petAgeLabel.text = String(petCard.petAge)
+        })        
+        
     }
     
     
     override func layoutSubviews() {
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 2.0
-        layer.cornerRadius = 4.0
+        layer.cornerRadius = 25
+        
+        
+        
     }
     
     

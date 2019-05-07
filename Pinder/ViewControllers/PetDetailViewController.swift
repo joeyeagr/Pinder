@@ -161,6 +161,8 @@ class PetDetailViewController: UIViewController {
         backgroundImage.image = UIImage(named: "Gradient")
         backgroundImage.contentMode = UIView.ContentMode.scaleToFill
         self.view.insertSubview(backgroundImage, at: 0)
+        petImageView.layer.borderColor = UIColor.black.cgColor
+        petImageView.layer.borderWidth = 2.0
     }
     
     
@@ -189,5 +191,26 @@ class PetDetailViewController: UIViewController {
         }))
         present(alert, animated: true)
         
+    }
+    
+    
+    
+    override func encodeRestorableState(with coder: NSCoder) {
+        //1
+        if let petCardId = petCards[index].petId {
+            
+           coder.encode(petCardId, forKey: "petId")
+            
+
+        }
+        super.encodeRestorableState(with: coder)
+    }
+    
+    override func decodeRestorableState(with coder: NSCoder) {
+        if let petId = coder.decodeData() {
+            
+        }
+        
+        super.decodeRestorableState(with: coder)
     }
 }
