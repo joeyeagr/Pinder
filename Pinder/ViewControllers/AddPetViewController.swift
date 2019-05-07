@@ -183,6 +183,16 @@ class AddPetViewController: UIViewController, UIImagePickerControllerDelegate, U
 //
 //    }
     
+    @IBAction func petImageButtonTapped(_ sender: Any) {
+        
+        print("IT WORKED")
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
+            present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    
     @IBAction func petImageTapped(_ sender: UITapGestureRecognizer) {
         print("IT WORKED")
 //        if sender.state == .ended {
