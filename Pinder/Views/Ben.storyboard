@@ -86,14 +86,10 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="wAl-qk-J9S">
-                        <barButtonItem key="leftBarButtonItem" id="WlK-cO-vaf">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="WlK-cO-vaf">
                             <connections>
                                 <action selector="backButtonTapped:" destination="flr-di-EFP" id="hrN-bZ-aIL"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Home" id="qjj-Sb-rda">
-                            <connections>
-                                <segue destination="3cD-yN-GJC" kind="show" id="tfi-sT-TER"/>
+                                <segue destination="3cD-yN-GJC" kind="presentation" id="A2F-mI-qFU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -143,6 +139,13 @@
                                     <action selector="yupButtonTapped:" destination="dxX-iW-lSb" eventType="touchUpInside" id="s2e-0p-Yai"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fpd-gA-Crm">
+                                <rect key="frame" x="22" y="100" width="337" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -163,7 +166,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SnF-A2-P09" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1708" y="-582"/>
+            <point key="canvasLocation" x="1708" y="-582.45877061469275"/>
         </scene>
         <!--Pet Detail View Controller-->
         <scene sceneID="MsC-0q-2b6">

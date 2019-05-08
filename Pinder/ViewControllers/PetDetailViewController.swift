@@ -35,40 +35,25 @@ class PetDetailViewController: UIViewController {
     var totalPetCount: Int = 0
     var passedIndexPath: IndexPath?
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         self.navigationController?.navigationBar.isHidden = false
-        
-       
-        
-//        if let passedIndexPath = passedIndexPath?.first {
-//            print(passedIndexPath)
-//            let petCards2 = petCards[passedIndexPath]
-//            if let imageString = petCards2.petImage1 {
-//                getImages(imageString: imageString)
-//
-//            }
-//        }
-        
         setUpImageView()
-//        getPetCards()
-//        updateLabels()
-        
         
         DispatchQueue.main.async {
             self.updateImages()
-//            self.index += 1
+            //            self.index += 1
         }
     }
     
-    func updateImages() {
-    guard let petImageString = petCards[index].petImage1 else {return}
     
-    getImages(imageString: petImageString)
-    updateLabels()
+    func updateImages() {
+        guard let petImageString = petCards[index].petImage else {return}
+        getImages(imageString: petImageString)
+        updateLabels()
     }
     
     
@@ -78,11 +63,11 @@ class PetDetailViewController: UIViewController {
         if index < 0 {
             index = petCards.count - 1
         }
-        
         updateImages()
         
         print(index)
     }
+    
     
     @IBAction func nextButtonTapped(_ sender: Any) {
         index += 1
@@ -92,18 +77,19 @@ class PetDetailViewController: UIViewController {
         }
         
         updateImages()
-
+        
         print(index)
     }
     
     
     func getPetCards() {
         for petCard in petCards {
-            guard let imageString = petCard.petImage1 else {return}
+            guard let imageString = petCard.petImage else {return}
             petCardsImageStringArray.append(imageString)
             petCardArray.append(petCard)
         }
     }
+    
     
     var pets: [Pet] = []
     var petsImageString: [String] = []
@@ -137,10 +123,9 @@ class PetDetailViewController: UIViewController {
     }
     
     
-    
     func updateLabels() {
         petNameLabel.text = petCards[index].petName
-        petAgeLabel.text = String(petCards[index].petAge)
+        petAgeLabel.text = petCards[index].petAge
         petBioTextView.text = petCards[index].petBio
         petBreedLabel.text = petCards[index].petBreed
         datePostedLabel.text = petCards[index].date
@@ -163,6 +148,11 @@ class PetDetailViewController: UIViewController {
         self.view.insertSubview(backgroundImage, at: 0)
         petImageView.layer.borderColor = UIColor.black.cgColor
         petImageView.layer.borderWidth = 2.0
+        //        petImageView.layer.shadowColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0).cgColor
+        //        petImageView.layer.shadowOffset = CGSize(width: 2, height: 3)
+        //        petImageView.layer.shadowRadius = 1.7
+        //        petImageView.layer.shadowOpacity = 1.0
+        petImageView.clipsToBounds = true
     }
     
     
@@ -176,41 +166,47 @@ class PetDetailViewController: UIViewController {
         if PetCardController.sharedController.fetchPetCards().count == 0 {
             noSavedPetsAlert()
         } else {
-            index += 1
+            index -= 1
+            if index < 0 {
+                index = petCards.count - 1
+            }
             updateImages()
+            print(index)
         }
     }
+    
     
     func noSavedPetsAlert() {
         let alert = UIAlertController(title: "You Have No More Pets Saved", message: "Swipe Right to Add Pets to Your Collection", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Swipe!", style: .default, handler: { action in
             self.dismiss(animated: true, completion: {
                 self.navigationController?.navigationBar.isHidden = true
-
             })
         }))
         present(alert, animated: true)
-        
     }
-    
     
     
     override func encodeRestorableState(with coder: NSCoder) {
         //1
         if let petCardId = petCards[index].petId {
             
-           coder.encode(petCardId, forKey: "petId")
-            
-
+            coder.encode(petCardId, forKey: "petId")
         }
         super.encodeRestorableState(with: coder)
     }
+    
     
     override func decodeRestorableState(with coder: NSCoder) {
         if let petId = coder.decodeData() {
             
         }
-        
         super.decodeRestorableState(with: coder)
     }
+    
+    
+    
+    
+    
+    
 }

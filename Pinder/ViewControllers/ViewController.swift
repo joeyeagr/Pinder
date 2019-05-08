@@ -134,7 +134,7 @@ class ViewController: UIViewController {
     
     func updatePetCardImage() {
         let petCard = petCardArray[index]
-        let imageString = petCard?.petImage1
+        let imageString = petCard?.petImage
         Storage.storage().reference(withPath: imageString!).getData(maxSize: (1024 * 1024), completion: { (data, error) in
             guard let data = data else {
                 NSLog("No data, \(error)")

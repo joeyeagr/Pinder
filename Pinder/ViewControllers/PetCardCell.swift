@@ -36,7 +36,7 @@ class PetCardCell: UICollectionViewCell {
     
     func updateUI(petCard: PetCard?) {
         guard let petCard = petCard else {return}
-        let imageString = petCard.petImage1
+        let imageString = petCard.petImage
         Storage.storage().reference(withPath: imageString!).getData(maxSize: (1024 * 1024), completion: { (data, error) in
             guard let data = data else {
                 NSLog("No data. \(error)")
@@ -51,13 +51,17 @@ class PetCardCell: UICollectionViewCell {
 //            self.addSubview(imageView)
             self.petCardImageView.image = image
             self.petNameLabel.text = petCard.petName
-            self.petAgeLabel.text = String(petCard.petAge)
+            self.petAgeLabel.text = petCard.petAge
         })        
         
     }
     
     
     override func layoutSubviews() {
+        layer.shadowColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0).cgColor
+        layer.shadowOffset = CGSize(width: 2, height: 3)
+        layer.shadowRadius = 1.7
+        layer.shadowOpacity = 1.0
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 2.0
         layer.cornerRadius = 25
