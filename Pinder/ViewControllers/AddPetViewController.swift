@@ -39,6 +39,14 @@ class AddPetViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         getPersonalAccountData()
         getCurrentDate()
+        changeBackground()
+    }
+    
+    func changeBackground() {
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "Gradient")
+        backgroundImage.contentMode = UIView.ContentMode.scaleToFill
+        self.view.insertSubview(backgroundImage, at: 0)
     }
     
     func uploadPetImage() {
@@ -190,19 +198,6 @@ class AddPetViewController: UIViewController, UIImagePickerControllerDelegate, U
             imagePickerController.delegate = self
             imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
             present(imagePickerController, animated: true, completion: nil)
-    }
-    
-    
-    @IBAction func petImageTapped(_ sender: UITapGestureRecognizer) {
-        print("IT WORKED")
-//        if sender.state == .ended {
-//        let imagePickerController = UIImagePickerController()
-//        imagePickerController.delegate = self
-//        imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
-//        present(imagePickerController, animated: true, completion: nil)
-//        } else {
-//            print("error")
-//        }
     }
     
     @IBAction func genderControlTapped(_ sender: UISegmentedControl) {

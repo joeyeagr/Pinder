@@ -22,9 +22,16 @@ class EditAccountTableViewController: UITableViewController {
         
          var pets = [Pet]()
         
-       // getPetData()
+        changeBackground()
         db = Firestore.firestore()
         getPersonalAccountData()
+    }
+    
+    func changeBackground() {
+            let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+            backgroundImage.image = UIImage(named: "Gradient")
+            backgroundImage.contentMode = UIView.ContentMode.scaleToFill
+            self.tableView.backgroundView = backgroundImage
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
