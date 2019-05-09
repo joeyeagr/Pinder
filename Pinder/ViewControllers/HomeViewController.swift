@@ -144,7 +144,7 @@ class HomeViewController: UIViewController {
         setCornerAndShadow()
         petPicture.layer.cornerRadius = 25
         card.layer.cornerRadius = 25
-        downloadAllPets()
+//        downloadAllPets()
     }
 
     @IBAction func unwindToMain(_ sender: UIStoryboardSegue) {}
