@@ -32,7 +32,7 @@ class PetDetailViewController: UIViewController {
     var petCardArray: [PetCard] = []
     var index: Int = 0
     var petCards = PetCardController.sharedController.fetchPetCards()
-    var totalPetCount: Int = 0
+    var totalPetCount = PetCardController.sharedController.fetchPetCards().count
     var passedIndexPath: IndexPath?
     
     
@@ -59,25 +59,46 @@ class PetDetailViewController: UIViewController {
     
     @IBAction func previousButtonTapped(_ sender: Any) {
         index -= 1
-        
+
         if index < 0 {
             index = petCards.count - 1
         }
         updateImages()
-        
-        print(index)
+
+        print("here is index\(index)")
+        print("here is petCards.count\(petCards.count)")
     }
     
     
     @IBAction func nextButtonTapped(_ sender: Any) {
         index += 1
-        
+
         if index >= petCards.count {
             index = 0
         }
-        
+
         updateImages()
-        
+
+        print("here is index\(index)")
+        print("here is petCards.count\(petCards.count)")
+    }
+    
+    
+    func setNextCardIndex() {
+        index = index + 1
+        if self.index >= totalPetCount {
+            index = 0
+            print("Go back to the beginning")
+        }
+        print(index)
+    }
+    
+    func setPreviousCardIndex() {
+        index = index - 1
+        if self.index <= 0 {
+            index = 0
+            print("sorry, can’t refresh")
+        }
         print(index)
     }
     
@@ -133,9 +154,9 @@ class PetDetailViewController: UIViewController {
         contactEmailLabel.text = petCards[index].humanEmail
         contactPhoneLabel.text = petCards[index].humanPhoneNumber
         if petCards[index].isMale == true {
-            petGenderLabel.text = "Female"
-        } else {
             petGenderLabel.text = "Male"
+        } else {
+            petGenderLabel.text = "Female"
         }
     }
     
@@ -166,6 +187,8 @@ class PetDetailViewController: UIViewController {
         if PetCardController.sharedController.fetchPetCards().count == 0 {
             noSavedPetsAlert()
         } else {
+            print("here is index\(index)")
+            print("here is petCards.count\(petCards.count)")
             index -= 1
             if index < 0 {
                 index = petCards.count - 1
@@ -176,6 +199,7 @@ class PetDetailViewController: UIViewController {
     }
     
     
+   
     func noSavedPetsAlert() {
         let alert = UIAlertController(title: "You Have No More Pets Saved", message: "Swipe Right to Add Pets to Your Collection", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Swipe!", style: .default, handler: { action in
