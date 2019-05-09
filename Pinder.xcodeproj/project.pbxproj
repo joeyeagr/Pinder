@@ -25,6 +25,8 @@
 		CB3247DA227892F000060C06 /* AddPetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE56D672253B1B100AE3C51 /* AddPetTableViewController.swift */; };
 		CB4ABDF0224E792B00162F94 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ABDEF224E792B00162F94 /* Pet.swift */; };
 		CB9F9EE92281DDA500D4954C /* AddPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F9EE82281DDA500D4954C /* AddPetViewController.swift */; };
+		CBA97CF4228489A000583571 /* PetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF68B972276A00A00B4437C /* PetDetailViewController.swift */; };
+		CBA97CF5228489A400583571 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A84EF852272264600A004CD /* DetailViewController.swift */; };
 		CBAAC496224A80C3009B2E3D /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAC495224A80C3009B2E3D /* FirebaseController.swift */; };
 		CBAAC49F224A967D009B2E3D /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAC49E224A967D009B2E3D /* Users.swift */; };
 		CBAAC4A1224A969C009B2E3D /* GlobalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAC4A0224A969C009B2E3D /* GlobalExtensions.swift */; };
@@ -518,6 +520,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBA97CF5228489A400583571 /* DetailViewController.swift in Sources */,
+				CBA97CF4228489A000583571 /* PetDetailViewController.swift in Sources */,
 				CB3247DA227892F000060C06 /* AddPetTableViewController.swift in Sources */,
 				CBC99F0C22773EC3001F2000 /* PetCardCollectionViewController.swift in Sources */,
 				CBC99F0B22773E55001F2000 /* AddPetExtension.swift in Sources */,
