@@ -13,7 +13,7 @@ import FirebaseAuth
 import FirebaseStorage
 
 class EditAccountTableViewController: UITableViewController {
-  
+    
     var pets: [Pet]?
     var db: Firestore!
     var currentUser: User?
@@ -28,12 +28,11 @@ class EditAccountTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         var pets = [Pet]()
+        var pets = [Pet]()
         
         changeBackground()
         db = Firestore.firestore()
         getPersonalAccountData()
-        print(currentAuthID)
     }
     
     func changeBackground() {
@@ -80,7 +79,6 @@ class EditAccountTableViewController: UITableViewController {
                     let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                     print("data lready added: \(dataDescription)")
                 } else {
-                    self.createData()
                     print("document added to Firestore")
                 }
                 self.userId = self.currentAuthID ?? "no uid"
@@ -88,36 +86,36 @@ class EditAccountTableViewController: UITableViewController {
         }
     }
     
-    func createData() {
-        
-        guard let id: String = self.currentAuthID else { return }
-        print(id)
-        guard let name: String = humanName  else { return }
-        print(name)
-        guard let email: String = email  else { return }
-        print(email)
-        guard let password: String = password  else { return }
-        print(password)
-        guard let phoneNumber: Int = Int(phoneNumber)  else { return }
-        print(phoneNumber)
-        
-        let user = Users(id: id,
-                         name: name,
-                         email: email,
-                         password: password,
-                         phoneNumber: phoneNumber)
-        
-        let userRef = self.db.collection("profile")
-        userRef.document(String(user.id)).setData(user.humanDictionary){ error in
-            if error == nil {
-                print("Added Human Data")
-                print("call, UserID: \(self.currentAuthID)")
-            } else {
-                print("you have an error in creating data")
-                print(Error.self)
-            }
-        }
-    }
+//    func createData() {
+//
+//        guard let id: String = self.currentAuthID else { return }
+//        print(id)
+//        guard let name: String = humanName  else { return }
+//        print(name)
+//        guard let email: String = email  else { return }
+//        print(email)
+//        guard let password: String = password  else { return }
+//        print(password)
+//        guard let phoneNumber: Int = Int(phoneNumber)  else { return }
+//        print(phoneNumber)
+//
+//        let user = Users(id: id,
+//                         name: name,
+//                         email: email,
+//                         password: password,
+//                         phoneNumber: phoneNumber)
+//
+//        let userRef = self.db.collection("profile")
+//        userRef.document(String(user.id)).setData(user.humanDictionary){ error in
+//            if error == nil {
+//                print("Added Human Data")
+//                print("call, UserID: \(self.currentAuthID)")
+//            } else {
+//                print("you have an error in creating data")
+//                print(Error.self)
+//            }
+//        }
+//    }
 
     func getPersonalAccountData() {
         

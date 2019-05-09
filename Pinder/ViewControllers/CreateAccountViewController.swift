@@ -35,8 +35,6 @@ class CreateAccountViewController: UIViewController, UIImagePickerControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("your\(currentAuthID)")
-        
         db = Firestore.firestore()
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
@@ -56,48 +54,43 @@ class CreateAccountViewController: UIViewController, UIImagePickerControllerDele
         guard let email = emailTF.text else { return }
         guard let password = passwordTF.text else { return }
         
-        if self.emailTF.text == "" || self.passwordTF.text == "" || self.humanNameTF.text == "" || self.phoneNumberTF.text == "" {
-            
-            UIView.animate(withDuration: 0.09, animations: {
-                let move = CGAffineTransform(translationX: 10, y: 0)
-                self.emailTF.transform = move
-                self.passwordTF.transform = move
-                self.humanNameTF.transform = move
-                self.phoneNumberTF.transform = move
-            }) { (_) in
-                UIView.animate(withDuration: 0.09, animations: {
-                    self.emailTF.transform = .identity
-                    self.passwordTF.transform = .identity
-                    self.humanNameTF.transform = .identity
-                    self.phoneNumberTF.transform = .identity
-                })
-            }
-        } else {
-        
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if error != nil {
                 print("Not Valid")
                 print(error)
             } else {
-                //signIn()
-                print("User Created")
+                print("user created")
+                return
             }
         }
     }
-}
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "logIn", let editAccountVC = segue.destination as? EditAccountTableViewController {
-            
-            editAccountVC.humanName = humanNameTF.text ?? "name"
-            editAccountVC.phoneNumber = Int(phoneNumberTF.text ?? "01") ?? 0
-            editAccountVC.email = emailTF.text ?? "email"
-            editAccountVC.password = passwordTF.text ?? "password"
-            editAccountVC.currentAuthID = currentAuthID
+    
+    func signInUser(email: String, password: String) {
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            if error == nil {
+                print("User Signed In")
+                self.userDefault.set(true, forKey: "userSignedIn")
+                self.userDefault.synchronize()
+              //  self.performSegue(withIdentifier: "logIn", sender: nil)
+            } else {
+                print(error as Any)
+                print(error?.localizedDescription as Any)
+            }
         }
-        print("prepare for segueSearch called")
     }
+
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        if segue.identifier == "logIn", let editAccountVC = segue.destination as? EditAccountTableViewController {
+//
+//            editAccountVC.humanName = humanNameTF.text ?? "name"
+//            editAccountVC.phoneNumber = Int(phoneNumberTF.text ?? "01") ?? 0
+//            editAccountVC.email = emailTF.text ?? "email"
+//            editAccountVC.password = passwordTF.text ?? "password"
+//            editAccountVC.currentAuthID = currentAuthID
+//        }
+//        print("prepare for segueSearch called")
+//    }
     
     func createData() {
 
@@ -124,6 +117,7 @@ class CreateAccountViewController: UIViewController, UIImagePickerControllerDele
             if error == nil {
                 print("Added Human Data")
                 print("call, UserID: \(self.currentAuthID)")
+                self.performSegue(withIdentifier: "logIn", sender: nil)
             } else {
                 print("you have an error in creating data")
                 print(Error.self)
@@ -134,8 +128,27 @@ class CreateAccountViewController: UIViewController, UIImagePickerControllerDele
     //Actions
     @IBAction func createAccountTapped(_ sender: Any) {
         
-        createUser()
-        print(currentAuthID)
+        if self.emailTF.text == "" || self.passwordTF.text == "" || self.humanNameTF.text == "" || self.phoneNumberTF.text == "" {
+            UIView.animate(withDuration: 0.09, animations: {
+                let move = CGAffineTransform(translationX: 10, y: 0)
+                self.emailTF.transform = move
+                self.passwordTF.transform = move
+                self.humanNameTF.transform = move
+                self.phoneNumberTF.transform = move
+            }) { (_) in
+                UIView.animate(withDuration: 0.09, animations: {
+                    self.emailTF.transform = .identity
+                    self.passwordTF.transform = .identity
+                    self.humanNameTF.transform = .identity
+                    self.phoneNumberTF.transform = .identity
+                })
+            }
+        } else {
+            
+            self.createUser()
+            self.createData()
+
+        }
     }
     
     @IBAction func logInTapped(_ sender: Any) {
