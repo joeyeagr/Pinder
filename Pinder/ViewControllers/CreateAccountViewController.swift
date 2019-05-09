@@ -75,8 +75,9 @@ class CreateAccountViewController: UIViewController {
                 print("Not Valid")
                 print(error)
             } else {
-                self.signIn()
+                self.createData()
                 print("User Created")
+                self.performSegue(withIdentifier: "logIn", sender: nil)
             }
         }
     }
@@ -150,7 +151,7 @@ class CreateAccountViewController: UIViewController {
     
     //Actions
     @IBAction func createAccountTapped(_ sender: Any) {
-        currentAuthID = nil
+        
         createUser()
     }
     
@@ -171,10 +172,6 @@ class CreateAccountViewController: UIViewController {
             }
         }
         
-    }
-    @IBAction func userExistsLogInTapped(_ sender: Any) {
-        performSegue(withIdentifier: "logIn", sender: nil)
-        createData()
     }
     
     @IBAction func unwindToLogIn(_ sender: UIStoryboardSegue) {}
