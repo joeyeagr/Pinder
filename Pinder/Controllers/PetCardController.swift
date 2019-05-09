@@ -30,7 +30,6 @@ class PetCardController {
     
     
     func saveToPersistentStorage(petCard: PetCard) {
-        
         do {
             try Stack.context.save()
         } catch {
