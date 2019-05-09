@@ -19,14 +19,14 @@ extension HomeViewController {
         let card = sender.view!
         let point = sender.translation(in: view)
         let xFromCenter = card.center.x - view.center.x
-            
+        
         card.center = CGPoint(x: view.center.x + point.x, y: view.center.y + point.y)
         
         let scale = min(150/abs(xFromCenter), 1)
         
         card.transform = CGAffineTransform(rotationAngle: xFromCenter/divisor).scaledBy(x: scale, y: scale)
         
-        if xFromCenter > 0 {
+                if xFromCenter > 0 {
             smileyImageView.image = UIImage(named: "SmileyFace")
             smileyImageView.tintColor = UIColor.green
         } else {
@@ -54,14 +54,11 @@ extension HomeViewController {
                     card.alpha = 0
                 }, completion: { _ in
                     self.resetCard(cardDismissed: true)
+//                    self.savePetAsPetCard(petCard: self.pets[self.index])
                 })
                 return
             }
             moveCardToMiddle()
         }
-
-
     }
-    
-
 }

@@ -15,95 +15,110 @@ import FirebaseFirestore
 
 
 class HomeViewController: UIViewController {
-    
+
     @IBOutlet weak var petPicture: UIImageView!
     @IBAction func profileButton(_ sender: Any) {
-        
     }
     @IBAction func likedPetsButton(_ sender: Any) {
     }
     @IBOutlet weak var petNameLabel: UILabel!
     @IBOutlet weak var petAgeLabel: UILabel!
     @IBOutlet weak var smileyImageView: UIImageView!
-    
     @IBOutlet weak var card: UIView!
-    
     @IBAction func resetButton(_ sender: UIButton) {
-        resetCard()
+        setPreviousCardIndex()
+        updatePetsImageAndLabels()
     }
     
     var db: Firestore!
-    var divisor: CGFloat!
+    var divisor: CGFloat = 200
     var index: Int = 0
-    var petCards: [PetCard] = []
+    var pets: [Pet] = []
     var totalPetCount: Int = 0
     
     func setCornerAndShadow() {
         petPicture.clipsToBounds = true
-        
         card.layer.shadowColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0).cgColor
         card.layer.shadowOffset = CGSize(width: 2, height: 3)
         card.layer.shadowRadius = 1.7
         card.layer.shadowOpacity = 1.0
     }
-    
-    
-    func getArrayOfPets(completion: (([PetCard]) -> Void)? = nil) {
+
+    func pullDownAllPets(completion: (([Pet]) -> Void)? = nil) {
         let db = Firestore.firestore()
-        db.collection("PetId").getDocuments { (querySnapshot, error) in
-            var petCards: [PetCard] = []
-            if let error = error {
-                print(error)
+        db.collection("PetId").getDocuments { (querySnapshot, err) in
+            var pets: [Pet] = []
+            if let err = err {
+                print(err)
             } else {
                 for document in querySnapshot!.documents {
                     let docData = document.data()
-                    if let petCard = PetCard(dictionary: docData) {
-                        petCards.append(petCard)
+                    if let pet = Pet(petDictionary: docData) {
+                        pets.append(pet)
                     }
                 }
                 if let completion = completion {
-                    completion(petCards)
+                    completion(pets)
                 }
             }
         }
     }
-    
+
     func setNextCardIndex() {
         index = index + 1
-        
         if self.index >= totalPetCount {
             index = 0
             print("Go back to the beginning")
         }
-        
         print(index)
     }
     
-    func downloadPetArraysImages() {
-        getArrayOfPets() { (petCards) in
+    func setPreviousCardIndex() {
+        index = index - 1
+        if self.index <= 0 {
+            index = 0
+            print("sorry, can't refresh")
+        }
+        print(index)
+    }
+    
+    func downloadAllPets() {
+        pullDownAllPets { (pets) in
             DispatchQueue.main.async {
-                self.petCards = petCards
-                self.totalPetCount = petCards.count
-                self.updateImageviewAndLabels()
+                self.pets = pets
+                self.totalPetCount = pets.count
+                self.updatePetsImageAndLabels()
             }
         }
     }
     
-    func updateImageviewAndLabels() {
-        
-        let pet = petCards[index]
-        let imageString = pet.petImage1!
+    
+    func updatePetsImageAndLabels() {
+        let pet = pets[index]
+        let imageString = pet.petImage1
         let petName = pet.petName
         let petAge = pet.petAge
         self.petNameLabel.text = petName
         self.petAgeLabel.text = String(petAge)
-        Storage.storage().reference(withPath: imageString).getData(maxSize: (1024 * 1024)) { (data, error) in
-            guard let data = data else { return }
+        Storage.storage().reference(withPath: imageString).getData(maxSize: (1024 * 1024), completion: { (data, error) in
+            guard let data = data else {
+                NSLog("No data. \(error)")
+                return
+            }
             let image = UIImage(data: data)
             DispatchQueue.main.async {
                 self.petPicture.image = image
                 self.moveCardToMiddle()
             }
+        })
+    }
+    
+    func savePetAsPetCard(petCard: Pet) {
+        _ = PetCard(dictionary: petCard.petDictionary)
+        do {
+            try Stack.context.save()
+        } catch {
+            print("Save to persistent storage failed")
         }
     }
     
@@ -120,23 +135,18 @@ class HomeViewController: UIViewController {
     func resetCard(cardDismissed: Bool = false) {
         if cardDismissed {
             self.setNextCardIndex()
-            self.updateImageviewAndLabels()
+            self.updatePetsImageAndLabels()
         }
-
     }
-    
-
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setCornerAndShadow()
         petPicture.layer.cornerRadius = 25
         card.layer.cornerRadius = 25
-        divisor = (self.view.frame.width / 2) / 0.61
-        downloadPetArraysImages()
+        downloadAllPets()
     }
-    
-    
+
     @IBAction func unwindToMain(_ sender: UIStoryboardSegue) {}
 }
 
