@@ -56,53 +56,36 @@ class CreateAccountViewController: UIViewController {
         guard let email = emailTF.text else { return }
         guard let password = passwordTF.text else { return }
         
-        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-            if error != nil || user == nil || self.emailTF.text == "" || self.passwordTF.text == "" || self.humanNameTF.text == "" || self.phoneNumberTF.text == "" {
+        if self.emailTF.text == "" || self.passwordTF.text == "" || self.humanNameTF.text == "" || self.phoneNumberTF.text == "" {
+            
+            UIView.animate(withDuration: 0.09, animations: {
+                let move = CGAffineTransform(translationX: 10, y: 0)
+                self.emailTF.transform = move
+                self.passwordTF.transform = move
+                self.humanNameTF.transform = move
+                self.phoneNumberTF.transform = move
+            }) { (_) in
                 UIView.animate(withDuration: 0.09, animations: {
-                    let move = CGAffineTransform(translationX: 10, y: 0)
-                    self.emailTF.transform = move
-                    self.passwordTF.transform = move
-                    self.humanNameTF.transform = move
-                    self.phoneNumberTF.transform = move
-                }) { (_) in
-                    UIView.animate(withDuration: 0.09, animations: {
-                        self.emailTF.transform = .identity
-                        self.passwordTF.transform = .identity
-                        self.humanNameTF.transform = .identity
-                        self.phoneNumberTF.transform = .identity
-                    })
-                }
+                    self.emailTF.transform = .identity
+                    self.passwordTF.transform = .identity
+                    self.humanNameTF.transform = .identity
+                    self.phoneNumberTF.transform = .identity
+                })
+            }
+        } else {
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+            if error != nil {
                 print("Not Valid")
                 print(error)
             } else {
-                self.signIn()
+                //signIn()
                 print("User Created")
             }
         }
     }
-    
-    func signIn() {
-        
-        guard let email = emailTF.text else { return }
-        guard let password = passwordTF.text else { return }
-        
-        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-            if user != nil {
-                print("uid")
-                //self.performSegue(withIdentifier: "logIn", sender: self)
-            } else {
-                let alert = UIAlertController(title: "Error Logging In", message: nil, preferredStyle: .alert)
-                let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
-                print("no uid")
-                return
-            }
-        }
-    }
-    
-    //create a perepare for segue that takes th text in the text views and then creates data over in the next VC
-    
+}
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "logIn", let editAccountVC = segue.destination as? EditAccountTableViewController {
@@ -150,8 +133,9 @@ class CreateAccountViewController: UIViewController {
     
     //Actions
     @IBAction func createAccountTapped(_ sender: Any) {
-        currentAuthID = nil
+        
         createUser()
+        print(currentAuthID)
     }
     
     @IBAction func logInTapped(_ sender: Any) {

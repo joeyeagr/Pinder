@@ -118,7 +118,7 @@ class AddPetViewController: UIViewController, UIImagePickerControllerDelegate, U
         let petBio: String = bioTextView.text ?? "bio"
         let isMale: Bool = genderBenderControl
         let dateCreated: String = currentDateLabel.text ?? "date"
-        let petImage1: String = fileName2
+        let petImage: String = fileName2
         let humanContact: Array<String> = [humanName, email, phoneNumber]
         let humanId: String = humanUID
         
@@ -129,7 +129,7 @@ class AddPetViewController: UIViewController, UIImagePickerControllerDelegate, U
                       isMale: isMale,
                       petBio: petBio,
                       date: dateCreated,
-                      petImage1: petImage1,
+                      petImage: petImage,
                       humanContact: humanContact,
                       humanId: humanId)
         
