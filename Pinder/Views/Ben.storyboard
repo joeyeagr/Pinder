@@ -171,7 +171,7 @@
         <!--Pet Detail View Controller-->
         <scene sceneID="MsC-0q-2b6">
             <objects>
-                <viewController storyboardIdentifier="PetDetailViewController" id="Hnf-jT-wEL" customClass="PetDetailViewController" customModule="Pinder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PetDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hnf-jT-wEL" customClass="PetDetailViewController" customModule="Pinder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eHg-E5-ESW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -428,7 +428,7 @@
         <!--Navigation Controller-->
         <scene sceneID="67c-nv-zjS">
             <objects>
-                <navigationController storyboardIdentifier="PetCollectionViewNavController" automaticallyAdjustsScrollViewInsets="NO" id="gt4-tZ-q4w" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PetCollectionViewNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gt4-tZ-q4w" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UAu-BF-NuY">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

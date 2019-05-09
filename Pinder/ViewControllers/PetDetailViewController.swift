@@ -187,6 +187,7 @@ class PetDetailViewController: UIViewController {
         if PetCardController.sharedController.fetchPetCards().count == 0 {
             noSavedPetsAlert()
         } else {
+            petCards = PetCardController.sharedController.fetchPetCards()
             print("here is index\(index)")
             print("here is petCards.count\(petCards.count)")
             index -= 1
@@ -230,7 +231,5 @@ class PetDetailViewController: UIViewController {
     
     
     
-    
-    
-    
+        
 }
