@@ -60,7 +60,7 @@ class CreateAccountViewController: UIViewController, UIImagePickerControllerDele
                 print(error)
             } else {
                 print("user created")
-                return
+                self.createData()
             }
         }
     }
@@ -146,8 +146,7 @@ class CreateAccountViewController: UIViewController, UIImagePickerControllerDele
         } else {
             
             self.createUser()
-            self.createData()
-
+            print(currentAuthID)
         }
     }
     
