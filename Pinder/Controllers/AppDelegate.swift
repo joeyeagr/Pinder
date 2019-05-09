@@ -54,6 +54,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //self.saveContext()
         FirebaseController.shared.removeUserListener()
     }
+    
+    func application(_ application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
+      return  true
+    }
+    
+    func application(_ application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
+       return true
+    }
 
     // MARK: - Core Data stack
 

@@ -17,10 +17,10 @@ extension PetCard {
             let date = dictionary["date"] as? String,
             let petId = dictionary["petId"] as? String,
             let petBreed = dictionary["petBreed"] as? String,
-            let petAge = dictionary["petAge"] as? Int16,
+            let petAge = dictionary["petAge"] as? String,
             let petBio = dictionary["petBio"] as? String,
-            let petImage1 = dictionary["petImage1"] as? String,
-            let petImage2 = dictionary["petImage2"] as? String,
+            let petImage = dictionary["petImage"] as? String,
+            let humandId = dictionary["humanId"] as? String,
             let isMale = dictionary["isMale"] as? Bool,
             let petName = dictionary["petName"] as? String
             
@@ -31,7 +31,7 @@ extension PetCard {
         self.init(context: context)
         
         self.date = date
-        self.humanId = humanContact[3]
+        self.humanId = humandId
         self.humanName = humanContact[0]
         self.humanEmail = humanContact[1]
         self.humanPhoneNumber = humanContact[2]
@@ -41,10 +41,6 @@ extension PetCard {
         self.petAge = petAge
         self.isMale = isMale
         self.petBio = petBio
-        self.petImage1 = petImage1
-        self.petImage2 = petImage2
+        self.petImage = petImage
     }
 }
-
-
-
