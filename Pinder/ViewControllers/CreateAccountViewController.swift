@@ -12,7 +12,7 @@ import FirebaseFirestore
 import FirebaseAuth
 import FirebaseStorage
 
-class CreateAccountViewController: UIViewController {
+class CreateAccountViewController: UIViewController, UIImagePickerControllerDelegate {
 
     @IBOutlet var emailTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
