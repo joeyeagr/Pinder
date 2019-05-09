@@ -24,8 +24,8 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem title="Title" id="RnT-WL-Er3">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" id="Pqx-Zx-7Di"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Create Acount" id="D49-Uf-1dh">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="Pqx-Zx-7Di"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Create Account" id="D49-Uf-1dh">
                                             <connections>
                                                 <action selector="createAccountTapped:" destination="hQS-vG-eTL" id="mbM-pf-RN2"/>
                                             </connections>
@@ -101,6 +101,18 @@
                                     <action selector="logInTapped:" destination="hQS-vG-eTL" eventType="touchUpInside" id="mTT-eK-ezn"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCM-Oc-Ttk">
+                                <rect key="frame" x="20" y="280" width="374" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Log In">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="userExistsLogInTapped:" destination="hQS-vG-eTL" eventType="touchUpInside" id="ccT-LU-c2s"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="b3n-Qk-NNg"/>
@@ -146,6 +158,16 @@
                                 </navigationItem>
                             </items>
                         </navigationBar>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="w3Y-Fx-PWD">
+                            <rect key="frame" x="0.0" y="161.5" width="414" height="47"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                            <state key="normal" title="Log Out"/>
+                            <connections>
+                                <action selector="logOutTapped:" destination="8CA-x1-xAF" eventType="touchUpInside" id="GvQ-yi-nhg"/>
+                                <segue destination="n9z-HZ-Ocd" kind="unwind" unwindAction="unwindToLogIn:" id="hb4-mG-FqA"/>
+                            </connections>
+                        </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="petCell" id="noH-rP-Qaf" customClass="EditAccountTableViewCell" customModule="Pinder" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="99.5" width="414" height="44"/>

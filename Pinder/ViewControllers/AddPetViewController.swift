@@ -161,36 +161,6 @@ class AddPetViewController: UIViewController, UIImagePickerControllerDelegate, U
         createPetCardData()
     }
     
-//    @IBAction func addImageButtonTapped(_ sender: Any) {
-//
-//        let imagePicker = UIImagePickerController()
-//        let pickedImage = UIImage()
-//        imagePicker.delegate = self
-//
-//        let alertController = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
-//
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//        alertController.addAction(cancelAction)
-//
-//        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-//            let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: { action in
-//                imagePicker.sourceType = .camera
-//                self.present(imagePicker, animated: true, completion: nil)
-//            })
-//            alertController.addAction(cameraAction)
-//        }
-//        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-//            let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default, handler: { action in
-//                imagePicker.sourceType = .photoLibrary
-//                self.present(imagePicker, animated: true, completion: nil)
-//
-//            })
-//            alertController.addAction(photoLibraryAction)
-//        }
-//        present(alertController, animated: true, completion: nil)
-//
-//    }
-    
     @IBAction func petImageButtonTapped(_ sender: Any) {
         
         print("IT WORKED")

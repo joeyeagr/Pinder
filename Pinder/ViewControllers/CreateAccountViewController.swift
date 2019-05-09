@@ -7,8 +7,10 @@
 //
 
 import UIKit
-import FirebaseAuth
+import Firebase
 import FirebaseFirestore
+import FirebaseAuth
+import FirebaseStorage
 
 class CreateAccountViewController: UIViewController {
 
@@ -33,6 +35,8 @@ class CreateAccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("your\(currentAuthID)")
+        
         db = Firestore.firestore()
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
@@ -53,7 +57,7 @@ class CreateAccountViewController: UIViewController {
         guard let password = passwordTF.text else { return }
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-            if error != nil || self.emailTF.text == "" || self.passwordTF.text == "" || self.humanNameTF.text == "" || self.phoneNumberTF.text == "" {
+            if error != nil || user == nil || self.emailTF.text == "" || self.passwordTF.text == "" || self.humanNameTF.text == "" || self.phoneNumberTF.text == "" {
                 UIView.animate(withDuration: 0.09, animations: {
                     let move = CGAffineTransform(translationX: 10, y: 0)
                     self.emailTF.transform = move
@@ -71,15 +75,51 @@ class CreateAccountViewController: UIViewController {
                 print("Not Valid")
                 print(error)
             } else {
-                self.performSegue(withIdentifier: "logIn", sender: nil)
-                print("UserID: \(self.currentAuthID ?? "your UID")")
+                self.signIn()
+                print("User Created")
             }
         }
     }
     
+    func signIn() {
+        
+        guard let email = emailTF.text else { return }
+        guard let password = passwordTF.text else { return }
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            if user != nil {
+                print("uid")
+                //self.performSegue(withIdentifier: "logIn", sender: self)
+            } else {
+                let alert = UIAlertController(title: "Error Logging In", message: nil, preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+                print("no uid")
+                return
+            }
+        }
+    }
+    
+    //create a perepare for segue that takes th text in the text views and then creates data over in the next VC
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "logIn", let editAccountVC = segue.destination as? EditAccountTableViewController {
+            
+            editAccountVC.humanName = humanNameTF.text ?? "name"
+            editAccountVC.phoneNumber = Int(phoneNumberTF.text ?? "01") ?? 0
+            editAccountVC.email = emailTF.text ?? "email"
+            editAccountVC.password = passwordTF.text ?? "password"
+            editAccountVC.currentAuthID = currentAuthID
+        }
+        print("prepare for segueSearch called")
+    }
+    
     func createData() {
+
         let stringNumber = phoneNumberTF.text ?? "0000000000"
-        guard let id: String = self.currentAuthID else { return } //this not working.
+        guard let id: String = self.currentAuthID else { return }
         print(id)
         guard let name: String = humanNameTF.text  else { return }
         print(name)
@@ -89,13 +129,13 @@ class CreateAccountViewController: UIViewController {
         print(password)
         guard let phoneNumber: Int = Int(stringNumber)  else { return }
         print(phoneNumber)
-        
+
         let user = Users(id: id,
                          name: name,
                          email: email,
                          password: password,
                          phoneNumber: phoneNumber)
-        
+
         let userRef = self.db.collection("profile")
         userRef.document(String(user.id)).setData(user.humanDictionary){ error in
             if error == nil {
@@ -110,11 +150,8 @@ class CreateAccountViewController: UIViewController {
     
     //Actions
     @IBAction func createAccountTapped(_ sender: Any) {
-        
+        currentAuthID = nil
         createUser()
-        createData()
-        print(currentAuthID)
-
     }
     
     @IBAction func logInTapped(_ sender: Any) {
@@ -134,6 +171,10 @@ class CreateAccountViewController: UIViewController {
             }
         }
         
+    }
+    @IBAction func userExistsLogInTapped(_ sender: Any) {
+        performSegue(withIdentifier: "logIn", sender: nil)
+        createData()
     }
     
     @IBAction func unwindToLogIn(_ sender: UIStoryboardSegue) {}
