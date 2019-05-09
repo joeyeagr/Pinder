@@ -35,8 +35,6 @@ class CreateAccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("your\(currentAuthID)")
-        
         db = Firestore.firestore()
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
@@ -75,9 +73,7 @@ class CreateAccountViewController: UIViewController {
                 print("Not Valid")
                 print(error)
             } else {
-                self.createData()
                 print("User Created")
-                self.performSegue(withIdentifier: "logIn", sender: nil)
             }
         }
     }
@@ -101,8 +97,6 @@ class CreateAccountViewController: UIViewController {
             }
         }
     }
-    
-    //create a perepare for segue that takes th text in the text views and then creates data over in the next VC
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -153,6 +147,13 @@ class CreateAccountViewController: UIViewController {
     @IBAction func createAccountTapped(_ sender: Any) {
         
         createUser()
+        if currentAuthID != nil {
+            createData()
+            performSegue(withIdentifier: "logIn", sender: nil)
+        } else {
+            print("error, no uid detected")
+        }
+        
     }
     
     @IBAction func logInTapped(_ sender: Any) {
