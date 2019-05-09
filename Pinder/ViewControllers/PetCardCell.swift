@@ -70,13 +70,5 @@ class PetCardCell: UICollectionViewCell {
         
     }
     
-    
-    
-    
-    
-    
-    
-    
 }
-
 

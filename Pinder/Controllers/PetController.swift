@@ -54,7 +54,7 @@ class PetController {
     
     func updatePetsImage() {
         let pet = pets[index]
-        let imageString = pet.petImage1
+        let imageString = pet.petImage
         Storage.storage().reference(withPath: imageString).getData(maxSize: (1024 * 1024), completion: { (data, error) in
             guard let data = data else {
                 NSLog("No data. \(error)")

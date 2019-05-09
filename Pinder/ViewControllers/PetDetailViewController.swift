@@ -117,7 +117,7 @@ class PetDetailViewController: UIViewController {
     
     func cycleThroughPets() {
         for pet in pets {
-            let imageString = pet.petImage1
+            let imageString = pet.petImage
             let petId = pet.petId
             let petCardDict = ["PetId": petId]
             
