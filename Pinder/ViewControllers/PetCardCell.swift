@@ -36,7 +36,7 @@ class PetCardCell: UICollectionViewCell {
     
     func updateUI(petCard: PetCard?) {
         guard let petCard = petCard else {return}
-        let imageString = petCard.petImage
+      //  let imageString = petCard.petImage
         Storage.storage().reference(withPath: imageString!).getData(maxSize: (1024 * 1024), completion: { (data, error) in
             guard let data = data else {
                 NSLog("No data. \(error)")
