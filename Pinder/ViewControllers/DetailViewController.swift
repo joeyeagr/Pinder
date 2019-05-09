@@ -29,7 +29,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        requestAllPetCardsImages()
+        //        requestAllPetCardsImages()
     }
     
     
@@ -45,7 +45,7 @@ class DetailViewController: UIViewController {
     
     func updatePetCardImage() {
         let petCard = petCardArray[index]
-        let imageString = petCard?.petImage1
+        let imageString = petCard?.petImage
         Storage.storage().reference(withPath: imageString!).getData(maxSize: (1024 * 1024), completion: { (data, error) in
             guard let data = data else {
                 NSLog("No data. \(error)")
@@ -87,100 +87,15 @@ class DetailViewController: UIViewController {
     }
     
     
-    
     @IBAction func yupButtonTapped(_ sender: Any) {
         index += 1
         updatePetCardImage()
-        
     }
+    
     
     @IBAction func nopeButtonTapped(_ sender: Any) {
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    //    @objc func handleTap(sender: ViewController) {
-    //        getAllPetCards { (petCards) in
-    //
-    //            DispatchQueue.main.async {
-    //                DetailViewController.sharedController.petCardArray = petCards
-    //                let petCard = DetailViewController.sharedController.petCardArray[DetailViewController.sharedController.index]
-    //                let imageString = petCard?.petImage1
-    //                Storage.storage().reference(withPath: imageString!).getData(maxSize: (1024 * 1024), completion: { (data, error) in
-    //                    guard let data = data else {
-    //                        NSLog("No data. \(error)")
-    //                        return
-    //                    }
-    //                    let image = UIImage(data: data)
-    //                    ViewController.sharedController.petPicture.image = image
-    //                    self.petImage.image = image
-    //                })
-    //                if let firstPet = DetailViewController.sharedController.petCardArray.first {
-    //                    let image = firstPet?.petImage1
-    //                    DetailViewController.sharedController.updatePetCardImage()
-    //                    ViewController.sharedController.petPicture.image = DetailViewController.sharedController.petImage.image
-    //                    self.updatePetCardImage()
-    //
-    //
-    //
-    //
-    //                }
-    //
-    //            }
-    //        }
-    //        if sender.state == .ended {
-    //            print("i am the best")
-    //            //index += 1
-    ////            updatePetCardImage()
-    ////            ViewController.sharedController.resetCard()
-    //        } else {
-    //            print("not you are not")
-    //            func requestAllPetCardsImages() {
-    //                getAllPetCards { (petCards) in
-    //
-    //                    DispatchQueue.main.async {
-    //                        DetailViewController.sharedController.petCardArray = petCards
-    //                        let petCard = DetailViewController.sharedController.petCardArray[DetailViewController.sharedController.index]
-    //                        let imageString = petCard?.petImage1
-    //                        Storage.storage().reference(withPath: imageString!).getData(maxSize: (1024 * 1024), completion: { (data, error) in
-    //                            guard let data = data else {
-    //                                NSLog("No data. \(error)")
-    //                                return
-    //                            }
-    //                            let image = UIImage(data: data)
-    //                            ViewController.sharedController.petPicture.image = image
-    //                            self.petImage.image = image
-    //                        })
-    //                        if let firstPet = DetailViewController.sharedController.petCardArray.first {
-    //                            let image = firstPet?.petImage1
-    //                           DetailViewController.sharedController.updatePetCardImage()
-    //                            ViewController.sharedController.petPicture.image = DetailViewController.sharedController.petImage.image
-    //                            self.updatePetCardImage()
-    //
-    //
-    //
-    //
-    //                        }
-    //
-    //                    }
-    //                }
-    //    }
-    //        }
-    //
-    //    }
-    
-    
-    
-    
-    
-    
-    
     
     
     
