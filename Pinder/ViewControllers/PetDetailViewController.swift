@@ -34,6 +34,7 @@ class PetDetailViewController: UIViewController {
     var petCards = PetCardController.sharedController.fetchPetCards()
     var totalPetCount = PetCardController.sharedController.fetchPetCards().count
     var passedIndexPath: IndexPath?
+    var pets: [Pet] = []
     
     
     
@@ -42,7 +43,7 @@ class PetDetailViewController: UIViewController {
         
         self.navigationController?.navigationBar.isHidden = false
         setUpImageView()
-        
+
         DispatchQueue.main.async {
             self.updateImages()
             //            self.index += 1
@@ -64,6 +65,7 @@ class PetDetailViewController: UIViewController {
             index = petCards.count - 1
         }
         updateImages()
+        
 
         print("here is index\(index)")
         print("here is petCards.count\(petCards.count)")
@@ -112,7 +114,7 @@ class PetDetailViewController: UIViewController {
     }
     
     
-    var pets: [Pet] = []
+    
     var petsImageString: [String] = []
     
     func cycleThroughPets() {
