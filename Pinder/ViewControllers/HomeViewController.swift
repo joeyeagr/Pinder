@@ -95,7 +95,7 @@ class HomeViewController: UIViewController {
     
     func updatePetsImageAndLabels() {
         let pet = pets[index]
-        let imageString = pet.petImage1
+        let imageString = pet.petImage
         let petName = pet.petName
         let petAge = pet.petAge
         self.petNameLabel.text = petName

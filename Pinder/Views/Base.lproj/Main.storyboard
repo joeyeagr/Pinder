@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +16,7 @@
                 <viewControllerPlaceholder storyboardName="Ben" id="Yay-b4-adu" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FkQ-HY-AHg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="687" y="30"/>
+            <point key="canvasLocation" x="677" y="25"/>
         </scene>
         <!--Firebase-->
         <scene sceneID="5V2-eD-7py">
@@ -27,38 +31,38 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Pinder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gradient" translatesAutoresizingMaskIntoConstraints="NO" id="Mrx-lv-mzp">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JRk-ig-OKH">
-                                <rect key="frame" x="60" y="-4" width="480" height="608"/>
+                                <rect key="frame" x="41.5" y="238" width="331" height="420"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AyV-ni-hHf">
-                                        <rect key="frame" x="10" y="10" width="460" height="528"/>
+                                        <rect key="frame" x="10" y="10" width="311" height="340"/>
                                         <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Puppy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X9O-7a-Y7K">
-                                        <rect key="frame" x="10" y="556" width="79.5" height="35"/>
+                                        <rect key="frame" x="10" y="368" width="79.5" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" image="icons8-happy-smiley-face-100" translatesAutoresizingMaskIntoConstraints="NO" id="0I4-EM-iOx">
-                                        <rect key="frame" x="59" y="59" width="362" height="430"/>
+                                        <rect key="frame" x="59" y="59" width="213" height="242"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kub-eg-Ojj">
-                                        <rect key="frame" x="89.5" y="556" width="8" height="35"/>
+                                        <rect key="frame" x="89.5" y="368" width="8" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgG-fq-kmj">
-                                        <rect key="frame" x="99.5" y="556" width="50" height="35"/>
+                                        <rect key="frame" x="99.5" y="368" width="50" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -91,7 +95,7 @@
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAT-fR-aeQ">
-                                <rect key="frame" x="309.5" y="36" width="49.5" height="22"/>
+                                <rect key="frame" x="309.5" y="60" width="49.5" height="50"/>
                                 <state key="normal" image="icons8-heart-outline-100"/>
                                 <connections>
                                     <action selector="likedPetsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9dE-fA-ETN"/>
@@ -99,7 +103,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvK-1h-6fg">
-                                <rect key="frame" x="16" y="36" width="50.5" height="22"/>
+                                <rect key="frame" x="16" y="60" width="50.5" height="50"/>
                                 <state key="normal" image="icons8-user-100"/>
                                 <connections>
                                     <action selector="profileButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k0O-wV-QCq"/>
@@ -107,7 +111,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEV-PD-Ke0">
-                                <rect key="frame" x="162.5" y="36" width="50" height="22"/>
+                                <rect key="frame" x="162.5" y="60" width="50" height="50"/>
                                 <state key="normal" image="icons8-synchronize-filled-100"/>
                                 <connections>
                                     <action selector="resetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HQa-e8-zUi"/>

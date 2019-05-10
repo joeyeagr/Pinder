@@ -54,7 +54,7 @@ extension HomeViewController {
                     card.alpha = 0
                 }, completion: { _ in
                     self.resetCard(cardDismissed: true)
-//                    self.savePetAsPetCard(petCard: self.pets[self.index])
+                    self.savePetAsPetCard(petCard: self.pets[self.index])
                 })
                 return
             }
