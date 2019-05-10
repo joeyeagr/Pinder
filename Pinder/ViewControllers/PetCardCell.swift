@@ -1,8 +1,8 @@
 //
-//  petCardCell.swift
+//  PetCardCell.swift
 //  Pinder
 //
-//  Created by Benjamin Poulsen PRO on 4/19/19.
+//  Created by Benjamin Poulsen PRO on 5/10/19.
 //  Copyright © 2019 Joe Eagar. All rights reserved.
 //
 
@@ -47,12 +47,12 @@ class PetCardCell: UICollectionViewCell {
             imageView.image = image
             imageView.layer.cornerRadius = 25
             imageView.layer.masksToBounds = true
-//            imageView.sendSubviewToBack(self.petCardImageView)
-//            self.addSubview(imageView)
+            //            imageView.sendSubviewToBack(self.petCardImageView)
+            //            self.addSubview(imageView)
             self.petCardImageView.image = image
             self.petNameLabel.text = petCard.petName
             self.petAgeLabel.text = petCard.petAge
-        })        
+        })
         
     }
     
