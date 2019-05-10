@@ -11,8 +11,9 @@
 		5E00C42C22774EC800FBF0D7 /* EditAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E00C42B22774EC800FBF0D7 /* EditAccountTableViewCell.swift */; };
 		5E01A02F2270BE1500F9E75C /* Firebase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EE56D6B2253B1BF00AE3C51 /* Firebase.storyboard */; };
 		5E265B52224A776E00236C2F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E265B51224A776D00236C2F /* GoogleService-Info.plist */; };
+		5E604FFE2285BB5700566168 /* AddPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F9EE82281DDA500D4954C /* AddPetViewController.swift */; };
 		5EB5D71422453A5A000D6CE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5D71322453A5A000D6CE7 /* AppDelegate.swift */; };
-		5EB5D71622453A5A000D6CE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5D71522453A5A000D6CE7 /* ViewController.swift */; };
+		5EB5D71622453A5A000D6CE7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5D71522453A5A000D6CE7 /* HomeViewController.swift */; };
 		5EB5D71922453A5A000D6CE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EB5D71722453A5A000D6CE7 /* Main.storyboard */; };
 		5EB5D71E22453A5B000D6CE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EB5D71D22453A5B000D6CE7 /* Assets.xcassets */; };
 		5EB5D72122453A5B000D6CE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EB5D71F22453A5B000D6CE7 /* LaunchScreen.storyboard */; };
@@ -23,13 +24,10 @@
 		5EB91C6D225CFF4F00D53278 /* Ben.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EB91C6C225CFF4F00D53278 /* Ben.storyboard */; };
 		5EE56D682253B1B100AE3C51 /* EditAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE56D652253B1B100AE3C51 /* EditAccountTableViewController.swift */; };
 		5EE56D692253B1B100AE3C51 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		9A06E6E5226A509F00AAC413 /* PetCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06E6E4226A509F00AAC413 /* PetCardCell.swift */; };
 		9A1050B62283218000520377 /* PetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1050B52283218000520377 /* PetController.swift */; };
 		9A84EF862272264600A004CD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A84EF852272264600A004CD /* DetailViewController.swift */; };
-		9AF68B982276A00A00B4437C /* PetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF68B972276A00A00B4437C /* PetDetailViewController.swift */; };
 		CB4ABDF0224E792B00162F94 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ABDEF224E792B00162F94 /* Pet.swift */; };
 		CB97D2C022848A5500CFEDF5 /* PetCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB97D2BF22848A5500CFEDF5 /* PetCardCell.swift */; };
-		CB9F9EE92281DDA500D4954C /* AddPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F9EE82281DDA500D4954C /* AddPetViewController.swift */; };
 		CBA97CF4228489A000583571 /* PetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF68B972276A00A00B4437C /* PetDetailViewController.swift */; };
 		CBA97CF5228489A400583571 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A84EF852272264600A004CD /* DetailViewController.swift */; };
 		CBAAC496224A80C3009B2E3D /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAC495224A80C3009B2E3D /* FirebaseController.swift */; };
@@ -39,7 +37,6 @@
 		CBB702A92270B876002BC8FE /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB91C65225CFE7300D53278 /* Stack.swift */; };
 		CBB702AA2270B87D002BC8FE /* PetCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB91C6E225CFF6800D53278 /* PetCardController.swift */; };
 		CBB702C32270BB32002BC8FE /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EB91C67225CFE7300D53278 /* Model.xcdatamodeld */; };
-		CBB85E5822832D4B009FC4D6 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB85E5722832D4A009FC4D6 /* CreateAccountViewController.swift */; };
 		CBC99F0B22773E55001F2000 /* AddPetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2169CB2260CEDA00F2C22E /* AddPetExtension.swift */; };
 		CBC99F0C22773EC3001F2000 /* PetCardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB91C70225CFF7300D53278 /* PetCardCollectionViewController.swift */; };
 		D964543F186AB95E01CA711B /* Pods_Pinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FC313AD1A1C965AADA99F2 /* Pods_Pinder.framework */; };
@@ -75,7 +72,7 @@
 		5E32A28E225CE2AF00D91405 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		5EB5D71022453A5A000D6CE7 /* Pinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EB5D71322453A5A000D6CE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5EB5D71522453A5A000D6CE7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5EB5D71522453A5A000D6CE7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5EB5D71822453A5A000D6CE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5EB5D71D22453A5B000D6CE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5EB5D72022453A5B000D6CE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -96,7 +93,6 @@
 		5EE56D672253B1B100AE3C51 /* AddPetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPetTableViewController.swift; sourceTree = "<group>"; };
 		5EE56D6B2253B1BF00AE3C51 /* Firebase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Firebase.storyboard; sourceTree = "<group>"; };
 		84FC313AD1A1C965AADA99F2 /* Pods_Pinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A06E6E4226A509F00AAC413 /* PetCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCardCell.swift; sourceTree = "<group>"; };
 		9A1050B52283218000520377 /* PetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetController.swift; sourceTree = "<group>"; };
 		9A84EF852272264600A004CD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9AF68B972276A00A00B4437C /* PetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailViewController.swift; sourceTree = "<group>"; };
@@ -109,7 +105,6 @@
 		CBAAC495224A80C3009B2E3D /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 		CBAAC49E224A967D009B2E3D /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		CBAAC4A0224A969C009B2E3D /* GlobalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtensions.swift; sourceTree = "<group>"; };
-		CBB85E5722832D4A009FC4D6 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,9 +265,8 @@
 				CB9F9EE82281DDA500D4954C /* AddPetViewController.swift */,
 				CB97D2BF22848A5500CFEDF5 /* PetCardCell.swift */,
 				5EE56D652253B1B100AE3C51 /* EditAccountTableViewController.swift */,
-				CBB85E5722832D4A009FC4D6 /* CreateAccountViewController.swift */,
-				5EB5D71522453A5A000D6CE7 /* ViewController.swift */,
 				5E00C42B22774EC800FBF0D7 /* EditAccountTableViewCell.swift */,
+				5EB5D71522453A5A000D6CE7 /* HomeViewController.swift */,
 				5E32A28E225CE2AF00D91405 /* Animations.swift */,
 			);
 			path = ViewControllers;
@@ -530,9 +524,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E604FFE2285BB5700566168 /* AddPetViewController.swift in Sources */,
 				CBA97CF5228489A400583571 /* DetailViewController.swift in Sources */,
 				CBA97CF4228489A000583571 /* PetDetailViewController.swift in Sources */,
-				CB3247DA227892F000060C06 /* AddPetTableViewController.swift in Sources */,
 				CBC99F0C22773EC3001F2000 /* PetCardCollectionViewController.swift in Sources */,
 				CBC99F0B22773E55001F2000 /* AddPetExtension.swift in Sources */,
 				CBB702C32270BB32002BC8FE /* Model.xcdatamodeld in Sources */,
@@ -543,13 +537,11 @@
 				CBAAC496224A80C3009B2E3D /* FirebaseController.swift in Sources */,
 				5EE56D682253B1B100AE3C51 /* EditAccountTableViewController.swift in Sources */,
 				CBAAC4A1224A969C009B2E3D /* GlobalExtensions.swift in Sources */,
-				CB9F9EE92281DDA500D4954C /* AddPetViewController.swift in Sources */,
-				5EB5D71622453A5A000D6CE7 /* ViewController.swift in Sources */,
-				CBB85E5822832D4B009FC4D6 /* CreateAccountViewController.swift in Sources */,
+				5EB5D71622453A5A000D6CE7 /* HomeViewController.swift in Sources */,
+				5EB5D71622453A5A000D6CE7 /* HomeViewController.swift in Sources */,
 				5EB91C69225CFE7300D53278 /* Stack.swift in Sources */,
 				CB4ABDF0224E792B00162F94 /* Pet.swift in Sources */,
 				5E00C42C22774EC800FBF0D7 /* EditAccountTableViewCell.swift in Sources */,
-				5EB91C71225CFF7300D53278 /* PetCardCollectionViewController.swift in Sources */,
 				9A1050B62283218000520377 /* PetController.swift in Sources */,
 				9A84EF862272264600A004CD /* DetailViewController.swift in Sources */,
 				CBAAC49F224A967D009B2E3D /* Users.swift in Sources */,
