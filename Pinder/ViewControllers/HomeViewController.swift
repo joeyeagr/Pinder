@@ -99,7 +99,7 @@ class HomeViewController: UIViewController {
         let petName = pet.petName
         let petAge = pet.petAge
         self.petNameLabel.text = petName
-        self.petAgeLabel.text = String(petAge)
+        self.petAgeLabel.text = petAge
         Storage.storage().reference(withPath: imageString).getData(maxSize: (1024 * 1024), completion: { (data, error) in
             guard let data = data else {
                 NSLog("No data. \(error)")
@@ -144,7 +144,7 @@ class HomeViewController: UIViewController {
         setCornerAndShadow()
         petPicture.layer.cornerRadius = 25
         card.layer.cornerRadius = 25
-//        downloadAllPets()
+        downloadAllPets()
     }
 
     @IBAction func unwindToMain(_ sender: UIStoryboardSegue) {}
