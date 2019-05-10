@@ -24,7 +24,9 @@ extension PetCard {
             let isMale = dictionary["isMale"] as? Bool,
             let petName = dictionary["petName"] as? String
             
-            else {return nil}
+            else {
+                return nil
+        }
         
         self.init(context: context)
         
