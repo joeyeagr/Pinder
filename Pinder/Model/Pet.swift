@@ -24,13 +24,13 @@ struct Pet {
     var petId: String
     var petName: String
     var petBreed: String
-    var petAge: String
+    var petAge: Int //change this to a string
     var isMale: Bool
     var petBio: String
     var date: String
-    var petImage: String
+    var petImage1: String
+    var petImage2: String
     var humanContact: Array<String>
-    var humanId: String
     
     var petDictionary: [String: Any] {
         return [
@@ -41,9 +41,10 @@ struct Pet {
             "isMale": isMale,
             "petBio": petBio,
             "date": date,
-            "petImage": petImage,
-            "humanContact": humanContact,
-            "humanId": humanId
+            "petImage1": petImage1,
+            "petImage2": petImage2,
+            "humanContact": humanContact
+            
         ]
     }
     
@@ -54,13 +55,13 @@ extension Pet {
         guard let petId = petDictionary["petId"] as? String,
             let petName = petDictionary["petName"] as? String,
             let petBreed = petDictionary["petBreed"] as? String,
-            let petAge = petDictionary["petAge"] as? String,
+            let petAge = petDictionary["petAge"] as? Int,
             let isMale = petDictionary["isMale"] as? Bool,
             let petBio = petDictionary["petBio"] as? String,
             let date = petDictionary["date"] as? String,
-            let petImage = petDictionary["petImage1"] as? String,
-            let humanContact = petDictionary["humanContact"] as? Array<String>,
-            let humanId = petDictionary["humanId"] as? String else {return nil}
-        self.init(petId: petId, petName: petName, petBreed: petBreed, petAge: petAge, isMale: isMale, petBio: petBio, date: date, petImage: petImage, humanContact: humanContact, humanId: humanId)
+            let petImage1 = petDictionary["petImage1"] as? String,
+            let petImage2 = petDictionary["petImage2"] as? String,
+            let humanContact = petDictionary["humanContact"] as? Array<String> else {return nil}
+        self.init(petId: petId, petName: petName, petBreed: petBreed, petAge: petAge, isMale: isMale, petBio: petBio, date: date, petImage1: petImage1, petImage2: petImage2, humanContact: humanContact)
     }
 }
