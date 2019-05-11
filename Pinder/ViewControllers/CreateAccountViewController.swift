@@ -73,7 +73,9 @@ class CreateAccountViewController: UIViewController {
                 print("Not Valid")
                 print(error)
             } else {
+                self.createData()
                 print("User Created")
+                self.performSegue(withIdentifier: "logIn", sender: nil)
             }
         }
     }
