@@ -2,7 +2,7 @@
 //  CreateAccountViewController.swift
 //  Pinder
 //
-//  Created by Tyler Donohue on 5/8/19.
+//  Created by Tyler Donohue on 5/10/19.
 //  Copyright © 2019 Joe Eagar. All rights reserved.
 //
 
@@ -13,7 +13,7 @@ import FirebaseAuth
 import FirebaseStorage
 
 class CreateAccountViewController: UIViewController {
-
+    
     @IBOutlet var emailTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     @IBOutlet var humanNameTF: UITextField!
@@ -53,9 +53,9 @@ class CreateAccountViewController: UIViewController {
         
         guard let email = emailTF.text else { return }
         guard let password = passwordTF.text else { return }
-        
+
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-            if error != nil || user == nil || self.emailTF.text == "" || self.passwordTF.text == "" || self.humanNameTF.text == "" || self.phoneNumberTF.text == "" {
+            if error != nil || self.emailTF.text == "" || self.passwordTF.text == "" || self.humanNameTF.text == "" || self.phoneNumberTF.text == "" {
                 UIView.animate(withDuration: 0.09, animations: {
                     let move = CGAffineTransform(translationX: 10, y: 0)
                     self.emailTF.transform = move
@@ -73,9 +73,7 @@ class CreateAccountViewController: UIViewController {
                 print("Not Valid")
                 print(error)
             } else {
-                self.createData()
                 print("User Created")
-                self.performSegue(withIdentifier: "logIn", sender: nil)
             }
         }
     }
@@ -100,8 +98,21 @@ class CreateAccountViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "logIn", let editAccountVC = segue.destination as? EditAccountTableViewController {
+            
+            editAccountVC.humanName = humanNameTF.text ?? "name"
+            editAccountVC.phoneNumber = Int(phoneNumberTF.text ?? "01") ?? 0
+            editAccountVC.email = emailTF.text ?? "email"
+            editAccountVC.password = passwordTF.text ?? "password"
+            editAccountVC.currentAuthID = currentAuthID
+        }
+        print("prepare for segueSearch called")
+    }
+    
     func createData() {
-
+        
         let stringNumber = phoneNumberTF.text ?? "0000000000"
         guard let id: String = self.currentAuthID else { return }
         print(id)
@@ -113,13 +124,13 @@ class CreateAccountViewController: UIViewController {
         print(password)
         guard let phoneNumber: Int = Int(stringNumber)  else { return }
         print(phoneNumber)
-
+        
         let user = Users(id: id,
                          name: name,
                          email: email,
                          password: password,
                          phoneNumber: phoneNumber)
-
+        
         let userRef = self.db.collection("profile")
         userRef.document(String(user.id)).setData(user.humanDictionary){ error in
             if error == nil {
@@ -134,11 +145,12 @@ class CreateAccountViewController: UIViewController {
     
     //Actions
     @IBAction func createAccountTapped(_ sender: Any) {
-        
-        createUser()
+    //    DispatchQueue.main.asyncAfter(deadline: .now()) {
+            self.createUser()
+     //   }
         if currentAuthID != nil {
-            createData()
-            performSegue(withIdentifier: "logIn", sender: nil)
+            self.createData()
+            self.performSegue(withIdentifier: "logIn", sender: nil)
         } else {
             print("error, no uid detected")
         }
@@ -166,5 +178,5 @@ class CreateAccountViewController: UIViewController {
     
     @IBAction func unwindToLogIn(_ sender: UIStoryboardSegue) {}
     
-
+    
 }
