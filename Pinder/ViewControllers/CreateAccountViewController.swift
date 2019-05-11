@@ -29,8 +29,9 @@ class CreateAccountViewController: UIViewController {
     var imageSelected = false
     var username: String = ""
     let userDefault = UserDefaults.standard
-    var currentAuthID = Auth.auth().currentUser?.uid
     var currentUser: User?
+    var currentAuthID = Auth.auth().currentUser?.uid
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,9 +54,15 @@ class CreateAccountViewController: UIViewController {
         
         guard let email = emailTF.text else { return }
         guard let password = passwordTF.text else { return }
-
-        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-            if error != nil || self.emailTF.text == "" || self.passwordTF.text == "" || self.humanNameTF.text == "" || self.phoneNumberTF.text == "" {
+        
+        Auth.auth().createUser(withEmail: email, password: password) { user, error in
+            if error == nil && user != nil && self.emailTF.text != "" && self.passwordTF.text != "" && self.humanNameTF.text != "" && self.phoneNumberTF.text != "" {
+                print("User Created")
+                let changeReuqest = Auth.auth().currentUser?.createProfileChangeRequest()
+                print(self.currentAuthID)
+                self.signIn()
+                
+            } else {
                 UIView.animate(withDuration: 0.09, animations: {
                     let move = CGAffineTransform(translationX: 10, y: 0)
                     self.emailTF.transform = move
@@ -72,8 +79,7 @@ class CreateAccountViewController: UIViewController {
                 }
                 print("Not Valid")
                 print(error)
-            } else {
-                print("User Created")
+                
             }
         }
     }
@@ -98,18 +104,18 @@ class CreateAccountViewController: UIViewController {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "logIn", let editAccountVC = segue.destination as? EditAccountTableViewController {
-            
-            editAccountVC.humanName = humanNameTF.text ?? "name"
-            editAccountVC.phoneNumber = Int(phoneNumberTF.text ?? "01") ?? 0
-            editAccountVC.email = emailTF.text ?? "email"
-            editAccountVC.password = passwordTF.text ?? "password"
-            editAccountVC.currentAuthID = currentAuthID
-        }
-        print("prepare for segueSearch called")
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        if segue.identifier == "logIn", let editAccountVC = segue.destination as? EditAccountTableViewController {
+//
+//            editAccountVC.humanName = humanNameTF.text ?? "name"
+//            editAccountVC.phoneNumber = Int(phoneNumberTF.text ?? "01") ?? 0
+//            editAccountVC.email = emailTF.text ?? "email"
+//            editAccountVC.password = passwordTF.text ?? "password"
+//            editAccountVC.currentAuthID = currentAuthID
+//        }
+//        print("prepare for segueSearch called")
+//    }
     
     func createData() {
         
@@ -145,16 +151,7 @@ class CreateAccountViewController: UIViewController {
     
     //Actions
     @IBAction func createAccountTapped(_ sender: Any) {
-    //    DispatchQueue.main.asyncAfter(deadline: .now()) {
-            self.createUser()
-     //   }
-        if currentAuthID != nil {
-            self.createData()
-            self.performSegue(withIdentifier: "logIn", sender: nil)
-        } else {
-            print("error, no uid detected")
-        }
-        
+            createUser()
     }
     
     @IBAction func logInTapped(_ sender: Any) {
@@ -174,6 +171,10 @@ class CreateAccountViewController: UIViewController {
             }
         }
         
+    }
+    @IBAction func movetoplace(_ sender: Any) {
+        createData()
+        performSegue(withIdentifier: "logIn", sender: nil)
     }
     
     @IBAction func unwindToLogIn(_ sender: UIStoryboardSegue) {}
