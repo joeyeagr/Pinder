@@ -98,19 +98,6 @@ class CreateAccountViewController: UIViewController {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "logIn", let editAccountVC = segue.destination as? EditAccountTableViewController {
-            
-            editAccountVC.humanName = humanNameTF.text ?? "name"
-            editAccountVC.phoneNumber = Int(phoneNumberTF.text ?? "01") ?? 0
-            editAccountVC.email = emailTF.text ?? "email"
-            editAccountVC.password = passwordTF.text ?? "password"
-            editAccountVC.currentAuthID = currentAuthID
-        }
-        print("prepare for segueSearch called")
-    }
-    
     func createData() {
 
         let stringNumber = phoneNumberTF.text ?? "0000000000"

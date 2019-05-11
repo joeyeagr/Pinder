@@ -69,55 +69,24 @@ class EditAccountTableViewController: UITableViewController {
         
         return cell
     }
-    func checkForDocument() {
-        
-        if currentAuthID == nil {
-            print("you are not logged in")
-        } else {
-            let userRef = self.db.collection("profile").document("\(String(describing: self.userId))")
-            userRef.getDocument { (document, error) in
-                if let document = document {
-                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                    print("data lready added: \(dataDescription)")
-                } else {
-                    self.createData()
-                    print("document added to Firestore")
-                }
-                self.userId = self.currentAuthID ?? "no uid"
-            }
-        }
-    }
-    
-    func createData() {
-        
-        guard let id: String = self.currentAuthID else { return }
-        print(id)
-        guard let name: String = humanName  else { return }
-        print(name)
-        guard let email: String = email  else { return }
-        print(email)
-        guard let password: String = password  else { return }
-        print(password)
-        guard let phoneNumber: Int = Int(phoneNumber)  else { return }
-        print(phoneNumber)
-        
-        let user = Users(id: id,
-                         name: name,
-                         email: email,
-                         password: password,
-                         phoneNumber: phoneNumber)
-        
-        let userRef = self.db.collection("profile")
-        userRef.document(String(user.id)).setData(user.humanDictionary){ error in
-            if error == nil {
-                print("Added Human Data")
-                print("call, UserID: \(self.currentAuthID)")
-            } else {
-                print("you have an error in creating data")
-                print(Error.self)
-            }
-        }
-    }
+//    func checkForDocument() {
+//        
+//        if currentAuthID == nil {
+//            print("you are not logged in")
+//        } else {
+//            let userRef = self.db.collection("profile").document("\(String(describing: self.userId))")
+//            userRef.getDocument { (document, error) in
+//                if let document = document {
+//                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+//                    print("data lready added: \(dataDescription)")
+//                } else {
+//                    self.createData()
+//                    print("document added to Firestore")
+//                }
+//                self.userId = self.currentAuthID ?? "no uid"
+//            }
+//        }
+//    }
 
     func getPersonalAccountData() {
         
