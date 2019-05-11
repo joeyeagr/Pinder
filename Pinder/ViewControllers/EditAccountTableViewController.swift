@@ -31,7 +31,7 @@ class EditAccountTableViewController: UITableViewController {
         changeBackground()
         db = Firestore.firestore()
         getPersonalAccountData()
-        print(currentAuthID)
+        createDataAfter()
     }
     
     func changeBackground() {
@@ -88,7 +88,7 @@ class EditAccountTableViewController: UITableViewController {
     
     func createDataAfter() {
         if currentAuthID == nil {
-            print("no uid")
+            print("no uid found at this moment")
         } else {
             self.createData()
         }
@@ -145,10 +145,10 @@ class EditAccountTableViewController: UITableViewController {
                 }
             }
         }
-     //   self.pets = pets
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//        }
+      //  self.pets = pets
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     func getPetData() {
