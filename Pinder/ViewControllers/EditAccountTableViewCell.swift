@@ -11,7 +11,7 @@ class EditAccountTableViewCell: UITableViewCell {
     
     @IBOutlet var petNameLabel: UILabel!
     
-    var users: [Users]?
+    var pets: [Pet]?
     let petName: String = ""
     
     override func awakeFromNib() {
@@ -23,7 +23,7 @@ class EditAccountTableViewCell: UITableViewCell {
         
     }
     
-    func updateCell(users: Users) {
+    func updateCell(pets: Pet) {
         
     }
 }

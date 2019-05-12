@@ -18,7 +18,7 @@ class EditAccountTableViewController: UITableViewController {
     var db: Firestore!
     var currentUser: User?
     var currentAuthID = Auth.auth().currentUser?.uid
-    
+
     var phoneNumber: Int = 0
     var humanName: String = ""
     var email: String = ""
@@ -31,6 +31,7 @@ class EditAccountTableViewController: UITableViewController {
         changeBackground()
         db = Firestore.firestore()
         getPersonalAccountData()
+        getPetData()
         createDataAfter()
     }
     
@@ -46,12 +47,12 @@ class EditAccountTableViewController: UITableViewController {
         return headerView
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pets?.count ?? 1
-    }
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return pets?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -61,12 +62,13 @@ class EditAccountTableViewController: UITableViewController {
         if let pets = pets {
             
             let pet = pets[indexPath.row]
-            cell.petNameLabel?.text = "\(pet.petName)"
-         //   cell.updateCell(pets: pet)
+            cell.petNameLabel?.text = "Pet Name: \(pet.petName)"
+            cell.updateCell(pets: pet)
         }
         
         return cell
     }
+    
     func checkForDocument() {
         
         if currentAuthID == nil {
@@ -76,7 +78,7 @@ class EditAccountTableViewController: UITableViewController {
             userRef.getDocument { (document, error) in
                 if let document = document {
                     let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                    print("data lready added: \(dataDescription)")
+                    print("data already added: \(dataDescription)")
                 } else {
                     self.createData()
                     print("document added to Firestore")
@@ -153,10 +155,11 @@ class EditAccountTableViewController: UITableViewController {
     
     func getPetData() {
         
+        let db = Firestore.firestore()
         var pets = [Pet]()
         guard let petsId: String = self.currentAuthID else { return }
         print("edit pet account \(petsId)")
-        let profileRef = self.db.collection("PetId").whereField("humanId", isEqualTo: petsId)
+        let profileRef = db.collection("PetId").whereField("humanId", isEqualTo: petsId)
         profileRef.getDocuments { (snapshot, error) in
             if error != nil {
                 print(error)
