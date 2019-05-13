@@ -52,9 +52,9 @@ extension HomeViewController {
                 UIView.animate(withDuration: 0.3, animations: {
                     card.center = CGPoint(x: card.center.x + 200, y: card.center.y + 75)
                     card.alpha = 0
+                    self.savePetAsPetCard(petCard: self.pets[self.index])
                 }, completion: { _ in
                     self.resetCard(cardDismissed: true)
-                    self.savePetAsPetCard(petCard: self.pets[self.index])
                 })
                 return
             }
