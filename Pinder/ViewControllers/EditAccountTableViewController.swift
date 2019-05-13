@@ -17,15 +17,40 @@ class EditAccountTableViewController: UITableViewController {
     var pets: [Pet]?
     var db: Firestore!
     var currentAuthID = Auth.auth().currentUser?.uid
+<<<<<<< HEAD
+=======
+
+    var phoneNumber: Int = 0
+    var humanName: String = ""
+    var email: String = ""
+    var password: String = ""
+    var userId: String = ""
+>>>>>>> develop
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+<<<<<<< HEAD
          var pets = [Pet]()
         
        // getPetData()
+=======
+        changeBackground()
+>>>>>>> develop
         db = Firestore.firestore()
+        checkFirestoreForUserDocument()
+        getPetData()
         getPersonalAccountData()
+<<<<<<< HEAD
+=======
+    }
+    
+    func changeBackground() {
+            let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+            backgroundImage.image = UIImage(named: "Gradient")
+            backgroundImage.contentMode = UIView.ContentMode.scaleToFill
+            self.tableView.backgroundView = backgroundImage
+>>>>>>> develop
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -33,30 +58,80 @@ class EditAccountTableViewController: UITableViewController {
         return headerView
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pets?.count ?? 1
-    }
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return pets?.count ?? 0
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "petCell", for: indexPath) as? EditAccountTableViewCell else { return UITableViewCell() }
-        tableView.rowHeight = 118
+        tableView.rowHeight = 80
         
         if let pets = pets {
-            
             let pet = pets[indexPath.row]
-            cell.petNameLabel?.text = "\(pet.petName)"
-         //   cell.updateCell(pets: pet)
+            cell.petNameLabel?.text = "Pet Name: \(pet.petName)"
+            cell.updateCell(pets: pet)
+        } else {
+            print("no pets")
         }
-        
         return cell
     }
+<<<<<<< HEAD
+=======
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            pets?.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+        }
+    }
+    
+    func checkFirestoreForUserDocument() {
+        if humanName == "" || password == "" || email == "" {
+            print("data already added")
+        } else {
+            createData()
+        }
+    }
+    
+    func createData() {
+        
+        guard let id: String = self.currentAuthID else { return }
+        print(id)
+        guard let name: String = humanName  else { return }
+        print(name)
+        guard let email: String = email  else { return }
+        print(email)
+        guard let password: String = password  else { return }
+        print(password)
+        guard let phoneNumber: Int = Int(phoneNumber)  else { return }
+        print(phoneNumber)
+        
+        let user = Users(id: id,
+                         name: name,
+                         email: email,
+                         password: password,
+                         phoneNumber: phoneNumber)
+        
+        let userRef = self.db.collection("profile")
+        userRef.document(String(user.id)).setData(user.humanDictionary){ error in
+            if error == nil {
+                print("Added Human Data")
+                print("call, UserID: \(self.currentAuthID)")
+            } else {
+                print("you have an error in creating data")
+                print(Error.self)
+            }
+        }
+    }
+>>>>>>> develop
 
     func getPersonalAccountData() {
-        
+        // will be used later when we give options to the user to edit their personal account
         guard let uid: String = self.currentAuthID else { return }
         print("edit account \(uid)")
         let profileRef = self.db.collection("profile").whereField("id", isEqualTo: uid)
@@ -75,7 +150,6 @@ class EditAccountTableViewController: UITableViewController {
                 }
             }
         }
-     //   self.pets = pets
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -83,20 +157,25 @@ class EditAccountTableViewController: UITableViewController {
     
     func getPetData() {
         
+        let db = Firestore.firestore()
         var pets = [Pet]()
         guard let petsId: String = self.currentAuthID else { return }
+<<<<<<< HEAD
         print("edit account \(petsId)")
         let profileRef = self.db.collection("PetId").whereField("humanId", isEqualTo: petsId)
         profileRef.getDocuments { (snapshot, error) in
+=======
+        db.collection("PetId").whereField("humanId", isEqualTo: petsId).getDocuments { (snapshot, error) in
+>>>>>>> develop
             if error != nil {
-                print(error)
+                print("an error \(error)")
             } else {
                 guard let snapshot = snapshot else {
                     print("could not unrwap snapshot")
                     return
                 }
                 for document in (snapshot.documents) {
-                    if let name = document.data()["name"] as? [String: Any], let otherPets = Pet.init(petDictionary: name) {
+                    if let name = document.data() as? [String: Any], let otherPets = Pet.init(petDictionary: name) {
                         pets.append(otherPets)
                     }
                 }
@@ -108,9 +187,8 @@ class EditAccountTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func addPetButtonTapped(_ sender: Any) {
-        
-         performSegue(withIdentifier: "addPet", sender: nil)
+    @IBAction func AddPet(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "addPet", sender: nil)
     }
     
     @IBAction func logOutTapped(_ sender: Any) { //this isnt working correctly
