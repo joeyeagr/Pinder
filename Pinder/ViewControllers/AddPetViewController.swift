@@ -157,7 +157,6 @@ class AddPetViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         
-        print("data saved")
         uploadPetImage()
         createPetCardData()
         let alert = UIAlertController(title: "Your pet card was saved", message: nil, preferredStyle: .alert)
@@ -168,7 +167,6 @@ class AddPetViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBAction func petImageButtonTapped(_ sender: Any) {
         
-        print("IT WORKED")
             let imagePickerController = UIImagePickerController()
             imagePickerController.delegate = self
             imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary

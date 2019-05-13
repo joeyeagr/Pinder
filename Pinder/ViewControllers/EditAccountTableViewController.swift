@@ -31,8 +31,8 @@ class EditAccountTableViewController: UITableViewController {
         changeBackground()
         db = Firestore.firestore()
         checkFirestoreForUserDocument()
-        getPersonalAccountData()
         getPetData()
+        getPersonalAccountData()
     }
     
     func changeBackground() {
@@ -52,7 +52,7 @@ class EditAccountTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pets?.count ?? 1
+        return pets?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -60,20 +60,19 @@ class EditAccountTableViewController: UITableViewController {
         tableView.rowHeight = 80
         
         if let pets = pets {
-            
             let pet = pets[indexPath.row]
             cell.petNameLabel?.text = "Pet Name: \(pet.petName)"
             cell.updateCell(pets: pet)
         } else {
             print("no pets")
         }
-        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == .delete) {
+        if editingStyle == .delete {
             pets?.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             
         }
     }
@@ -102,14 +101,6 @@ class EditAccountTableViewController: UITableViewController {
                 }
                 self.userId = self.currentAuthID ?? "no uid"
             }
-        }
-    }
-    
-    func createDataAfter() {
-        if currentAuthID == nil {
-            print("no uid found at this moment")
-        } else {
-            self.createData()
         }
     }
     
@@ -145,7 +136,7 @@ class EditAccountTableViewController: UITableViewController {
     }
 
     func getPersonalAccountData() {
-        
+        // will be used later when we give options to the user to edit their personal account
         guard let uid: String = self.currentAuthID else { return }
         print("edit account \(uid)")
         let profileRef = self.db.collection("profile").whereField("id", isEqualTo: uid)
@@ -164,7 +155,6 @@ class EditAccountTableViewController: UITableViewController {
                 }
             }
         }
-      //  self.pets = pets
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -175,12 +165,15 @@ class EditAccountTableViewController: UITableViewController {
         let db = Firestore.firestore()
         var pets = [Pet]()
         guard let petsId: String = self.currentAuthID else { return }
-        let profileRef = db.collection("PetId").whereField("humanId", isEqualTo: petsId)
-        profileRef.getDocuments { (snapshot, error) in
+        db.collection("PetId").whereField("humanId", isEqualTo: petsId).getDocuments { (snapshot, error) in
             if error != nil {
                 print("an error \(error)")
             } else {
-                for document in (snapshot?.documents)! {
+                guard let snapshot = snapshot else {
+                    print("could not unrwap snapshot")
+                    return
+                }
+                for document in (snapshot.documents) {
                     if let name = document.data()["name"] as? [String: Any], let otherPets = Pet.init(petDictionary: name) {
                         pets.append(otherPets)
                     }
@@ -192,6 +185,7 @@ class EditAccountTableViewController: UITableViewController {
             }
         }
     }
+    
     @IBAction func AddPet(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "addPet", sender: nil)
     }
