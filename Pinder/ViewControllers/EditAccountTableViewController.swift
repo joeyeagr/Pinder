@@ -78,29 +78,10 @@ class EditAccountTableViewController: UITableViewController {
     }
     
     func checkFirestoreForUserDocument() {
-        if humanName == "" || password == "" || email == "" || phoneNumber != 1238765528736065784 {
+        if humanName == "" || password == "" || email == "" {
             print("data already added")
         } else {
             createData()
-        }
-    }
-        
-    func checkForDocument() {
-        
-        if currentAuthID == nil {
-            print("you are not logged in")
-        } else {
-            let userRef = self.db.collection("profile").document("\(currentAuthID)")
-            userRef.getDocument { (document, error) in
-                if let document = document {
-                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                    print("data already added: \(dataDescription)")
-                } else {
-                    self.createData()
-                    print("document added to Firestore")
-                }
-                self.userId = self.currentAuthID ?? "no uid"
-            }
         }
     }
     
