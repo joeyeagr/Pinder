@@ -174,7 +174,7 @@ class EditAccountTableViewController: UITableViewController {
                     return
                 }
                 for document in (snapshot.documents) {
-                    if let name = document.data()["name"] as? [String: Any], let otherPets = Pet.init(petDictionary: name) {
+                    if let name = document.data() as? [String: Any], let otherPets = Pet.init(petDictionary: name) {
                         pets.append(otherPets)
                     }
                 }
