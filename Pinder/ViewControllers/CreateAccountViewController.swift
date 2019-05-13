@@ -2,7 +2,7 @@
 //  CreateAccountViewController.swift
 //  Pinder
 //
-//  Created by Tyler Donohue on 5/8/19.
+//  Created by Tyler Donohue on 5/10/19.
 //  Copyright © 2019 Joe Eagar. All rights reserved.
 //
 
@@ -13,7 +13,7 @@ import FirebaseAuth
 import FirebaseStorage
 
 class CreateAccountViewController: UIViewController {
-
+    
     @IBOutlet var emailTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     @IBOutlet var humanNameTF: UITextField!
@@ -29,13 +29,12 @@ class CreateAccountViewController: UIViewController {
     var imageSelected = false
     var username: String = ""
     let userDefault = UserDefaults.standard
+
     var currentAuthID = Auth.auth().currentUser?.uid
-    var currentUser: User?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("your\(currentAuthID)")
         
         db = Firestore.firestore()
         imagePicker = UIImagePickerController()
@@ -56,8 +55,11 @@ class CreateAccountViewController: UIViewController {
         guard let email = emailTF.text else { return }
         guard let password = passwordTF.text else { return }
         
-        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-            if error != nil || user == nil || self.emailTF.text == "" || self.passwordTF.text == "" || self.humanNameTF.text == "" || self.phoneNumberTF.text == "" {
+        Auth.auth().createUser(withEmail: email, password: password) { user, error in
+            if error == nil && self.emailTF.text != "" && self.passwordTF.text != "" && self.humanNameTF.text != "" && self.phoneNumberTF.text != "" {
+                print("User Created")
+                self.performSegue(withIdentifier: "logIn", sender: nil)
+            } else {
                 UIView.animate(withDuration: 0.09, animations: {
                     let move = CGAffineTransform(translationX: 10, y: 0)
                     self.emailTF.transform = move
@@ -74,10 +76,6 @@ class CreateAccountViewController: UIViewController {
                 }
                 print("Not Valid")
                 print(error)
-            } else {
-                self.createData()
-                print("User Created")
-                self.performSegue(withIdentifier: "logIn", sender: nil)
             }
         }
     }
@@ -90,7 +88,6 @@ class CreateAccountViewController: UIViewController {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if user != nil {
                 print("uid")
-                //self.performSegue(withIdentifier: "logIn", sender: self)
             } else {
                 let alert = UIAlertController(title: "Error Logging In", message: nil, preferredStyle: .alert)
                 let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -102,57 +99,53 @@ class CreateAccountViewController: UIViewController {
         }
     }
     
-    //create a perepare for segue that takes th text in the text views and then creates data over in the next VC
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+
         if segue.identifier == "logIn", let editAccountVC = segue.destination as? EditAccountTableViewController {
-            
             editAccountVC.humanName = humanNameTF.text ?? "name"
             editAccountVC.phoneNumber = Int(phoneNumberTF.text ?? "01") ?? 0
             editAccountVC.email = emailTF.text ?? "email"
             editAccountVC.password = passwordTF.text ?? "password"
-            editAccountVC.currentAuthID = currentAuthID
         }
         print("prepare for segueSearch called")
     }
     
-    func createData() {
-
-        let stringNumber = phoneNumberTF.text ?? "0000000000"
-        guard let id: String = self.currentAuthID else { return }
-        print(id)
-        guard let name: String = humanNameTF.text  else { return }
-        print(name)
-        guard let email: String = emailTF.text  else { return }
-        print(email)
-        guard let password: String = passwordTF.text  else { return }
-        print(password)
-        guard let phoneNumber: Int = Int(stringNumber)  else { return }
-        print(phoneNumber)
-
-        let user = Users(id: id,
-                         name: name,
-                         email: email,
-                         password: password,
-                         phoneNumber: phoneNumber)
-
-        let userRef = self.db.collection("profile")
-        userRef.document(String(user.id)).setData(user.humanDictionary){ error in
-            if error == nil {
-                print("Added Human Data")
-                print("call, UserID: \(self.currentAuthID)")
-            } else {
-                print("you have an error in creating data")
-                print(Error.self)
-            }
-        }
-    }
+//    func createData() {
+//
+//        let stringNumber = phoneNumberTF.text ?? "0000000000"
+//        guard let name1: String = humanNameTF.text  else { return }
+//        print(name1)
+//        guard let email1: String = emailTF.text  else { return }
+//        print(email1)
+//        guard let password1: String = passwordTF.text  else { return }
+//        print(password1)
+//        guard let phoneNumber1: Int = Int(stringNumber)  else { return }
+//        print(phoneNumber1)
+//        signIn()
+//        guard let id1: String = self.currentAuthID else { return }
+//        print(id1)
+//
+//        let user = Users(id: id1,
+//                         name: name1,
+//                         email: email1,
+//                         password: password1,
+//                         phoneNumber: phoneNumber1)
+//
+//        let userRef = self.db.collection("profile")
+//        userRef.document(String(user.id)).setData(user.humanDictionary){ error in
+//            if error == nil {
+//                print("Added Human Data")
+//                print("call, UserID: \(self.currentAuthID)")
+//            } else {
+//                print("you have an error in creating data")
+//                print(Error.self)
+//            }
+//        }
+//    }
     
     //Actions
     @IBAction func createAccountTapped(_ sender: Any) {
-        
-        createUser()
+            createUser()
     }
     
     @IBAction func logInTapped(_ sender: Any) {
@@ -171,10 +164,8 @@ class CreateAccountViewController: UIViewController {
                 return
             }
         }
-        
     }
     
     @IBAction func unwindToLogIn(_ sender: UIStoryboardSegue) {}
     
-
 }

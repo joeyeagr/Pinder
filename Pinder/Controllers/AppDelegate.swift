@@ -24,9 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let storage = Storage.storage()
         let storageRef = storage.reference()
-        
-        //FirebaseController.shared.addUserListender(loggedIn: false)
-        
+
         return true
     }
 
@@ -52,7 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         //self.saveContext()
-        FirebaseController.shared.removeUserListener()
     }
     
     func application(_ application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
