@@ -12,18 +12,15 @@ class EditAccountTableViewCell: UITableViewCell {
     @IBOutlet var petNameLabel: UILabel!
     
     var pets: [Pet]?
-    let petName: String = ""
+    var petName: String = ""
+    var petAge: String = ""
+    var petBreed: String = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
     }
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-    }
     
     func updateCell(pets: Pet) {
-        
     }
 }

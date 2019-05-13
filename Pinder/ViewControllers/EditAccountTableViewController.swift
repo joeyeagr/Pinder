@@ -30,9 +30,9 @@ class EditAccountTableViewController: UITableViewController {
         
         changeBackground()
         db = Firestore.firestore()
+        checkFirestoreForUserDocument()
         getPersonalAccountData()
         getPetData()
-        createDataAfter()
     }
     
     func changeBackground() {
@@ -52,29 +52,46 @@ class EditAccountTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pets?.count ?? 0
+        return pets?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "petCell", for: indexPath) as? EditAccountTableViewCell else { return UITableViewCell() }
-        tableView.rowHeight = 118
+        tableView.rowHeight = 80
         
         if let pets = pets {
             
             let pet = pets[indexPath.row]
             cell.petNameLabel?.text = "Pet Name: \(pet.petName)"
             cell.updateCell(pets: pet)
+        } else {
+            print("no pets")
         }
         
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            pets?.remove(at: indexPath.row)
+            
+        }
+    }
+    
+    func checkFirestoreForUserDocument() {
+        if humanName == "" || password == "" || email == "" || phoneNumber != 1238765528736065784 {
+            print("data already added")
+        } else {
+            createData()
+        }
+    }
+        
     func checkForDocument() {
         
         if currentAuthID == nil {
             print("you are not logged in")
         } else {
-            let userRef = self.db.collection("profile").document("\(String(describing: self.userId))")
+            let userRef = self.db.collection("profile").document("\(currentAuthID)")
             userRef.getDocument { (document, error) in
                 if let document = document {
                     let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
@@ -158,17 +175,12 @@ class EditAccountTableViewController: UITableViewController {
         let db = Firestore.firestore()
         var pets = [Pet]()
         guard let petsId: String = self.currentAuthID else { return }
-        print("edit pet account \(petsId)")
         let profileRef = db.collection("PetId").whereField("humanId", isEqualTo: petsId)
         profileRef.getDocuments { (snapshot, error) in
             if error != nil {
-                print(error)
+                print("an error \(error)")
             } else {
-                guard let snapshot = snapshot else {
-                    print("could not unrwap snapshot")
-                    return
-                }
-                for document in (snapshot.documents) {
+                for document in (snapshot?.documents)! {
                     if let name = document.data()["name"] as? [String: Any], let otherPets = Pet.init(petDictionary: name) {
                         pets.append(otherPets)
                     }
@@ -180,10 +192,8 @@ class EditAccountTableViewController: UITableViewController {
             }
         }
     }
-    
-    @IBAction func addPetButtonTapped(_ sender: Any) {
-        
-         performSegue(withIdentifier: "addPet", sender: nil)
+    @IBAction func AddPet(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "addPet", sender: nil)
     }
     
     @IBAction func logOutTapped(_ sender: Any) { //this isnt working correctly
