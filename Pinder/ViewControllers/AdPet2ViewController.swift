@@ -37,7 +37,9 @@ class AdPet2ViewController: UIViewController, UIImagePickerControllerDelegate, U
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        getCurrentDate()
+        createPetCardData()
+        changeBackground()
         // Do any additional setup after loading the view.
     }
     

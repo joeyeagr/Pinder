@@ -308,7 +308,6 @@
                                     <segment title="Female"/>
                                 </segments>
                                 <connections>
-                                    <action selector="genderControlTapped:" destination="rIM-Qh-Y0n" eventType="valueChanged" id="T1j-48-bUe"/>
                                     <action selector="genderControllerTapped:" destination="rIM-Qh-Y0n" eventType="valueChanged" id="wr4-Vz-Tbe"/>
                                 </connections>
                             </segmentedControl>
@@ -343,7 +342,6 @@
                                     <constraint firstAttribute="height" constant="323" id="mXi-Cf-ROl"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="petImageButtonTapped:" destination="rIM-Qh-Y0n" eventType="touchUpInside" id="SLD-Gd-4rC"/>
                                     <action selector="petImageTapped:" destination="rIM-Qh-Y0n" eventType="touchUpInside" id="2hw-nS-RKu"/>
                                 </connections>
                             </button>
