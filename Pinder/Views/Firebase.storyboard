@@ -23,7 +23,11 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem title="Title" id="RnT-WL-Er3">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="Pqx-Zx-7Di"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="Pqx-Zx-7Di">
+                                            <connections>
+                                                <segue destination="oGL-Lb-6S5" kind="unwind" unwindAction="unwindToMain:" id="O4g-MT-Q8f"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Create Account" id="D49-Uf-1dh">
                                             <connections>
                                                 <action selector="createAccountTapped:" destination="hQS-vG-eTL" id="mbM-pf-RN2"/>
@@ -147,6 +151,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gI0-6S-b2T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="oGL-Lb-6S5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1617" y="-222"/>
         </scene>
