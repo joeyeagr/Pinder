@@ -29,9 +29,7 @@ class EditAccountTableViewController: UITableViewController {
          var pets = [Pet]()
         
         getPetData()
-
         changeBackground()
-
         db = Firestore.firestore()
         checkFirestoreForUserDocument()
         getPersonalAccountData()

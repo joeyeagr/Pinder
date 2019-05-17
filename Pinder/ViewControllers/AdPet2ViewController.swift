@@ -38,6 +38,7 @@ class AdPet2ViewController: UIViewController, UIImagePickerControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         getCurrentDate()
+        getPersonalAccountData()
         createPetCardData()
         changeBackground()
         // Do any additional setup after loading the view.
@@ -72,6 +73,30 @@ class AdPet2ViewController: UIViewController, UIImagePickerControllerDelegate, U
         let currentLabel = ("\(month).\(day).\(year)")
         currentDateLabel.text = currentLabel
         return currentLabel
+    }
+    
+    func getPersonalAccountData() {
+        
+        guard let uid: String = self.currentAuthID else { return }
+        print("this is my uid i really like my uid \(uid)")
+        let profileRef = self.db.collection("profile").whereField("id", isEqualTo: uid)
+        profileRef.getDocuments { (snapshot, error) in
+            if error != nil {
+                print(error as Any)
+            } else {
+                for document in (snapshot?.documents)! {
+                    if let name = document.data()["name"] as? String {
+                        if let email = document.data()["email"] as? String {
+                            if let phoneNumber = document.data()["phoneNumber"] as? Int {
+                                self.humanNameLabel.text = name
+                                self.emailLabel.text = email
+                                self.phoneNumberLabel.text = String(phoneNumber)
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     func createPetCardData() {
