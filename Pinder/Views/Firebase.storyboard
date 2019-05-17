@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hQS-vG-eTL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hQS-vG-eTL">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -207,10 +207,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heavy-plus-sign-rounded-math-37968" translatesAutoresizingMaskIntoConstraints="NO" id="DGM-h9-DQY">
-                                <rect key="frame" x="16" y="88" width="98" height="126"/>
+                                <rect key="frame" x="16" y="88" width="98" height="105.5"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="dogIcon" translatesAutoresizingMaskIntoConstraints="NO" id="u5n-M4-iqw">
-                                <rect key="frame" x="16" y="88" width="382" height="335"/>
+                                <rect key="frame" x="16" y="88" width="382" height="314.5"/>
                                 <gestureRecognizers/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5em-bQ-v3b">
@@ -220,7 +220,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0h-jJ-7k9">
-                                <rect key="frame" x="16" y="443" width="45" height="0.0"/>
+                                <rect key="frame" x="16" y="422.5" width="45" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -324,7 +324,7 @@
                                     <navigationItem title="Add Pet" id="FRx-xJ-6rH">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="vsq-Fd-luc">
                                             <connections>
-                                                <segue destination="TiC-Fw-QY5" kind="unwind" unwindAction="unwindToAccount:" id="F7K-hn-3ar"/>
+                                                <segue destination="TiC-Fw-QY5" kind="unwind" unwindAction="unwindToEditAccount:" id="evX-RX-d5H"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="pOR-qD-fvD">
@@ -427,7 +427,7 @@
                         <outlet property="petAgeTF" destination="dbj-qq-asG" id="kPr-sZ-UhH"/>
                         <outlet property="petBreedTF" destination="nER-CU-gYx" id="JpN-B3-XBu"/>
                         <outlet property="petNameTF" destination="rq6-b1-7Gw" id="0Ze-CZ-aCn"/>
-                        <outlet property="phoneNumberLabel" destination="g8Q-Iw-Xoa" id="K9p-yD-zIb"/>
+                        <outlet property="phoneNumberLabel" destination="5em-bQ-v3b" id="cHt-wN-rEm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PcR-L4-JCv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -437,7 +437,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="dogIcon" width="512" height="512"/>
+        <image name="dogIcon" width="256" height="256"/>
         <image name="heavy-plus-sign-rounded-math-37968" width="128" height="128"/>
     </resources>
 </document>
