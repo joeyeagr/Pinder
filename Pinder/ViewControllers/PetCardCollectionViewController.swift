@@ -35,7 +35,6 @@ class PetCardCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         if PetCardController.sharedController.fetchPetCards().count == 0 {
-            getAllPetCards()
             noSavedPetsAlert()
         }
         
@@ -139,7 +138,7 @@ class PetCardCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? PetCardCell {
-            
+        
             let petCard = petCards[indexPath.row]
             cell.updateUI(petCard: petCard)
             

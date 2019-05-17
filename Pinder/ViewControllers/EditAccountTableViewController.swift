@@ -7,32 +7,42 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseFirestore
 import FirebaseAuth
 import FirebaseStorage
+import FirebaseFirestore
+
 
 class EditAccountTableViewController: UITableViewController {
   
     var pets: [Pet]?
     var db: Firestore!
-    var currentUser: User?
     var currentAuthID = Auth.auth().currentUser?.uid
+<<<<<<< HEAD
+=======
 
     var phoneNumber: Int = 0
     var humanName: String = ""
     var email: String = ""
     var password: String = ""
     var userId: String = ""
+>>>>>>> develop
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+<<<<<<< HEAD
+         var pets = [Pet]()
+        
+       // getPetData()
+=======
         changeBackground()
+>>>>>>> develop
         db = Firestore.firestore()
         checkFirestoreForUserDocument()
         getPetData()
         getPersonalAccountData()
+<<<<<<< HEAD
+=======
     }
     
     func changeBackground() {
@@ -40,6 +50,7 @@ class EditAccountTableViewController: UITableViewController {
             backgroundImage.image = UIImage(named: "Gradient")
             backgroundImage.contentMode = UIView.ContentMode.scaleToFill
             self.tableView.backgroundView = backgroundImage
+>>>>>>> develop
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -68,6 +79,8 @@ class EditAccountTableViewController: UITableViewController {
         }
         return cell
     }
+<<<<<<< HEAD
+=======
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -115,6 +128,7 @@ class EditAccountTableViewController: UITableViewController {
             }
         }
     }
+>>>>>>> develop
 
     func getPersonalAccountData() {
         // will be used later when we give options to the user to edit their personal account
@@ -146,7 +160,13 @@ class EditAccountTableViewController: UITableViewController {
         let db = Firestore.firestore()
         var pets = [Pet]()
         guard let petsId: String = self.currentAuthID else { return }
+<<<<<<< HEAD
+        print("edit account \(petsId)")
+        let profileRef = self.db.collection("PetId").whereField("humanId", isEqualTo: petsId)
+        profileRef.getDocuments { (snapshot, error) in
+=======
         db.collection("PetId").whereField("humanId", isEqualTo: petsId).getDocuments { (snapshot, error) in
+>>>>>>> develop
             if error != nil {
                 print("an error \(error)")
             } else {
@@ -177,13 +197,12 @@ class EditAccountTableViewController: UITableViewController {
         do {
             try firebaseAuth.signOut()
             print("User Signed Out")
-            print(currentAuthID ?? "No Current UID Detected")
+            print(currentAuthID)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
     }
     
-    @IBAction func unwindToAccount(_ sender: UIStoryboardSegue) {}
+//    @IBAction func unwindToEditAccount(_ sender: UIStoryboardSegue) {}
     
 }
-

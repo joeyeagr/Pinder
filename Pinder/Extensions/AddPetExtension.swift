@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-extension AddPetViewController {
-    
-    func selectPetImage() {
-        let picker = UINavigationController()
-        
-        picker.delegate = self
-        
-        present(picker, animated: true, completion: nil)
-    }
-    
-}
+//extension AddPetTableViewController {
+//    
+//    func selectPetImage() {
+//        let picker = UINavigationController()
+//        
+//        picker.delegate = self
+//        
+//        present(picker, animated: true, completion: nil)
+//    }
+//    
+//}
