@@ -26,14 +26,13 @@ class EditAccountTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         var pets = [Pet]()
-        
+        var pets = [Pet]()
         getPetData()
         changeBackground()
         db = Firestore.firestore()
         checkFirestoreForUserDocument()
         getPersonalAccountData()
-
+        
     }
     
     func changeBackground() {

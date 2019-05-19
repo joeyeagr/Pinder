@@ -30,7 +30,7 @@ class AdPet2ViewController: UIViewController, UIImagePickerControllerDelegate, U
     var currentAuthID = Auth.auth().currentUser?.uid
     var genderBEnderControl: Bool = false
     let storage = Storage.storage()
-    let fileName2 = String(arc4random_uniform(999999999)) + "Pet"
+    let fileName2 = String(arc4random_uniform(999999999)) + "Pet.png"
     var imageRef: StorageReference {
         return Storage.storage().reference().child("petImages")
     }
@@ -152,6 +152,11 @@ class AdPet2ViewController: UIViewController, UIImagePickerControllerDelegate, U
         dismiss(animated: true, completion: nil)
     }
     
+    struct PropertyKeys {
+        static let unwind = "unwindToAccountSegue"
+    }
+
+    
     @IBAction func saveButtonTapped(_ sender: Any) {
         
         uploadPetImage()
@@ -160,6 +165,7 @@ class AdPet2ViewController: UIViewController, UIImagePickerControllerDelegate, U
         let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(ok)
         self.present(alert, animated: true, completion: nil)
+        performSegue(withIdentifier: "unwindToAccountSegue", sender: nil)
     }
     
     @IBAction func petImageTapped(_ sender: Any) {
