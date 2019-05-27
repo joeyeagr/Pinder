@@ -133,9 +133,19 @@ class AdPet2ViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         userRef.document(String(pet.petId)).setData(pet.petDictionary){ err in
             if err != nil {
+                let alert = UIAlertController(title: "ERROR, your pet card was NOT saved", message: nil, preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
                 print(Error.self)
             } else {
-                print("added data")
+                let alert = UIAlertController(title: "Your pet card was saved", message: nil, preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+                print("added pet card data")
+                self.performSegue(withIdentifier: "unwindToAccountSegue2", sender: nil)
+                
             }
         }
     }
@@ -161,11 +171,8 @@ class AdPet2ViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         uploadPetImage()
         createPetCardData()
-        let alert = UIAlertController(title: "Your pet card was saved", message: nil, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(ok)
-        self.present(alert, animated: true, completion: nil)
-        performSegue(withIdentifier: "unwindToAccountSegue2", sender: nil)
+        
+
     }
     
     @IBAction func petImageTapped(_ sender: Any) {

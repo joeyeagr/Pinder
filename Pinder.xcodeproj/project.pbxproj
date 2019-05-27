@@ -40,6 +40,7 @@
 		CBB702AA2270B87D002BC8FE /* PetCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB91C6E225CFF6800D53278 /* PetCardController.swift */; };
 		CBB702C32270BB32002BC8FE /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EB91C67225CFE7300D53278 /* Model.xcdatamodeld */; };
 		CBB8AE8E228686AB003F1D79 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB8AE8D228686AB003F1D79 /* CreateAccountViewController.swift */; };
+		CBC62974229C33BD00876AD4 /* petCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC62973229C33BC00876AD4 /* petCardCell.swift */; };
 		CBC99F0B22773E55001F2000 /* AddPetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2169CB2260CEDA00F2C22E /* AddPetExtension.swift */; };
 		CBC99F0C22773EC3001F2000 /* PetCardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB91C70225CFF7300D53278 /* PetCardCollectionViewController.swift */; };
 		D964543F186AB95E01CA711B /* Pods_Pinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FC313AD1A1C965AADA99F2 /* Pods_Pinder.framework */; };
@@ -104,11 +105,11 @@
 		9E4422399FBBC5F0B27EF44A /* Pods-PinderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinderTests.debug.xcconfig"; path = "Target Support Files/Pods-PinderTests/Pods-PinderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB2169CB2260CEDA00F2C22E /* AddPetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPetExtension.swift; sourceTree = "<group>"; };
 		CB4ABDEF224E792B00162F94 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
-		CB97D2BF22848A5500CFEDF5 /* PetCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCardCell.swift; sourceTree = "<group>"; };
 		CB9F9EE82281DDA500D4954C /* AddPetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPetViewController.swift; sourceTree = "<group>"; };
 		CBAAC49E224A967D009B2E3D /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		CBAAC4A0224A969C009B2E3D /* GlobalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtensions.swift; sourceTree = "<group>"; };
 		CBB8AE8D228686AB003F1D79 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		CBC62973229C33BC00876AD4 /* petCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = petCardCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,9 +267,9 @@
 				9AF68B972276A00A00B4437C /* PetDetailViewController.swift */,
 				9A84EF852272264600A004CD /* DetailViewController.swift */,
 				5EB91C70225CFF7300D53278 /* PetCardCollectionViewController.swift */,
+				CBC62973229C33BC00876AD4 /* petCardCell.swift */,
 				CB9F9EE82281DDA500D4954C /* AddPetViewController.swift */,
 				9A7076E92289C00A00E87708 /* AdPet2ViewController.swift */,
-				CB97D2BF22848A5500CFEDF5 /* PetCardCell.swift */,
 				CBB8AE8D228686AB003F1D79 /* CreateAccountViewController.swift */,
 				5EE56D652253B1B100AE3C51 /* EditAccountTableViewController.swift */,
 				5E00C42B22774EC800FBF0D7 /* EditAccountTableViewCell.swift */,
@@ -557,6 +558,7 @@
 				5EB91C6B225CFE7300D53278 /* Model.xcdatamodeld in Sources */,
 				5EB91C6A225CFE7300D53278 /* PetCard.swift in Sources */,
 				9A57F93422860BC500A8BD3A /* PetCardCell.swift in Sources */,
+				CBC62974229C33BD00876AD4 /* petCardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
