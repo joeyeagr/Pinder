@@ -29,9 +29,7 @@ class CreateAccountViewController: UIViewController {
     var imageSelected = false
     var username: String = ""
     let userDefault = UserDefaults.standard
-
     var currentAuthID = Auth.auth().currentUser?.uid
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,42 +108,9 @@ class CreateAccountViewController: UIViewController {
         print("prepare for segueSearch called")
     }
     
-//    func createData() {
-//
-//        let stringNumber = phoneNumberTF.text ?? "0000000000"
-//        guard let name1: String = humanNameTF.text  else { return }
-//        print(name1)
-//        guard let email1: String = emailTF.text  else { return }
-//        print(email1)
-//        guard let password1: String = passwordTF.text  else { return }
-//        print(password1)
-//        guard let phoneNumber1: Int = Int(stringNumber)  else { return }
-//        print(phoneNumber1)
-//        signIn()
-//        guard let id1: String = self.currentAuthID else { return }
-//        print(id1)
-//
-//        let user = Users(id: id1,
-//                         name: name1,
-//                         email: email1,
-//                         password: password1,
-//                         phoneNumber: phoneNumber1)
-//
-//        let userRef = self.db.collection("profile")
-//        userRef.document(String(user.id)).setData(user.humanDictionary){ error in
-//            if error == nil {
-//                print("Added Human Data")
-//                print("call, UserID: \(self.currentAuthID)")
-//            } else {
-//                print("you have an error in creating data")
-//                print(Error.self)
-//            }
-//        }
-//    }
-    
     //Actions
     @IBAction func createAccountTapped(_ sender: Any) {
-            createUser()
+        createUser()
     }
     
     @IBAction func logInTapped(_ sender: Any) {

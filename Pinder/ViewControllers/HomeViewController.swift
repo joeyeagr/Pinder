@@ -12,12 +12,14 @@ import CoreData
 import Firebase
 import FirebaseStorage
 import FirebaseFirestore
+import FirebaseAuth
 
 
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var petPicture: UIImageView!
     @IBAction func profileButton(_ sender: Any) {
+        performSegue(withIdentifier: "segueToFirebase", sender: nil)
     }
     @IBAction func likedPetsButton(_ sender: Any) {
     }
@@ -35,6 +37,11 @@ class HomeViewController: UIViewController {
     var index: Int = 0
     var pets: [Pet] = []
     var totalPetCount: Int = 0
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        db = Firestore.firestore()
+    }
     
     func setCornerAndShadow() {
         petPicture.clipsToBounds = true

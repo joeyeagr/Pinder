@@ -88,15 +88,10 @@ class EditAccountTableViewController: UITableViewController {
     func createData() {
         
         guard let id: String = self.currentAuthID else { return }
-        print(id)
         guard let name: String = humanName  else { return }
-        print(name)
         guard let email: String = email  else { return }
-        print(email)
         guard let password: String = password  else { return }
-        print(password)
         guard let phoneNumber: Int = Int(phoneNumber)  else { return }
-        print(phoneNumber)
         
         let user = Users(id: id,
                          name: name,

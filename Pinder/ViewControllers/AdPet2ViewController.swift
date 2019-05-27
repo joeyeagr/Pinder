@@ -30,21 +30,21 @@ class AdPet2ViewController: UIViewController, UIImagePickerControllerDelegate, U
     var currentAuthID = Auth.auth().currentUser?.uid
     var genderBEnderControl: Bool = false
     let storage = Storage.storage()
-    let fileName2 = String(arc4random_uniform(999999999)) + "Pet.png"
+    let fileName2 = String(arc4random_uniform(999999999)) + "Pet.jpeg"
     var imageRef: StorageReference {
         return Storage.storage().reference().child("petImages")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getCurrentDate()
+        
+        getCurrentDate() // it is being used
         getPersonalAccountData()
-        createPetCardData()
         changeBackground()
-        // Do any additional setup after loading the view.
     }
     
     func changeBackground() {
+        
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "Gradient")
         backgroundImage.contentMode = UIView.ContentMode.scaleToFill
@@ -165,7 +165,7 @@ class AdPet2ViewController: UIViewController, UIImagePickerControllerDelegate, U
         let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(ok)
         self.present(alert, animated: true, completion: nil)
-        performSegue(withIdentifier: "unwindToAccountSegue", sender: nil)
+        performSegue(withIdentifier: "unwindToAccountSegue2", sender: nil)
     }
     
     @IBAction func petImageTapped(_ sender: Any) {

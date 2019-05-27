@@ -16,7 +16,7 @@
                 <viewControllerPlaceholder storyboardName="Ben" id="Yay-b4-adu" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FkQ-HY-AHg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="677" y="25"/>
+            <point key="canvasLocation" x="749" y="52"/>
         </scene>
         <!--Firebase-->
         <scene sceneID="5V2-eD-7py">
@@ -94,24 +94,23 @@
                                     <outletCollection property="gestureRecognizers" destination="aCb-Yr-nxc" appends="YES" id="7Lb-ZA-TLY"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAT-fR-aeQ">
-                                <rect key="frame" x="309.5" y="60" width="49.5" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAT-fR-aeQ">
+                                <rect key="frame" x="329" y="60" width="69" height="50"/>
                                 <state key="normal" image="icons8-heart-outline-100"/>
                                 <connections>
                                     <action selector="likedPetsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9dE-fA-ETN"/>
                                     <segue destination="Yay-b4-adu" kind="show" id="Z9d-47-gLi"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvK-1h-6fg">
-                                <rect key="frame" x="16" y="60" width="50.5" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvK-1h-6fg">
+                                <rect key="frame" x="16" y="60" width="70" height="50"/>
                                 <state key="normal" image="icons8-user-100"/>
                                 <connections>
                                     <action selector="profileButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k0O-wV-QCq"/>
-                                    <segue destination="Dr6-Xc-DLd" kind="show" id="OuN-pG-vEh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEV-PD-Ke0">
-                                <rect key="frame" x="162.5" y="60" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEV-PD-Ke0">
+                                <rect key="frame" x="182" y="60" width="50" height="50"/>
                                 <state key="normal" image="icons8-synchronize-filled-100"/>
                                 <connections>
                                     <action selector="resetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HQa-e8-zUi"/>
@@ -144,6 +143,7 @@
                         <outlet property="petNameLabel" destination="X9O-7a-Y7K" id="X12-ZA-ti4"/>
                         <outlet property="petPicture" destination="AyV-ni-hHf" id="6z7-5K-S4m"/>
                         <outlet property="smileyImageView" destination="0I4-EM-iOx" id="YbM-Ie-3i1"/>
+                        <segue destination="Dr6-Xc-DLd" kind="show" identifier="segueToFirebase" id="aqq-Lz-zSE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
