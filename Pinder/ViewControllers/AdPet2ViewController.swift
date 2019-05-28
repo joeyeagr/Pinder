@@ -171,8 +171,6 @@ class AdPet2ViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         uploadPetImage()
         createPetCardData()
-        
-
     }
     
     @IBAction func petImageTapped(_ sender: Any) {
