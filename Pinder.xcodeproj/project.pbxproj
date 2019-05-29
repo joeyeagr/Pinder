@@ -40,6 +40,7 @@
 		CBB702C32270BB32002BC8FE /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EB91C67225CFE7300D53278 /* Model.xcdatamodeld */; };
 		CBB8AE8E228686AB003F1D79 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB8AE8D228686AB003F1D79 /* CreateAccountViewController.swift */; };
 		CBC62978229C369400876AD4 /* PetCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC62977229C369400876AD4 /* PetCardCell.swift */; };
+		CBC6297A229F1AD300876AD4 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC62979229F1AD300876AD4 /* LoadingViewController.swift */; };
 		CBC99F0B22773E55001F2000 /* AddPetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2169CB2260CEDA00F2C22E /* AddPetExtension.swift */; };
 		CBC99F0C22773EC3001F2000 /* PetCardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB91C70225CFF7300D53278 /* PetCardCollectionViewController.swift */; };
 		D964543F186AB95E01CA711B /* Pods_Pinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FC313AD1A1C965AADA99F2 /* Pods_Pinder.framework */; };
@@ -108,6 +109,7 @@
 		CBAAC4A0224A969C009B2E3D /* GlobalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtensions.swift; sourceTree = "<group>"; };
 		CBB8AE8D228686AB003F1D79 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		CBC62977229C369400876AD4 /* PetCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetCardCell.swift; sourceTree = "<group>"; };
+		CBC62979229F1AD300876AD4 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +267,7 @@
 				CBC62977229C369400876AD4 /* PetCardCell.swift */,
 				9A84EF852272264600A004CD /* DetailViewController.swift */,
 				5EB91C70225CFF7300D53278 /* PetCardCollectionViewController.swift */,
+				CBC62979229F1AD300876AD4 /* LoadingViewController.swift */,
 				CB9F9EE82281DDA500D4954C /* AddPetViewController.swift */,
 				9A7076E92289C00A00E87708 /* AdPet2ViewController.swift */,
 				CBB8AE8D228686AB003F1D79 /* CreateAccountViewController.swift */,
@@ -535,6 +538,7 @@
 				CBC99F0B22773E55001F2000 /* AddPetExtension.swift in Sources */,
 				CBB702C32270BB32002BC8FE /* Model.xcdatamodeld in Sources */,
 				CBB702AA2270B87D002BC8FE /* PetCardController.swift in Sources */,
+				CBC6297A229F1AD300876AD4 /* LoadingViewController.swift in Sources */,
 				CB97D2C022848A5500CFEDF5 /* (null) in Sources */,
 				CBB702A92270B876002BC8FE /* Stack.swift in Sources */,
 				CBB702A72270B86E002BC8FE /* Animations.swift in Sources */,

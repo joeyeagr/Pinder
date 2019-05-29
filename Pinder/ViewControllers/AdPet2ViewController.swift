@@ -34,7 +34,10 @@ class AdPet2ViewController: UIViewController, UIImagePickerControllerDelegate, U
     var imageRef: StorageReference {
         return Storage.storage().reference().child("petImages")
     }
-
+    let storageRef = Storage.storage().reference()
+    let petImageRef = Storage.storage().reference().child("petImages/pet.jpg")
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
