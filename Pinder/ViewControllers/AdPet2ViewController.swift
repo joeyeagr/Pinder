@@ -15,6 +15,7 @@ import FirebaseStorage
 class AdPet2ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
+    @IBOutlet var uitextField: UITextField!
     @IBOutlet var petNameTF: UITextField!
     @IBOutlet var petBreedTF: UITextField!
     @IBOutlet var petAgeTF: UITextField!
@@ -30,18 +31,17 @@ class AdPet2ViewController: UIViewController, UIImagePickerControllerDelegate, U
     var currentAuthID = Auth.auth().currentUser?.uid
     var genderBEnderControl: Bool = false
     let storage = Storage.storage()
-    let fileName2 = String(arc4random_uniform(999999999)) + "Pet.jpeg"
+    let fileName2 = String(arc4random_uniform(99999999)) + "Pet.jpeg"
     var imageRef: StorageReference {
         return Storage.storage().reference().child("petImages")
     }
-    let storageRef = Storage.storage().reference()
-    let petImageRef = Storage.storage().reference().child("petImages/pet.jpg")
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getCurrentDate() // it is being used
+        getCurrentDate()
         getPersonalAccountData()
         changeBackground()
     }
@@ -54,18 +54,45 @@ class AdPet2ViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.view.insertSubview(backgroundImage, at: 0)
     }
     
-    func uploadPetImage() {
+    func uploadImageFunction() {
         
+        let data = Data()
         guard let image = firstUIImage.image else {return}
-        guard let imageData = image.jpegData(compressionQuality: 0) else {return}
-        
-        let uploadImageRef = imageRef.child(fileName2)
-        let uploadTask = uploadImageRef.putData(imageData, metadata: nil) { (metadata, error) in
-            print(metadata ?? "no metadata")
+        let storageRef = Storage.storage().reference(withPath: "/petImages/\(fileName2)")
+        let imageData = image.jpegData(compressionQuality: 0.75) ?? data
+        storageRef.putData(imageData, metadata: nil) { (_, error) in
+            if let error = error {
+                print(error)
+                return
+            } else {
+                print("image uploaded :)")
+                storageRef.downloadURL(completion: { (url, error) in
+                    if let error = error {
+                        print(error)
+                        return
+                    } else {
+                        print("url downloaded")
+                    }
+                })
+            }
         }
-        uploadTask.resume()
-        
     }
+    
+//    func uploadPetImage() {
+//
+//        guard let image = firstUIImage.image else {return}
+//        guard let imageData = image.jpegData(compressionQuality: 0) else {return}
+//        let data = Data()
+//
+//        let uploadImageRef = imageRef.child(fileName2)
+//        let uploadTask = uploadImageRef.putData(data, metadata: nil) { (metadata, error) in
+//            guard metadata != nil else {
+//                print("an error has be obtained by you")
+//                return
+//            }
+//        }
+//        uploadTask.resume()
+//    }
     
     func getCurrentDate() -> String {
         let date = Date()
@@ -101,7 +128,7 @@ class AdPet2ViewController: UIViewController, UIImagePickerControllerDelegate, U
             }
         }
     }
-
+    
     func createPetCardData() {
         
         // human data
@@ -122,15 +149,15 @@ class AdPet2ViewController: UIViewController, UIImagePickerControllerDelegate, U
         let humanId: String = humanUID
         
         let pet = Pet(petId: String(arc4random_uniform(999999999)),
-            petName: petName,
-            petBreed: petBreed,
-            petAge: petAge,
-            isMale: isMale,
-            petBio: petBio,
-            date: dateCreated,
-            petImage: petImage,
-            humanContact: humanContact,
-            humanId: humanId)
+                      petName: petName,
+                      petBreed: petBreed,
+                      petAge: petAge,
+                      isMale: isMale,
+                      petBio: petBio,
+                      date: dateCreated,
+                      petImage: petImage,
+                      humanContact: humanContact,
+                      humanId: humanId)
         
         let userRef = self.db.collection("PetId")
         
@@ -142,11 +169,6 @@ class AdPet2ViewController: UIViewController, UIImagePickerControllerDelegate, U
                 self.present(alert, animated: true, completion: nil)
                 print(Error.self)
             } else {
-                let alert = UIAlertController(title: "Your pet card was saved", message: nil, preferredStyle: .alert)
-                let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
-                print("added pet card data")
                 self.performSegue(withIdentifier: "unwindToAccountSegue2", sender: nil)
                 
             }
@@ -168,12 +190,13 @@ class AdPet2ViewController: UIViewController, UIImagePickerControllerDelegate, U
     struct PropertyKeys {
         static let unwind = "unwindToAccountSegue"
     }
-
+    
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         
-        uploadPetImage()
+        //uploadPetImage()
         createPetCardData()
+        uploadImageFunction()
     }
     
     @IBAction func petImageTapped(_ sender: Any) {

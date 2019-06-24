@@ -21,14 +21,17 @@ class LoadingViewController: UIViewController {
     }
     
     func checkForId() {
-        guard let id: String? = self.currentAuthID else { return }
-        if id == nil {
-            performSegue(withIdentifier: "TransitionToLogIn", sender: nil)
+        guard let blankId: String = "" else { return }
+        guard let id: String = self.currentAuthID else { return }
+        if id == blankId {
+            performSegue(withIdentifier: "TransitionToLogIn", sender: self)
         } else {
             print("to account")
-            performSegue(withIdentifier: "TransitionToAcount", sender: nil)
+            performSegue(withIdentifier: "TransitionToAccount", sender: self)
         }
     }
+    
+    
     
 
     /*

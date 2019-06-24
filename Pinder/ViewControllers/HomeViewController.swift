@@ -38,22 +38,22 @@ class HomeViewController: UIViewController {
     var index: Int = 0
     var pets: [Pet] = []
     var totalPetCount: Int = 0
-    var currentAuthID = Auth.auth().currentUser?.uid
+    //var currentAuthID = Auth.auth().currentUser?.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
         db = Firestore.firestore()
     }
     
-    func checkForId() { // issue implmenting this in, working on fixing the firebase error
-        guard let id: String? = self.currentAuthID else { return }
-        if id == nil {
-            performSegue(withIdentifier: "TransitionToLogIn", sender: nil)
-        } else {
-            print("to account")
-            performSegue(withIdentifier: "TransitionToAcount", sender: nil)
-        }
-    }
+//    func checkForId() { // issue implmenting this in, working on fixing the firebase error
+//        guard let id: String? = self.currentAuthID else { return }
+//        if id == nil {
+//            performSegue(withIdentifier: "TransitionToLogIn", sender: nil)
+//        } else {
+//            print("to account")
+//            performSegue(withIdentifier: "TransitionToAcount", sender: nil)
+//        }
+//    }
     
     func setCornerAndShadow() {
         petPicture.clipsToBounds = true
